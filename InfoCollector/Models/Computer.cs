@@ -9,19 +9,30 @@ namespace InfoCollector.Models
     class Computer
     {
         // Used for storing OS and hardware information.
+        // Follows singleton pattern
 
-        public Computer()
+        private static Computer instance;
+
+        private Computer()
         {
             CPU = new CPU();
             Storage = new Storage();
             OS = new OS();
+            Motherboard = new Motherboard();
+        }
+
+        public static Computer GetInstance()
+        {
+            if (instance == null)
+                return new Computer();
+            else
+                return instance;
         }
 
         public string ComputerID { get; set; } //5-6 Digit code
-        public string Manufacturer { get; set; }
-        public string Model { get; set; }
         public CPU CPU { get; set; }
         public Storage Storage { get; set; }
         public OS OS { get; set; }
+        public Motherboard Motherboard { get; set; }
     }
 }

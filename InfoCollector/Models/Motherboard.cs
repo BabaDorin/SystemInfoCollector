@@ -8,14 +8,12 @@ namespace InfoCollector.Models
 {
     class Motherboard
     {
-        // Motherboard itself
+        
         public string Manufacturer { get; set; }
         public string Product { get; set; }
         public string SerialNumber { get; set; }
         public string SystemName { get; set; }
         public string Status { get; set; }
-       
-        // BIOS
         public string BIOSManufacturer { get; set; }
         public string BIOSSerialNumber { get; set; }
 
