@@ -13,7 +13,6 @@ namespace InfoCollector.Services
 {
     class Storage_Info
     {
-        //private static ManagementObjectSearcher DriveSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PhysicalMedia");
         private static ManagementObjectSearcher DriveSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_DiskDrive");
 
         public static Storage Info()
@@ -28,13 +27,20 @@ namespace InfoCollector.Services
                 foreach (ManagementObject queryObj in DriveSearcher.Get())
                 {
                     StorageDevice storageDevice = new StorageDevice();
-                    storageDevice.DeviceId = queryObj["DeviceID"].ToString();
-                    storageDevice.Capacity = queryObj["Size"].ToString();
-                    storageDevice.Manufacturer =  queryObj["Manufacturer"].ToString();
-                    storageDevice.SerialNumber =  queryObj["SerialNumber"].ToString();
                     storageDevice.Type = queryObj["MediaType"].ToString();
-                    Debug.WriteLine(queryObj.ToString());
-                    storage.StorageDevices.Add(storageDevice);
+                    if (storageDevice.Type != "Removable Media")
+                    {
+                        storageDevice.DeviceId = queryObj["DeviceID"].ToString();
+                        storageDevice.Capacity = queryObj["Size"].ToString();
+                        storageDevice.Manufacturer = queryObj["Manufacturer"].ToString();
+                        storageDevice.SerialNumber = queryObj["SerialNumber"].ToString();
+                        Debug.WriteLine(queryObj.ToString());
+                        storage.StorageDevices.Add(storageDevice);
+                    }
+                    else
+                    {
+                        --storage.NumberOfStorageDevices;
+                    }
                 }
             }
             catch (Exception)
