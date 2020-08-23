@@ -33,8 +33,11 @@ namespace InfoCollector
             //Motherboard motherboard = Motherboard_Info.Info();
             //lbFeedback.Text = motherboard.ShowInfo();
 
-            CPU CPU = CPU_Info.Info();
-            lbFeedback.Text = CPU.ShowInfo();
+            //CPU CPU = CPU_Info.Info();
+            //lbFeedback.Text = CPU.ShowInfo();
+
+            Storage Storage = Storage_Info.Info();
+            lbFeedback.Text = Storage.ShowInfo();
         }
     }
 }
