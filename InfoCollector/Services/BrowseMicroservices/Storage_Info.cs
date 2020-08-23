@@ -28,8 +28,12 @@ namespace InfoCollector.Services
                 foreach (ManagementObject queryObj in DriveSearcher.Get())
                 {
                     StorageDevice storageDevice = new StorageDevice();
+                    storageDevice.DeviceId = queryObj["DeviceID"].ToString();
+                    storageDevice.Capacity = queryObj["Size"].ToString();
                     storageDevice.Manufacturer =  queryObj["Manufacturer"].ToString();
                     storageDevice.SerialNumber =  queryObj["SerialNumber"].ToString();
+                    storageDevice.Type = queryObj["MediaType"].ToString();
+                    Debug.WriteLine(queryObj.ToString());
                     storage.StorageDevices.Add(storageDevice);
                 }
             }

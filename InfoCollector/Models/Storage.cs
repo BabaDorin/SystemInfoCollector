@@ -35,6 +35,9 @@ namespace InfoCollector.Models
             {
                 info += "\nManufacturer: " + sd.Manufacturer;
                 info += "\nSerialNumber: " + sd.SerialNumber;
+                info += "\nType: " + sd.Type;
+                info += "\nCapacity: " + sd.Capacity;
+                info += "\nDeviceID: " + sd.DeviceId;
             }
             return info;
         }
