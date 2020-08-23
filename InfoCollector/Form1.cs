@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using InfoCollector.Services;
+using InfoCollector.Models;
 
 namespace InfoCollector
 {
@@ -27,7 +28,10 @@ namespace InfoCollector
             CollectorService collectorService = CollectorService.GetInstance();
 
             lbFeedback.Text = "Browsing...";
-            collectorService.GetInfo();
+            // collectorService.GetInfo();
+
+            Motherboard motherboard = Motherboard_Info.Info();
+            lbFeedback.Text = motherboard.ShowInfo();
         }
     }
 }

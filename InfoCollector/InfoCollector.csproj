@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +55,7 @@
     </Compile>
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\CPU.cs" />
+    <Compile Include="Models\Motherboard.cs" />
     <Compile Include="Models\OS.cs" />
     <Compile Include="Models\Storage.cs" />
     <Compile Include="Program.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="Services\BrowseService.cs" />
     <Compile Include="Services\CollectorService.cs" />
     <Compile Include="Services\CPU_Info.cs" />
+    <Compile Include="Services\Motherboard_Info.cs" />
     <Compile Include="Services\Storage_Info.cs" />
     <Compile Include="Services\OS_Info.cs" />
     <EmbeddedResource Include="Form1.resx">

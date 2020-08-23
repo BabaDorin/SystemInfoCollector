@@ -64,10 +64,10 @@
             // lbFeedback
             // 
             this.lbFeedback.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbFeedback.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFeedback.Font = new System.Drawing.Font("Lucida Sans", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFeedback.Location = new System.Drawing.Point(-1, 267);
             this.lbFeedback.Name = "lbFeedback";
-            this.lbFeedback.Size = new System.Drawing.Size(758, 18);
+            this.lbFeedback.Size = new System.Drawing.Size(758, 201);
             this.lbFeedback.TabIndex = 2;
             this.lbFeedback.Text = "Get the info";
             this.lbFeedback.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

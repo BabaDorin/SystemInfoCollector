@@ -20,5 +20,11 @@ namespace InfoCollector.Services
             computer.OS = OS_Info.Info();
             return new Computer();
         }
+
+        private void GeneralInfo()
+        {
+            // Looks for general info about the computer, like manufacturer, model etc.
+
+        }
     }
 }
