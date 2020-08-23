@@ -11,6 +11,10 @@ namespace InfoCollector.Services
 {
     class Motherboard_Info
     {
+        private static ManagementObjectSearcher baseboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_BaseBoard");
+        private static ManagementObjectSearcher motherboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_MotherboardDevice");
+        private static ManagementObjectSearcher biosSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_BIOS");
+
         public static Motherboard Info()
         {
             Motherboard motherboard = new Motherboard
@@ -26,10 +30,6 @@ namespace InfoCollector.Services
             };
             return motherboard;
         }
-
-        private static ManagementObjectSearcher baseboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_BaseBoard");
-        private static ManagementObjectSearcher motherboardSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_MotherboardDevice");
-        private static ManagementObjectSearcher biosSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_BIOS");
 
         private static string LookForMotherboardInfo(string whatToLookFor)
         {

@@ -30,8 +30,11 @@ namespace InfoCollector
             lbFeedback.Text = "Browsing...";
             // collectorService.GetInfo();
 
-            Motherboard motherboard = Motherboard_Info.Info();
-            lbFeedback.Text = motherboard.ShowInfo();
+            //Motherboard motherboard = Motherboard_Info.Info();
+            //lbFeedback.Text = motherboard.ShowInfo();
+
+            CPU CPU = CPU_Info.Info();
+            lbFeedback.Text = CPU.ShowInfo();
         }
     }
 }

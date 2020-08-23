@@ -24,9 +24,9 @@ namespace InfoCollector.Models
         public static Computer GetInstance()
         {
             if (instance == null)
-                return new Computer();
-            else
-                return instance;
+                instance = new Computer();
+
+            return instance;
         }
 
         public string ComputerID { get; set; } //5-6 Digit code

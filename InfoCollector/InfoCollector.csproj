@@ -62,10 +62,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BrowseService.cs" />
     <Compile Include="Services\CollectorService.cs" />
-    <Compile Include="Services\CPU_Info.cs" />
-    <Compile Include="Services\Motherboard_Info.cs" />
-    <Compile Include="Services\Storage_Info.cs" />
-    <Compile Include="Services\OS_Info.cs" />
+    <Compile Include="Services\BrowseMicroservices\CPU_Info.cs" />
+    <Compile Include="Services\BrowseMicroservices\Motherboard_Info.cs" />
+    <Compile Include="Services\BrowseMicroservices\Storage_Info.cs" />
+    <Compile Include="Services\BrowseMicroservices\OS_Info.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

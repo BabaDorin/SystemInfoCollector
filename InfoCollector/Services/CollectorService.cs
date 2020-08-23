@@ -9,7 +9,7 @@ namespace InfoCollector.Services
     class CollectorService
     {
         // Follows Singleton Design Pattern
-        private static CollectorService collectorService;
+        private static CollectorService instance;
 
         private CollectorService()
         {
@@ -18,10 +18,10 @@ namespace InfoCollector.Services
 
         public static CollectorService GetInstance()
         {
-            if (collectorService != null)
-                return collectorService;
-            else
-                return new CollectorService();
+            if (instance == null)
+                instance = new CollectorService();
+
+            return instance;
         }
 
         public void GetInfo()

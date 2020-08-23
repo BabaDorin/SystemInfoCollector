@@ -10,6 +10,7 @@ namespace InfoCollector.Services
 {
     class BrowseService
     {
+
         public Computer CollectedInformation()
         {
             Computer computer = Computer.GetInstance();
