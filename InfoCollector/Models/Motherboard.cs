@@ -29,6 +29,8 @@ namespace InfoCollector.Models
             info += "\nSerialNumber: " + SerialNumber;
             info += "\nStatus: " + Status;
             info += "\nSystemName: " + SystemName;
+            info += "\nBIOS Manufacturer: " + BIOSManufacturer;
+            info += "\nBIOS SerialNumber: " + BIOSSerialNumber;
 
             return info;
         }
