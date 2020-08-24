@@ -26,7 +26,6 @@ namespace InfoCollector.Services
             lbFeedback.Text = "Lemme get some info about your motherboard";
             computer.Motherboard = Motherboard_Info.Info();
 
-            lbFeedback.Text = "Done =)";
             return computer;
         }
     }

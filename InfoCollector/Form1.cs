@@ -20,19 +20,101 @@ namespace InfoCollector
             InitializeComponent();
 
             // Center main controls
-            btGetInfo.Left = this.Width / 2 - btGetInfo.Width / 2;
-            lbFeedback.Left = this.Width / 2 - lbFeedback.Width / 2;
+            Center(btGetInfo);
+            Center(lbFeedback);
+            Center(tbPCTempName);
+            Center(tbUnderline);
+            Center(lbExport);
+            Center(btContinue);
+
+
+            panelExport.Visible = false;
+            btContinue.Enabled = false;
+
         }
 
         private void btGetInfo_Click(object sender, EventArgs e)
         {
+            panelExport.Visible = false;
+
             CollectorService collectorService = CollectorService.GetInstance();
 
             lbFeedback.Text = "Browsing...";
             collectorService.GetInfo(lbFeedback);
 
-            if (!collectorService.WriteJsonFile())
-                Debug.WriteLine("Unable to write the json file, maybe the file already exists in the destination folder.");
+            lbFeedback.Text = "Enter an unique temporary name for this PC, check an export file type and press Continue. Recommended: PC_[LAB]_[NUMBER]";
+
+            panelExport.Visible = true;
         }
+
+        private void btContinue_Click(object sender, EventArgs e)
+        {
+            CollectorService collectorService = CollectorService.GetInstance();
+            collectorService.computerInstance.TempName = tbPCTempName.Text;
+
+            if (rbText.Checked)
+            {
+                if (collectorService.WriteTextFile())
+                {
+                    lbFeedback.Text = "Success!";
+                    panelExport.Visible = false;
+                }
+                else
+                    lbFeedback.Text = "Unable to write the output file. Maybe there is an another PC with the same name in the destination directory.";
+
+                return;
+            }
+
+            if (rbJSON.Checked)
+            {
+                if (collectorService.WriteJsonFile())
+                {
+                    lbFeedback.Text = "Success!";
+                    panelExport.Visible = false;
+                }
+                else
+                    lbFeedback.Text = "Unable to write the output file. Maybe there is an another PC with the same name in the destination directory.";
+
+                return;
+            }
+
+            if (rbTestAndJSON.Checked)
+            {
+                if (collectorService.WriteTextAndJSONFiles())
+                {
+                    lbFeedback.Text = "Success!";
+                    panelExport.Visible = false;
+                }
+                else
+                    lbFeedback.Text = "Unable to write the output file. Maybe there is an another PC with the same name in the destination directory.";
+
+                return;
+            }
+        }
+
+
+
+
+        public void Center(Control control)
+        {
+            control.Left = this.Width / 2 - control.Width / 2;
+        }
+
+        private void tbPCTempName_TextChanged(object sender, EventArgs e)
+        {
+            if(tbPCTempName.Text != "")
+                btContinue.Enabled = true;
+            else
+                btContinue.Enabled = false;
+        }
+
+        private void rb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tbPCTempName.Text != "")
+                btContinue.Enabled = true;
+            else
+                btContinue.Enabled = false;
+        }
+
     }
 }
