@@ -27,10 +27,8 @@ namespace InfoCollector
             Center(lbExport);
             Center(btContinue);
 
-
             panelExport.Visible = false;
             btContinue.Enabled = false;
-
         }
 
         private void btGetInfo_Click(object sender, EventArgs e)
@@ -111,6 +109,13 @@ namespace InfoCollector
                 btContinue.Enabled = true;
             else
                 btContinue.Enabled = false;
+        }
+
+        private void btSettings_Click(object sender, EventArgs e)
+        {
+            Settings settingsForm = new Settings();
+
+            settingsForm.ShowDialog();
         }
     }
 }

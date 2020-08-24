@@ -69,6 +69,7 @@
             this.btSettings.Size = new System.Drawing.Size(43, 43);
             this.btSettings.TabIndex = 0;
             this.btSettings.UseVisualStyleBackColor = true;
+            this.btSettings.Click += new System.EventHandler(this.btSettings_Click);
             // 
             // lbFeedback
             // 
