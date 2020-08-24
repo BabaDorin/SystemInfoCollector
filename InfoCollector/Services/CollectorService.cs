@@ -51,14 +51,14 @@ namespace InfoCollector.Services
 
         public bool WriteTextFile()
         {
-            string fileName = computerInstance.TempName + ".json";
+            string fileName = computerInstance.TempName + ".txt";
 
             if (File.Exists(Path + "\\" + fileName))
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(Path + "\\" + computerInstance.TempName + ".json"))
+            using (StreamWriter sw = new StreamWriter(Path + "\\" + computerInstance.TempName + ".txt"))
             {
-                sw.Write(computerInstance.Serialize());
+                sw.Write(computerInstance.TextContent());
             }
 
             return true;
@@ -66,17 +66,7 @@ namespace InfoCollector.Services
 
         public bool WriteTextAndJSONFiles()
         {
-            string fileName = computerInstance.TempName + ".json";
-
-            if (File.Exists(Path + "\\" + fileName))
-                return false;
-
-            using (StreamWriter sw = new StreamWriter(Path + "\\" + computerInstance.TempName + ".json"))
-            {
-                sw.Write(computerInstance.Serialize());
-            }
-
-            return true;
+            return WriteJsonFile() && WriteTextFile();
         }
     }
 }

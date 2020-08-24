@@ -30,7 +30,7 @@ namespace InfoCollector.Models
             return instance;
         }
 
-        public string ComputerID { get; set; } //5-6 Digit code
+        public string ComputerID { get; set; }
         public string TempName { get; set; } // This will be the json file name for a computer.
         public CPU CPU { get; set; }
         public Storage Storage { get; set; }
@@ -43,6 +43,18 @@ namespace InfoCollector.Models
             var json = new JavaScriptSerializer().Serialize(instance);
             Console.WriteLine(json);
             return json;
+        }
+
+        public string TextContent()
+        {
+            string result = "";
+            result += "\nComputerID: " + ComputerID;
+            result += "\nTempName: " + TempName;
+            result += CPU.ShowInfo();
+            result += Motherboard.ShowInfo();
+            result += Storage.ShowInfo();
+
+            return result;
         }
     }
 }

@@ -118,7 +118,7 @@
             // rbText
             // 
             this.rbText.AutoSize = true;
-            this.rbText.Location = new System.Drawing.Point(187, 82);
+            this.rbText.Location = new System.Drawing.Point(204, 82);
             this.rbText.Name = "rbText";
             this.rbText.Size = new System.Drawing.Size(54, 21);
             this.rbText.TabIndex = 6;
@@ -166,7 +166,7 @@
             // rbJSON
             // 
             this.rbJSON.AutoSize = true;
-            this.rbJSON.Location = new System.Drawing.Point(331, 82);
+            this.rbJSON.Location = new System.Drawing.Point(345, 82);
             this.rbJSON.Name = "rbJSON";
             this.rbJSON.Size = new System.Drawing.Size(59, 21);
             this.rbJSON.TabIndex = 7;

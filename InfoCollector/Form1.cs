@@ -92,9 +92,6 @@ namespace InfoCollector
             }
         }
 
-
-
-
         public void Center(Control control)
         {
             control.Left = this.Width / 2 - control.Width / 2;
@@ -115,6 +112,5 @@ namespace InfoCollector
             else
                 btContinue.Enabled = false;
         }
-
     }
 }
