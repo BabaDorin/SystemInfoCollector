@@ -15,8 +15,6 @@ namespace InfoCollector
         public Settings()
         {
             InitializeComponent();
-
-            tbPath.Text = Properties.Settings.Path;
         }
 
         private void btBrowser_Click(object sender, EventArgs e)
@@ -24,10 +22,10 @@ namespace InfoCollector
             FolderBrowserDialog browserDialog = new FolderBrowserDialog();
             if(browserDialog.ShowDialog() == DialogResult.OK)
             {
-                Properties.Settings.Default.
-                Properties.Settings.Path = browserDialog.SelectedPath;
-                Properties.Settings.sa
-                tbPath.Text = browserDialog.SelectedPath;
+                //Properties.Settings.Default.
+                //Properties.Settings.Path = browserDialog.SelectedPath;
+                //Properties.Settings.sa
+                //tbPath.Text = browserDialog.SelectedPath;
             }
         }
     }

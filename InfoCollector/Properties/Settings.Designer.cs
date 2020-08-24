@@ -20,28 +20,12 @@ namespace InfoCollector.Properties
     {
 
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        private static string path;
 
         public static Settings Default
         {
             get
             {
                 return defaultInstance;
-            }
-        }
-
-        public static string Path
-        {
-            get
-            {
-                if (path == null)
-                    path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-                return path;
-            }
-            set
-            {
-                path = value;
             }
         }
     }
