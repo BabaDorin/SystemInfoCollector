@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using InfoCollector.Services;
 using InfoCollector.Models;
+using System.Diagnostics;
 
 namespace InfoCollector
 {
@@ -28,16 +29,10 @@ namespace InfoCollector
             CollectorService collectorService = CollectorService.GetInstance();
 
             lbFeedback.Text = "Browsing...";
-            // collectorService.GetInfo();
+            collectorService.GetInfo(lbFeedback);
 
-            //Motherboard motherboard = Motherboard_Info.Info();
-            //lbFeedback.Text = motherboard.ShowInfo();
-
-            //CPU CPU = CPU_Info.Info();
-            //lbFeedback.Text = CPU.ShowInfo();
-
-            Storage Storage = Storage_Info.Info();
-            lbFeedback.Text = Storage.ShowInfo();
+            if (!collectorService.WriteJsonFile())
+                Debug.WriteLine("Unable to write the json file, maybe the file already exists in the destination folder.");
         }
     }
 }
