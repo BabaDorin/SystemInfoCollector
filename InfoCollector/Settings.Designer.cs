@@ -32,6 +32,8 @@
             this.tbPath = new System.Windows.Forms.TextBox();
             this.tbUnderline = new System.Windows.Forms.Label();
             this.btBrowser = new System.Windows.Forms.Button();
+            this.btSave = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbOutputPath
@@ -79,12 +81,38 @@
             this.btBrowser.UseVisualStyleBackColor = true;
             this.btBrowser.Click += new System.EventHandler(this.btBrowser_Click);
             // 
+            // btSave
+            // 
+            this.btSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
+            this.btSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
+            this.btSave.Location = new System.Drawing.Point(435, 389);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(118, 30);
+            this.btSave.TabIndex = 7;
+            this.btSave.Text = "Save";
+            this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.btSave_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
+            this.label1.Location = new System.Drawing.Point(12, 403);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(191, 19);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Changes have been saved";
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(37)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(565, 431);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btSave);
             this.Controls.Add(this.btBrowser);
             this.Controls.Add(this.tbUnderline);
             this.Controls.Add(this.tbPath);
@@ -108,5 +136,7 @@
         private System.Windows.Forms.TextBox tbPath;
         private System.Windows.Forms.Label tbUnderline;
         private System.Windows.Forms.Button btBrowser;
+        private System.Windows.Forms.Button btSave;
+        private System.Windows.Forms.Label label1;
     }
 }

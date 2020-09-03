@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using InfoCollector.Properties;
 
 namespace InfoCollector.Services
 {
@@ -15,10 +16,10 @@ namespace InfoCollector.Services
         private static CollectorService instance;
         public Computer computerInstance;
         public string Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        private UserSettings userSettings = UserSettings.GetInstance();
 
         private CollectorService()
         {
-
         }
 
         public static CollectorService GetInstance()
@@ -38,10 +39,10 @@ namespace InfoCollector.Services
         {
             string fileName = computerInstance.TempName + ".json";
 
-            if (File.Exists(Path + "\\" + fileName))
+            if (File.Exists(userSettings.OutputPath + "\\" + fileName))
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(Path + "\\" + computerInstance.TempName+".json"))
+            using (StreamWriter sw = new StreamWriter(userSettings.OutputPath + "\\" + computerInstance.TempName+".json"))
             {
                 sw.Write(computerInstance.Serialize());
             }
@@ -53,10 +54,10 @@ namespace InfoCollector.Services
         {
             string fileName = computerInstance.TempName + ".txt";
 
-            if (File.Exists(Path + "\\" + fileName))
+            if (File.Exists(userSettings.OutputPath + "\\" + fileName))
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(Path + "\\" + computerInstance.TempName + ".txt"))
+            using (StreamWriter sw = new StreamWriter(userSettings.OutputPath + "\\" + computerInstance.TempName + ".txt"))
             {
                 sw.Write(computerInstance.TextContent());
             }
