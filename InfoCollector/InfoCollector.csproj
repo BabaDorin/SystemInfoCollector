@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="Clean and Modern Color Palette - color-hex.com.png" />
     <Content Include="Information.txt" />
+    <None Include="README.md" />
     <None Include="Resources\scan_DarkTheme.png" />
     <None Include="Resources\settings.png" />
   </ItemGroup>

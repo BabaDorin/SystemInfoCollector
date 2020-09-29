@@ -1,7 +1,4 @@
-﻿Color Pallete >> https://www.color-hex.com/color-palette/42995
-Documentation >> https://www.codeproject.com/Articles/362227/System-Information-2
-
-Features:
+﻿Features:
 	• It collects information about the computer (CPU, Motherboard, OS, Storage).
 	• The collected information is stored in a .json and/or .txt file. 
 	• The .json file will be uploaded to the cihTeh platform.
