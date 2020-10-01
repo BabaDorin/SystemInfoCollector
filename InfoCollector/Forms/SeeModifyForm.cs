@@ -21,7 +21,7 @@ namespace InfoCollector.Forms
         }
 
         private Form1 parentInstance;
-        
+
         public SeeModifyForm(Form1 parent)
         {
             this.parentInstance = parent;
@@ -38,10 +38,10 @@ namespace InfoCollector.Forms
 
             // General information
             units.Add(new Unit { Identifier = "ComputerId", Value = computer.ComputerID });
-            units.Add(new Unit { Identifier = "TempName", Value = computer.TempName});
-            
+            units.Add(new Unit { Identifier = "TempName", Value = computer.TempName });
+
             // CPU
-            units.Add(new Unit { Identifier = "CPU", isTitle = true});
+            units.Add(new Unit { Identifier = "CPU", isTitle = true });
             units.Add(new Unit { Identifier = "Manufacturer", Value = computer.CPU.Manufacturer });
             units.Add(new Unit { Identifier = "Name", Value = computer.CPU.Name });
             units.Add(new Unit { Identifier = "Architecture", Value = computer.CPU.Architecture });
@@ -50,8 +50,29 @@ namespace InfoCollector.Forms
             units.Add(new Unit { Identifier = "Status", Value = computer.CPU.Status });
             units.Add(new Unit { Identifier = "Description", Value = computer.CPU.Description });
 
+            // STORAGE
+            units.Add(new Unit { Identifier = "Storage", isTitle = true });
+            units.Add(new Unit { Identifier = "NumberOfStorageDevices", Value = computer.Storage.NumberOfStorageDevices.ToString() });
+            int counter = 1;
+            foreach (StorageDevice storageDevice in computer.Storage.StorageDevices)
+            {
+                units.Add(new Unit { Identifier = "Storage device " + counter++, isTitle = true });
+                units.Add(new Unit { Identifier = "DeviceId", Value = storageDevice.DeviceId });
+                units.Add(new Unit { Identifier = "Capacity", Value = storageDevice.Capacity });
+                units.Add(new Unit { Identifier = "Type", Value = storageDevice.Type });
+                units.Add(new Unit { Identifier = "SerialNumber", Value = storageDevice.SerialNumber });
+            }
 
-            for(int i = units.Count - 1; i >= 0; i--)
+            // MOTHERBOARD
+            units.Add(new Unit { Identifier = "Motherboard", isTitle = true });
+            units.Add(new Unit { Identifier = "Manufacturer", Value = computer.Motherboard.Manufacturer });
+            units.Add(new Unit { Identifier = "Product", Value = computer.Motherboard.Product });
+            units.Add(new Unit { Identifier = "SerialNumber", Value = computer.Motherboard.SerialNumber });
+            units.Add(new Unit { Identifier = "Status", Value = computer.Motherboard.Status });
+            units.Add(new Unit { Identifier = "BIOSManufacturer", Value = computer.Motherboard.BIOSManufacturer });
+            units.Add(new Unit { Identifier = "BIOSSerialNumber", Value = computer.Motherboard.BIOSSerialNumber });
+
+            for (int i = units.Count - 1; i >= 0; i--)
             {
                 DisplayUnit(units[i].Identifier, units[i].Value, units[i].isTitle);
             }
@@ -91,7 +112,7 @@ namespace InfoCollector.Forms
 
             unitPanel.Controls.Add(unitValue);
             unitPanel.Controls.Add(unitIndentifier);
-            
+
             panelData.Controls.Add(unitPanel);
         }
 

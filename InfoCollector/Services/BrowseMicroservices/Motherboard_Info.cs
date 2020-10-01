@@ -23,7 +23,6 @@ namespace InfoCollector.Services
                 Product = LookForMotherboardInfo("Product"),
                 SerialNumber = LookForMotherboardInfo("SerialNumber"),
                 Status = LookForMotherboardInfo("Status"),
-                SystemName = LookForMotherboardInfo("SystemName"),
 
                 BIOSManufacturer = LookForBIOSInfo("Manufacturer"),
                 BIOSSerialNumber = LookForBIOSInfo("SerialNumber"),

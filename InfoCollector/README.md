@@ -29,7 +29,6 @@
 		• Manufacturer
 		• Product
 		• SerialNumber
-		• SystemName
 		• Status
 		• BIOSManufacturer
 		• BIOSSerialNumber (the actual computer's ID)
