@@ -6,15 +6,6 @@ using System.Threading.Tasks;
 
 namespace InfoCollector.Models
 {
-    struct StorageDevice
-    {
-        public string DeviceId;
-        public string Manufacturer;
-        public string Capacity;
-        public string Type; //HDD / SSD
-        public string SerialNumber;
-    }
-
     class Storage
     {
         public Storage()
