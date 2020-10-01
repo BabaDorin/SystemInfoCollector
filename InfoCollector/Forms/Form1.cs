@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using InfoCollector.Services;
 using InfoCollector.Models;
 using System.Diagnostics;
+using InfoCollector.Forms;
 
 namespace InfoCollector
 {
@@ -25,7 +26,8 @@ namespace InfoCollector
             Center(tbPCTempName);
             Center(tbUnderline);
             Center(lbExport);
-            Center(btContinue);
+            btSeeModifyData.Left = this.Width / 2 - 20 - btSeeModifyData.Width;
+            btContinue.Left = this.Width / 2 + 20;
 
             panelExport.Visible = false;
             btContinue.Enabled = false;
@@ -116,6 +118,26 @@ namespace InfoCollector
             Settings settingsForm = new Settings();
 
             settingsForm.ShowDialog();
+        }
+
+        private void btSeeModifyData_Click(object sender, EventArgs e)
+        {
+            // It opens a new form inside parent which will containg all the gathered information
+            // about the system. Users will have read and write privillege.
+            SeeModifyForm child = new SeeModifyForm(this);
+            child.TopLevel = false;
+            child.FormBorderStyle = FormBorderStyle.None;
+            child.Dock = DockStyle.Fill;
+            this.Controls.Add(child);
+            child.BringToFront();
+            child.Show();
+
+            TogglePanelExport();
+        }
+
+        public void TogglePanelExport()
+        {
+            panelExport.Visible = !panelExport.Visible;
         }
     }
 }

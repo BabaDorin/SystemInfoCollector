@@ -39,6 +39,7 @@
             this.lbExport = new System.Windows.Forms.Label();
             this.rbTestAndJSON = new System.Windows.Forms.RadioButton();
             this.rbJSON = new System.Windows.Forms.RadioButton();
+            this.btSeeModifyData = new System.Windows.Forms.Button();
             this.panelExport.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,7 +109,7 @@
             // 
             this.btContinue.FlatAppearance.BorderSize = 0;
             this.btContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btContinue.Location = new System.Drawing.Point(323, 131);
+            this.btContinue.Location = new System.Drawing.Point(388, 135);
             this.btContinue.Name = "btContinue";
             this.btContinue.Size = new System.Drawing.Size(98, 38);
             this.btContinue.TabIndex = 5;
@@ -129,6 +130,7 @@
             // 
             // panelExport
             // 
+            this.panelExport.Controls.Add(this.btSeeModifyData);
             this.panelExport.Controls.Add(this.lbExport);
             this.panelExport.Controls.Add(this.rbTestAndJSON);
             this.panelExport.Controls.Add(this.rbJSON);
@@ -175,6 +177,18 @@
             this.rbJSON.UseVisualStyleBackColor = true;
             this.rbJSON.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
             // 
+            // btSeeModifyData
+            // 
+            this.btSeeModifyData.FlatAppearance.BorderSize = 0;
+            this.btSeeModifyData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSeeModifyData.Location = new System.Drawing.Point(230, 135);
+            this.btSeeModifyData.Name = "btSeeModifyData";
+            this.btSeeModifyData.Size = new System.Drawing.Size(130, 38);
+            this.btSeeModifyData.TabIndex = 10;
+            this.btSeeModifyData.Text = "See/Modify data";
+            this.btSeeModifyData.UseVisualStyleBackColor = true;
+            this.btSeeModifyData.Click += new System.EventHandler(this.btSeeModifyData_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -213,6 +227,7 @@
         private System.Windows.Forms.Label lbExport;
         private System.Windows.Forms.RadioButton rbTestAndJSON;
         private System.Windows.Forms.RadioButton rbJSON;
+        private System.Windows.Forms.Button btSeeModifyData;
     }
 }
 
