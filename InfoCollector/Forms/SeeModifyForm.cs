@@ -109,6 +109,7 @@ namespace InfoCollector.Forms
             unitValue.ForeColor = Color.FromArgb(222, 242, 241);
             unitValue.TextAlign = HorizontalAlignment.Center;
             unitValue.BackColor = Color.FromArgb(23, 37, 42);
+            unitValue.BorderStyle = BorderStyle.None;
 
             unitPanel.Controls.Add(unitValue);
             unitPanel.Controls.Add(unitIndentifier);
@@ -120,6 +121,11 @@ namespace InfoCollector.Forms
         {
             parentInstance.TogglePanelExport();
             this.Dispose();
+        }
+
+        private void btExitSavingChanges_Click(object sender, EventArgs e)
+        {
+            // stuff
         }
     }
 }
