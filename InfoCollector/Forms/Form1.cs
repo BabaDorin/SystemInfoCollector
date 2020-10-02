@@ -42,7 +42,7 @@ namespace InfoCollector
             lbFeedback.Text = "Browsing...";
             collectorService.GetInfo(lbFeedback);
 
-            lbFeedback.Text = "Enter an unique temporary name for this PC, check an export file type and press Continue. Recommended: PC_[LAB]_[NUMBER]";
+            lbFeedback.Text = "Enter an unique name for this PC, check an export file type and press Continue. To generate folders, use /FolderName/ComputerName";
 
             panelExport.Visible = true;
         }

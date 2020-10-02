@@ -54,7 +54,7 @@ namespace InfoCollector.Services
 
         public bool WriteTextFile()
         {
-            string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TempName) + ".json";
+            string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TempName) + ".txt";
 
             if (File.Exists(fileName))
                 return false;
