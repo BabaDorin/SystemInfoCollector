@@ -124,6 +124,9 @@ namespace InfoCollector
         {
             // It opens a new form inside parent which will containg all the gathered information
             // about the system. Users will have read and write privillege.
+            Computer computer = Computer.GetInstance();
+            computer.TempName = tbPCTempName.Text;
+
             SeeModifyForm child = new SeeModifyForm(this);
             child.TopLevel = false;
             child.FormBorderStyle = FormBorderStyle.None;
