@@ -34,7 +34,6 @@ namespace InfoCollector.Models
         public string TempName { get; set; } // This will be the json file name for a computer.
         public CPU CPU { get; set; }
         public Storage Storage { get; set; }
-        public OS OS { get; set; }
         public Motherboard Motherboard { get; set; }
 
         public string Serialize()

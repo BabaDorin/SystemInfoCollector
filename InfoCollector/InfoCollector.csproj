@@ -64,7 +64,6 @@
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\CPU.cs" />
     <Compile Include="Models\Motherboard.cs" />
-    <Compile Include="Models\OS.cs" />
     <Compile Include="Models\Storage.cs" />
     <Compile Include="Models\StorageDevice.cs" />
     <Compile Include="Program.cs" />
@@ -75,7 +74,6 @@
     <Compile Include="Services\BrowseMicroservices\CPU_Info.cs" />
     <Compile Include="Services\BrowseMicroservices\Motherboard_Info.cs" />
     <Compile Include="Services\BrowseMicroservices\Storage_Info.cs" />
-    <Compile Include="Services\BrowseMicroservices\OS_Info.cs" />
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
