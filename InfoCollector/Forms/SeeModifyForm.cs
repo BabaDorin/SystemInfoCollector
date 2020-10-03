@@ -52,18 +52,30 @@ namespace InfoCollector.Forms
             units.Add(new Unit { Identifier = "CPUStatus", Value = computer.CPU.Status });
             units.Add(new Unit { Identifier = "CPUDescription", Value = computer.CPU.Description });
 
+            // GPU
+            units.Add(new Unit { Identifier = "GPU", isTitle = true });
+            units.Add(new Unit { Identifier = "NumberOfGPUs", Value = computer.GPU.NumberOfGPUs.ToString() });
+            int GPUCounter = 1;
+            foreach (GPUDevice gpuDevice in computer.GPU.GPUDevices)
+            {
+                units.Add(new Unit { Identifier = "GPU Device" + GPUCounter, isTitle = true });
+                units.Add(new Unit { Identifier = "gd_" + GPUCounter + "_Name", Value = gpuDevice.Name});
+                units.Add(new Unit { Identifier = "gd_" + GPUCounter + "_VRAM", Value = gpuDevice.VRAM});
+                GPUCounter++;
+            }
+
             // STORAGE
             units.Add(new Unit { Identifier = "Storage", isTitle = true });
             units.Add(new Unit { Identifier = "NumberOfStorageDevices", Value = computer.Storage.NumberOfStorageDevices.ToString() });
-            int counter = 1;
+            int StorageCounter = 1;
             foreach (StorageDevice storageDevice in computer.Storage.StorageDevices)
             {
-                units.Add(new Unit { Identifier = "Storage device " + counter, isTitle = true });
-                units.Add(new Unit { Identifier = "st_" + counter + "_DeviceId", Value = storageDevice.DeviceId });
-                units.Add(new Unit { Identifier = "st_" + counter + "_Capacity", Value = storageDevice.Capacity });
-                units.Add(new Unit { Identifier = "st_" + counter + "_Type", Value = storageDevice.Type });
-                units.Add(new Unit { Identifier = "st_" + counter + "_SerialNumber", Value = storageDevice.SerialNumber });
-                counter++;
+                units.Add(new Unit { Identifier = "Storage device " + StorageCounter, isTitle = true });
+                units.Add(new Unit { Identifier = "st_" + StorageCounter + "_DeviceId", Value = storageDevice.DeviceId });
+                units.Add(new Unit { Identifier = "st_" + StorageCounter + "_Capacity", Value = storageDevice.Capacity });
+                units.Add(new Unit { Identifier = "st_" + StorageCounter + "_Type", Value = storageDevice.Type });
+                units.Add(new Unit { Identifier = "st_" + StorageCounter + "_SerialNumber", Value = storageDevice.SerialNumber });
+                StorageCounter++;
             }
 
             // MOTHERBOARD
@@ -144,6 +156,15 @@ namespace InfoCollector.Forms
                 computer.CPU.ProcessorId = getTextBoxValue("ProcessorId");
                 computer.CPU.Status = getTextBoxValue("CPUStatus");
                 computer.CPU.Description = getTextBoxValue("CPUDescription");
+
+                int UserNumberOfGPUSs = int.Parse(getTextBoxValue("NumberOfGPUs"));
+                computer.GPU.NumberOfGPUs = (UserNumberOfGPUSs >= 0 && UserNumberOfGPUSs <= computer.GPU.NumberOfGPUs) ? UserNumberOfGPUSs
+                    : computer.GPU.NumberOfGPUs;
+                for (int i = 1; i <= computer.GPU.NumberOfGPUs; i++)
+                {
+                    computer.GPU.GPUDevices[i-1].Name = getTextBoxValue("gd_" + i + "_Name");
+                    computer.GPU.GPUDevices[i-1].VRAM = getTextBoxValue("gd_" + i + "_VRAM");
+                }
 
                 computer.Storage.NumberOfStorageDevices = int.Parse(getTextBoxValue("NumberOfStorageDevices"));
                 for(int i = 1; i <= computer.Storage.NumberOfStorageDevices; i++)
