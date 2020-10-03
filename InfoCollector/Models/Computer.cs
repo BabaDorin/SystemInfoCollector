@@ -18,7 +18,6 @@ namespace InfoCollector.Models
         {
             CPU = new CPU();
             Storage = new Storage();
-            OS = new OS();
             Motherboard = new Motherboard();
         }
 

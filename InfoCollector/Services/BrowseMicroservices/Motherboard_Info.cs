@@ -27,51 +27,29 @@ namespace InfoCollector.Services
                 BIOSManufacturer = LookForBIOSInfo("Manufacturer"),
                 BIOSSerialNumber = LookForBIOSInfo("SerialNumber"),
             };
+
             return motherboard;
         }
 
         private static string LookForMotherboardInfo(string whatToLookFor)
         {
-            string result = LookInBaseboard(whatToLookFor);
+            string result = LookForInformation(whatToLookFor, baseboardSearcher);
             if (result == null)
-                result = LookInMotherboard(whatToLookFor);
+                result = LookForInformation(whatToLookFor, motherboardSearcher);
 
             return result;
         }
 
-        private static string LookInBaseboard(string whatToLookFor)
-        {
-            try
-            {
-                foreach (ManagementObject queryObj in baseboardSearcher.Get())
-                    return queryObj[whatToLookFor].ToString();
-                return null;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        private static string LookInMotherboard(string whatToLookFor)
-        {
-            try
-            {
-                foreach (ManagementObject queryObj in motherboardSearcher.Get())
-                    return queryObj[whatToLookFor].ToString();
-                return null;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
         private static string LookForBIOSInfo(string whatToLookFor)
         {
+            return LookForInformation(whatToLookFor, biosSearcher);
+        }
+
+        private static string LookForInformation(string whatToLookFor, ManagementObjectSearcher whereToLookFor)
+        {
             try
             {
-                foreach (ManagementObject queryObj in biosSearcher.Get())
+                foreach (ManagementObject queryObj in whereToLookFor.Get())
                     return queryObj[whatToLookFor].ToString();
                 return null;
             }
@@ -80,6 +58,5 @@ namespace InfoCollector.Services
                 return null;
             }
         }
-
     }
 }

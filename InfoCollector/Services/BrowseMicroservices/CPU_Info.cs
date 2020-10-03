@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InfoCollector.Models;
 using System.Management;
+using InfoCollector.Services.BrowseMicroservices;
 
 namespace InfoCollector.Services
 {
@@ -30,16 +31,7 @@ namespace InfoCollector.Services
 
         private static string LookForCPUInfo(string whatToLookFor)
         {
-            try
-            {
-                foreach (ManagementObject queryObj in CPUSearcher.Get())
-                    return queryObj[whatToLookFor].ToString();
-                return null;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return Searcher.LookForInformation(whatToLookFor, CPUSearcher);
         }
     }
 }

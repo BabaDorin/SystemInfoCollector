@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InfoCollector.Models;
 using InfoCollector.Services;
+using InfoCollector.Services.BrowseMicroservices;
 
 namespace InfoCollector.Services
 {
@@ -14,6 +15,8 @@ namespace InfoCollector.Services
 
         public static Computer CollectedInformation(Label lbFeedback)
         {
+            GPU_Info.GetInfo();
+
             lbFeedback.Text = "Initialization...";
             Computer computer = Computer.GetInstance();
 
