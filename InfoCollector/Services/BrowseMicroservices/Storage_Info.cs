@@ -34,7 +34,6 @@ namespace InfoCollector.Services
                         storageDevice.Capacity = queryObj["Size"].ToString();
                         storageDevice.Manufacturer = queryObj["Manufacturer"].ToString();
                         storageDevice.SerialNumber = queryObj["SerialNumber"].ToString();
-                        Debug.WriteLine(queryObj.ToString());
                         storage.StorageDevices.Add(storageDevice);
                     }
                     else

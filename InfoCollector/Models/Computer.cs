@@ -19,6 +19,7 @@ namespace InfoCollector.Models
             CPU = new CPU();
             Storage = new Storage();
             Motherboard = new Motherboard();
+            GPU = new GPU();
         }
 
         public static Computer GetInstance()
@@ -32,6 +33,7 @@ namespace InfoCollector.Models
         public string ComputerID { get; set; }
         public string TempName { get; set; } // This will be the json file name for a computer.
         public CPU CPU { get; set; }
+        public GPU GPU { get; set; }
         public Storage Storage { get; set; }
         public Motherboard Motherboard { get; set; }
 
@@ -49,6 +51,7 @@ namespace InfoCollector.Models
             result += "\nComputerID: " + ComputerID;
             result += "\nTempName: " + TempName;
             result += CPU.ShowInfo();
+            result += GPU.ShowInfo();
             result += Motherboard.ShowInfo();
             result += Storage.ShowInfo();
 

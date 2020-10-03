@@ -15,19 +15,21 @@ namespace InfoCollector.Services
 
         public static Computer CollectedInformation(Label lbFeedback)
         {
-            GPU_Info.GetInfo();
 
             lbFeedback.Text = "Initialization...";
             Computer computer = Computer.GetInstance();
 
-            lbFeedback.Text = "Hmm... Nice CPU over there";
+            lbFeedback.Text = "Looking for CPU =)";
             computer.CPU = CPU_Info.Info();
 
-            lbFeedback.Text = "Let's check the disks (Don't worry, I won't open that 90GB homework folder)";
+            lbFeedback.Text = "Looking for Storage devices (=";
             computer.Storage = Storage_Info.Info();
 
-            lbFeedback.Text = "Lemme get some info about your motherboard";
+            lbFeedback.Text = "Looking for Motherboard =)";
             computer.Motherboard = Motherboard_Info.Info();
+
+            lbFeedback.Text = "Looking for GPU (=";
+            computer.GPU = GPU_Info.Info();
 
             return computer;
         }

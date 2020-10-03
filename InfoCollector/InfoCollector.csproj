@@ -63,6 +63,8 @@
     </Compile>
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\CPU.cs" />
+    <Compile Include="Models\GPU.cs" />
+    <Compile Include="Models\GPUDevice.cs" />
     <Compile Include="Models\Motherboard.cs" />
     <Compile Include="Models\Storage.cs" />
     <Compile Include="Models\StorageDevice.cs" />
