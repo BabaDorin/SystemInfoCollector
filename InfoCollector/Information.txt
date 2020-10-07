@@ -36,3 +36,6 @@ Features:
 		• Status
 		• BIOSManufacturer
 		• BIOSSerialNumber (the actual computer's ID)
+
+
+	// TODO -- Remove GPUs and StorageDevices if the user's input for NumberOfStorageDevices or NumberOfGPUs is less than the real one.

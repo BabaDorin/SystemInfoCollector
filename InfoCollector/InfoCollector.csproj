@@ -66,12 +66,14 @@
     <Compile Include="Models\GPU.cs" />
     <Compile Include="Models\GPUDevice.cs" />
     <Compile Include="Models\Motherboard.cs" />
+    <Compile Include="Models\RAM.cs" />
     <Compile Include="Models\Storage.cs" />
     <Compile Include="Models\StorageDevice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\UserSettings.cs" />
     <Compile Include="Services\BrowseMicroservices\GPU_Info.cs" />
+    <Compile Include="Services\BrowseMicroservices\RAM_Info.cs" />
     <Compile Include="Services\BrowseMicroservices\Searcher.cs" />
     <Compile Include="Services\BrowseService.cs" />
     <Compile Include="Services\CollectorService.cs" />

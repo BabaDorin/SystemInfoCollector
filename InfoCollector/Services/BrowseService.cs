@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using InfoCollector.Models;
 using InfoCollector.Services;
 using InfoCollector.Services.BrowseMicroservices;
+using System.Diagnostics;
 
 namespace InfoCollector.Services
 {
@@ -18,6 +19,9 @@ namespace InfoCollector.Services
 
             lbFeedback.Text = "Initialization...";
             Computer computer = Computer.GetInstance();
+            computer.RAM = RAM_Info.Info();
+            Debug.WriteLine(computer.RAM.ShowInfo());
+
 
             lbFeedback.Text = "Looking for CPU =)";
             computer.CPU = CPU_Info.Info();
