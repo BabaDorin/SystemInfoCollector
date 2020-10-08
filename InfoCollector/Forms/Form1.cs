@@ -44,7 +44,8 @@ namespace InfoCollector
         private void btContinue_Click(object sender, EventArgs e)
         {
             CollectorService collectorService = CollectorService.GetInstance();
-            collectorService.computerInstance.TempName = tbPCTempName.Text;
+            if(panelExport.Visible == true)
+                collectorService.computerInstance.TempName = tbPCTempName.Text;
 
             if (rbText.Checked)
             {
@@ -129,12 +130,13 @@ namespace InfoCollector
             child.BringToFront();
             child.Show();
 
-            TogglePanelExport();
+            TogglePanels();
         }
 
-        public void TogglePanelExport()
+        public void TogglePanels()
         {
-            panelExport.Visible = !panelExport.Visible;
+            Panel activePanel = (panelExport.Visible) ? panelExport : panelIntroduceData;
+            activePanel.Visible = !activePanel.Visible;
         }
 
         private void tbDisks_TextChanged(object sender, EventArgs e)
@@ -153,12 +155,55 @@ namespace InfoCollector
         {
             panelExport.Visible = false;
             panelIntroduceData.Visible = true;
+            Computer computer = Computer.GetInstanceCleaned();
+            tbRAMChips.Enabled = tbDisks.Enabled = tbGPUs.Enabled = true;
+            tbGPUs.Text = tbRAMChips.Text = tbDisks.Text = "";
         }
 
         private void tbRAMChips_TextChanged(object sender, EventArgs e)
         {
             RAMChipsValid = checkForValidity(tbRAMChips.Text.ToString());
             enableBtIntroduceIfOK();
+        }
+
+        private void btIntroduce_Click(object sender, EventArgs e)
+        {
+            Computer computer = Computer.GetInstance();
+            if (tbDisks.Enabled)
+            {
+                computer.RAM = new RAM();
+                computer.RAM.NumberOfRAMChips = int.Parse(tbRAMChips.Text.ToString());
+                for (int i = 0; i < computer.RAM.NumberOfRAMChips; i++)
+                {
+                    computer.RAM.RAMChips.Add(new RAMDevice());
+                }
+
+                computer.Storage = new Storage();
+                computer.Storage.NumberOfStorageDevices = int.Parse(tbDisks.Text.ToString());
+                for (int i = 0; i < computer.Storage.NumberOfStorageDevices; i++)
+                {
+                    computer.Storage.StorageDevices.Add(new StorageDevice());
+                }
+
+                computer.GPU.NumberOfGPUs = int.Parse(tbGPUs.Text.ToString());
+                for (int i = 0; i < computer.GPU.NumberOfGPUs; i++)
+                {
+                    computer.GPU.GPUDevices.Add(new GPUDevice());
+                }
+
+                tbDisks.Enabled = false;
+                tbGPUs.Enabled = false;
+                tbRAMChips.Enabled = false;
+            }
+
+            SeeModifyForm child = new SeeModifyForm(this);
+            child.TopLevel = false;
+            child.FormBorderStyle = FormBorderStyle.None;
+            child.Dock = DockStyle.Fill;
+            this.Controls.Add(child);
+            child.BringToFront();
+            child.Show();
+            TogglePanels();
         }
 
         private bool checkForValidity(string input)

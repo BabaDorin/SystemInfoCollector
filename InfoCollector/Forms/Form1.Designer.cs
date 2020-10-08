@@ -44,6 +44,14 @@
             this.btGetInfo = new System.Windows.Forms.Button();
             this.btSettings = new System.Windows.Forms.Button();
             this.panelIntroduceData = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbRAMChips = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbGPUs = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btIntroduce = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -51,15 +59,7 @@
             this.tbDisks = new System.Windows.Forms.TextBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbGPUs = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tbRAMChips = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.btContinue2 = new System.Windows.Forms.Button();
             this.panelExport.SuspendLayout();
             this.panelIntroduceData.SuspendLayout();
             this.SuspendLayout();
@@ -259,12 +259,92 @@
             this.panelIntroduceData.Controls.Add(this.tbDisks);
             this.panelIntroduceData.Controls.Add(this.radioButton3);
             this.panelIntroduceData.Controls.Add(this.label4);
-            this.panelIntroduceData.Controls.Add(this.button2);
+            this.panelIntroduceData.Controls.Add(this.btContinue2);
             this.panelIntroduceData.Location = new System.Drawing.Point(2, 289);
             this.panelIntroduceData.Name = "panelIntroduceData";
             this.panelIntroduceData.Size = new System.Drawing.Size(757, 185);
             this.panelIntroduceData.TabIndex = 11;
             this.panelIntroduceData.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(503, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 17);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "RAM Chips:";
+            // 
+            // tbRAMChips
+            // 
+            this.tbRAMChips.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(37)))), ((int)(((byte)(42)))));
+            this.tbRAMChips.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbRAMChips.Font = new System.Drawing.Font("Lucida Sans", 12F);
+            this.tbRAMChips.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
+            this.tbRAMChips.Location = new System.Drawing.Point(580, 6);
+            this.tbRAMChips.Name = "tbRAMChips";
+            this.tbRAMChips.Size = new System.Drawing.Size(68, 19);
+            this.tbRAMChips.TabIndex = 5;
+            this.tbRAMChips.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbRAMChips.TextChanged += new System.EventHandler(this.tbRAMChips_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
+            this.label10.Location = new System.Drawing.Point(578, 28);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(70, 1);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "label1";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(362, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 17);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "GPUs:";
+            // 
+            // tbGPUs
+            // 
+            this.tbGPUs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(37)))), ((int)(((byte)(42)))));
+            this.tbGPUs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbGPUs.Font = new System.Drawing.Font("Lucida Sans", 12F);
+            this.tbGPUs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
+            this.tbGPUs.Location = new System.Drawing.Point(414, 4);
+            this.tbGPUs.Name = "tbGPUs";
+            this.tbGPUs.Size = new System.Drawing.Size(68, 19);
+            this.tbGPUs.TabIndex = 4;
+            this.tbGPUs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbGPUs.TextChanged += new System.EventHandler(this.tbGPUs_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
+            this.label8.Location = new System.Drawing.Point(412, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 1);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "label1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(216, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "disks:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(99, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 17);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Number of:";
             // 
             // btIntroduce
             // 
@@ -277,6 +357,7 @@
             this.btIntroduce.TabIndex = 10;
             this.btIntroduce.Text = "Introduce data";
             this.btIntroduce.UseVisualStyleBackColor = true;
+            this.btIntroduce.Click += new System.EventHandler(this.btIntroduce_Click);
             // 
             // label3
             // 
@@ -341,96 +422,17 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "label1";
             // 
-            // button2
+            // btContinue2
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(647, 135);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 38);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Continue";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(99, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 17);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Number of:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(216, 8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 17);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "disks:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(362, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 17);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "GPUs:";
-            // 
-            // tbGPUs
-            // 
-            this.tbGPUs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(37)))), ((int)(((byte)(42)))));
-            this.tbGPUs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbGPUs.Font = new System.Drawing.Font("Lucida Sans", 12F);
-            this.tbGPUs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
-            this.tbGPUs.Location = new System.Drawing.Point(414, 4);
-            this.tbGPUs.Name = "tbGPUs";
-            this.tbGPUs.Size = new System.Drawing.Size(68, 19);
-            this.tbGPUs.TabIndex = 13;
-            this.tbGPUs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbGPUs.TextChanged += new System.EventHandler(this.tbGPUs_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
-            this.label8.Location = new System.Drawing.Point(412, 26);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 1);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "label1";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(503, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(77, 17);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "RAM Chips:";
-            // 
-            // tbRAMChips
-            // 
-            this.tbRAMChips.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(37)))), ((int)(((byte)(42)))));
-            this.tbRAMChips.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbRAMChips.Font = new System.Drawing.Font("Lucida Sans", 12F);
-            this.tbRAMChips.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
-            this.tbRAMChips.Location = new System.Drawing.Point(580, 6);
-            this.tbRAMChips.Name = "tbRAMChips";
-            this.tbRAMChips.Size = new System.Drawing.Size(68, 19);
-            this.tbRAMChips.TabIndex = 16;
-            this.tbRAMChips.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbRAMChips.TextChanged += new System.EventHandler(this.tbRAMChips_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(242)))), ((int)(((byte)(241)))));
-            this.label10.Location = new System.Drawing.Point(578, 28);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(70, 1);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "label1";
+            this.btContinue2.FlatAppearance.BorderSize = 0;
+            this.btContinue2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btContinue2.Location = new System.Drawing.Point(647, 135);
+            this.btContinue2.Name = "btContinue2";
+            this.btContinue2.Size = new System.Drawing.Size(98, 38);
+            this.btContinue2.TabIndex = 5;
+            this.btContinue2.Text = "Continue";
+            this.btContinue2.UseVisualStyleBackColor = true;
+            this.btContinue2.Click += new System.EventHandler(this.btContinue_Click);
             // 
             // Form1
             // 
@@ -489,7 +491,7 @@
         private System.Windows.Forms.TextBox tbDisks;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btContinue2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbRAMChips;
         private System.Windows.Forms.Label label10;

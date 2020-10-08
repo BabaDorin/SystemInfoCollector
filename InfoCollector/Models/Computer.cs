@@ -31,6 +31,12 @@ namespace InfoCollector.Models
             return instance;
         }
 
+        public static Computer GetInstanceCleaned()
+        {
+            instance = new Computer();
+            return instance;
+        }
+
         public string ComputerID { get; set; }
         public string TempName { get; set; } // This will be the json file name for a computer.
         public CPU CPU { get; set; }
@@ -53,6 +59,7 @@ namespace InfoCollector.Models
             result += "\nComputerID: " + ComputerID;
             result += "\nTempName: " + TempName;
             result += CPU.ShowInfo();
+            result += RAM.ShowInfo();
             result += GPU.ShowInfo();
             result += Motherboard.ShowInfo();
             result += Storage.ShowInfo();

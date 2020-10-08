@@ -48,6 +48,7 @@
             this.btGoBack.Name = "btGoBack";
             this.btGoBack.Size = new System.Drawing.Size(77, 74);
             this.btGoBack.TabIndex = 0;
+            this.btGoBack.TabStop = false;
             this.btGoBack.UseVisualStyleBackColor = true;
             this.btGoBack.Click += new System.EventHandler(this.btGoBack_Click);
             // 
@@ -59,7 +60,8 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(757, 74);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 3;
+            this.panel1.TabStop = true;
             // 
             // label1
             // 
@@ -86,7 +88,7 @@
             this.paddingLeft.Location = new System.Drawing.Point(0, 74);
             this.paddingLeft.Name = "paddingLeft";
             this.paddingLeft.Size = new System.Drawing.Size(116, 403);
-            this.paddingLeft.TabIndex = 3;
+            this.paddingLeft.TabIndex = 99;
             // 
             // panel2
             // 
@@ -94,7 +96,7 @@
             this.panel2.Location = new System.Drawing.Point(654, 74);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(103, 403);
-            this.panel2.TabIndex = 4;
+            this.panel2.TabIndex = 0;
             // 
             // btExitSavingChanges
             // 
@@ -106,6 +108,7 @@
             this.btExitSavingChanges.Name = "btExitSavingChanges";
             this.btExitSavingChanges.Size = new System.Drawing.Size(538, 32);
             this.btExitSavingChanges.TabIndex = 0;
+            this.btExitSavingChanges.TabStop = false;
             this.btExitSavingChanges.Text = "Exit saving changes";
             this.btExitSavingChanges.UseVisualStyleBackColor = false;
             this.btExitSavingChanges.Click += new System.EventHandler(this.btExitSavingChanges_Click);

@@ -29,7 +29,6 @@ namespace InfoCollector.Forms
             this.parentInstance = parent;
             InitializeComponent();
             label1.Left = this.Width / 2 - label1.Width / 2;
-
             DisplayData();
         }
 
@@ -101,17 +100,19 @@ namespace InfoCollector.Forms
             units.Add(new Unit { Identifier = "BIOSManufacturer", Value = computer.Motherboard.BIOSManufacturer });
             units.Add(new Unit { Identifier = "BIOSSerialNumber", Value = computer.Motherboard.BIOSSerialNumber });
 
+            int tabIndex = units.Count-1;
             for (int i = units.Count - 1; i >= 0; i--)
             {
-                DisplayUnit(units[i].Identifier, units[i].Value, units[i].isTitle);
+                DisplayUnit(units[i].Identifier, units[i].Value, units[i].isTitle, tabIndex--);
             }
         }
 
-        private void DisplayUnit(string identifier, string value, bool isTitle)
+        private void DisplayUnit(string identifier, string value, bool isTitle, int tabIndex)
         {
             Panel unitPanel = new Panel();
             unitPanel.Dock = DockStyle.Top;
             unitPanel.Height = 55;
+            unitPanel.TabIndex = tabIndex;
 
             // ex: ComputerID
             Label unitIndentifier = new Label();
@@ -149,7 +150,7 @@ namespace InfoCollector.Forms
 
         private void btGoBack_Click(object sender, EventArgs e)
         {
-            parentInstance.TogglePanelExport();
+            parentInstance.TogglePanels();
             this.Dispose();
         }
 
@@ -207,7 +208,7 @@ namespace InfoCollector.Forms
                 computer.Motherboard.BIOSManufacturer = getTextBoxValue("BIOSManufacturer");
                 computer.Motherboard.BIOSSerialNumber = getTextBoxValue("BIOSSerialNumber");
 
-                parentInstance.TogglePanelExport();
+                parentInstance.TogglePanels();
                 this.Dispose();
             }
             catch (Exception)
