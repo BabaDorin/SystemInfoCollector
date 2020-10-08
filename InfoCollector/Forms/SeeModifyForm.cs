@@ -52,6 +52,20 @@ namespace InfoCollector.Forms
             units.Add(new Unit { Identifier = "CPUStatus", Value = computer.CPU.Status });
             units.Add(new Unit { Identifier = "CPUDescription", Value = computer.CPU.Description });
 
+            // RAM
+            units.Add(new Unit { Identifier = "RAM", isTitle = true });
+            units.Add(new Unit { Identifier = "NumberOfRAMChips", Value = computer.RAM.NumberOfRAMChips.ToString() });
+            int RAMCounter = 1;
+            foreach (RAMDevice ramDevice in computer.RAM.RAMChips)
+            {
+                units.Add(new Unit { Identifier = "RAM chip " + RAMCounter, isTitle = true });
+                units.Add(new Unit { Identifier = "rc_" + RAMCounter + "_Manufacturer", Value = ramDevice.Manufacturer});
+                units.Add(new Unit { Identifier = "rc_" + RAMCounter + "_Type", Value = ramDevice.Type});
+                units.Add(new Unit { Identifier = "rc_" + RAMCounter + "_Amount", Value = ramDevice.Amount});
+                units.Add(new Unit { Identifier = "rc_" + RAMCounter + "_SerialNumber", Value = ramDevice.SerialNumber});
+                RAMCounter++;
+            }
+
             // GPU
             units.Add(new Unit { Identifier = "GPU", isTitle = true });
             units.Add(new Unit { Identifier = "NumberOfGPUs", Value = computer.GPU.NumberOfGPUs.ToString() });
@@ -156,6 +170,17 @@ namespace InfoCollector.Forms
                 computer.CPU.ProcessorId = getTextBoxValue("ProcessorId");
                 computer.CPU.Status = getTextBoxValue("CPUStatus");
                 computer.CPU.Description = getTextBoxValue("CPUDescription");
+
+                int UserNumberOfRAMChips = int.Parse(getTextBoxValue("NumberOfRAMChips"));
+                computer.RAM.NumberOfRAMChips = (UserNumberOfRAMChips >= 0 && UserNumberOfRAMChips <= computer.RAM.NumberOfRAMChips) ? UserNumberOfRAMChips
+                    : computer.RAM.NumberOfRAMChips;
+                for (int i = 1; i <= computer.RAM.NumberOfRAMChips; i++)
+                {
+                    computer.RAM.RAMChips[i - 1].Manufacturer = getTextBoxValue("rc_" + i + "_Manufacturer");
+                    computer.RAM.RAMChips[i - 1].Type = getTextBoxValue("rc_" + i + "_Type");
+                    computer.RAM.RAMChips[i - 1].Amount = getTextBoxValue("rc_" + i + "_Amount");
+                    computer.RAM.RAMChips[i - 1].SerialNumber = getTextBoxValue("rc_" + i + "_SerialNumber");
+                }
 
                 int UserNumberOfGPUSs = int.Parse(getTextBoxValue("NumberOfGPUs"));
                 computer.GPU.NumberOfGPUs = (UserNumberOfGPUSs >= 0 && UserNumberOfGPUSs <= computer.GPU.NumberOfGPUs) ? UserNumberOfGPUSs

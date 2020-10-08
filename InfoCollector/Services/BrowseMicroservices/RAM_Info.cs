@@ -11,7 +11,7 @@ namespace InfoCollector.Services.BrowseMicroservices
 {
     class RAM_Info
     {
-        private static ManagementObjectSearcher RAMSearcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PhysicalMemory");
+        private static ManagementObjectSearcher RAMSearcher = new ManagementObjectSearcher("SELECT * FROM Win32_PhysicalMemory");
 
         public static RAM Info()
         {
