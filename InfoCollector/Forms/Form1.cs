@@ -16,12 +16,12 @@ namespace InfoCollector
 {
     public partial class Form1 : Form
     {
+        private bool RAMChipsValid, DisksValid, GPUsValid;
         public Form1()
         {
             InitializeComponent();
 
             // Center main controls
-            Center(btGetInfo);
             Center(lbFeedback);
             Center(tbPCTempName);
             Center(tbUnderline);
@@ -36,6 +36,7 @@ namespace InfoCollector
         private void btGetInfo_Click(object sender, EventArgs e)
         {
             panelExport.Visible = false;
+            panelIntroduceData.Visible = false;
 
             CollectorService collectorService = CollectorService.GetInstance();
 
@@ -141,6 +142,52 @@ namespace InfoCollector
         public void TogglePanelExport()
         {
             panelExport.Visible = !panelExport.Visible;
+        }
+
+        private void tbDisks_TextChanged(object sender, EventArgs e)
+        {
+            checkForValidity(tbDisks, DisksValid);
+        }
+
+        private void tbGPUs_TextChanged(object sender, EventArgs e)
+        {
+            checkForValidity(tbGPUs, GPUsValid);
+        }
+
+        private void btIntroduceData_Click(object sender, EventArgs e)
+        {
+            panelExport.Visible = false;
+            panelIntroduceData.Visible = true;
+        }
+
+        private void tbRAMChips_TextChanged(object sender, EventArgs e)
+        {
+            checkForValidity(tbRAMChips, RAMChipsValid);
+        }
+
+        private void checkForValidity(TextBox textBox, bool validityIndicator)
+        {
+            try
+            {
+                int n = int.Parse(textBox.Text.ToString());
+                if (n > 0 && n < 10)
+                {
+                    validityIndicator = true;
+                    if (DisksValid && RAMChipsValid && GPUsValid)
+                        btIntroduce.Enabled = true;
+                    else
+                        btIntroduce.Enabled = false;
+                }
+                else
+                {
+                    validityIndicator = false;
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                btIntroduce.Enabled = false;
+            }
         }
     }
 }
