@@ -15,7 +15,6 @@ namespace InfoCollector.Services.BrowseMicroservices
 
         public static RAM Info()
         {
-            // ADD RamDevice class, add RamDevices to RAM, retrieve info about ram chips.
             RAM RAM = new RAM
             {
                 NumberOfRAMChips = RAMSearcher.Get().Count,
@@ -25,12 +24,20 @@ namespace InfoCollector.Services.BrowseMicroservices
             {
                 foreach (ManagementObject queryObj in RAMSearcher.Get())
                 {
-                    Debug.WriteLine(queryObj);
+                    RAMDevice RAMDevice = new RAMDevice
+                    {
+                        Manufacturer = queryObj["Manufacturer"].ToString(),
+                        Type = getRAMTypeByIdentifier(queryObj["SMBIOSMemoryType"].ToString()),
+                        SerialNumber = queryObj["SerialNumber"].ToString(),
+                        Amount = queryObj["Capacity"].ToString()
+                    };
+
+                    RAM.RAMChips.Add(RAMDevice);
                 }
             }
             catch (Exception)
             {
-                Debug.Write("Error");
+                Debug.Write("Error thrown in RAM_Info");
             }
 
             return RAM;
@@ -39,6 +46,21 @@ namespace InfoCollector.Services.BrowseMicroservices
         private static string LookForRAMInfo(string whatToLookFor)
         {
             return Searcher.LookForInformation(whatToLookFor, RAMSearcher);
+        }
+
+        private static string getRAMTypeByIdentifier(string identifier)
+        {
+            switch (identifier)
+            {
+                case "0": return "Unknown";
+                case "1": return "Other";
+                case "2": return "DRAM";
+                case "20": return "DDR";
+                case "21": return "DDR2";
+                case "24": return "DDR3";
+                case "26": return "DDR4";
+                default: return identifier;
+            }
         }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="Models\GPUDevice.cs" />
     <Compile Include="Models\Motherboard.cs" />
     <Compile Include="Models\RAM.cs" />
+    <Compile Include="Models\RAMDevice.cs" />
     <Compile Include="Models\Storage.cs" />
     <Compile Include="Models\StorageDevice.cs" />
     <Compile Include="Program.cs" />

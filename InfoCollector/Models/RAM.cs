@@ -9,21 +9,26 @@ namespace InfoCollector.Models
     class RAM
     {
         public int NumberOfRAMChips { get; set; }
-        public string Amount { get; set; }
-        public string  Type { get; set; }
-        public string Manufacturer { get; set; }
-        public string Model { get; set; }
+        public List<RAMDevice>  RAMChips { get; set; }
+
+        public RAM()
+        {
+            RAMChips = new List<RAMDevice>();
+        }
 
         public string ShowInfo()
         {
             string info = "";
             info += "\nRAM Properties:";
             info += "\n-----------------";
-            info += "\nManufacturer: " + Manufacturer;
-            info += "\nModel: " + Model;
-            info += "\nAmount: " + Amount;
-            info += "\nType: " + Type;
-
+            info += "\nNumberOfRAMChips: " + NumberOfRAMChips;
+            foreach (RAMDevice rd in RAMChips)
+            {
+                info += "\nManufacturer: " + rd.Manufacturer;
+                info += "\nAmount: " + rd.Amount;
+                info += "\nType: " + rd.Type;
+                info += "\nSerialNumber: " + rd.SerialNumber;
+            }
             return info;
         }
     }

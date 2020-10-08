@@ -19,9 +19,10 @@ namespace InfoCollector.Services
 
             lbFeedback.Text = "Initialization...";
             Computer computer = Computer.GetInstance();
+
+            lbFeedback.Text = "Looking for some RAM info (=";
             computer.RAM = RAM_Info.Info();
             Debug.WriteLine(computer.RAM.ShowInfo());
-
 
             lbFeedback.Text = "Looking for CPU =)";
             computer.CPU = CPU_Info.Info();
