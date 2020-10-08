@@ -45,14 +45,14 @@ namespace InfoCollector
         {
             CollectorService collectorService = CollectorService.GetInstance();
             if(panelExport.Visible == true)
-                collectorService.computerInstance.TempName = tbPCTempName.Text;
+                Computer.GetInstance().TempName = tbPCTempName.Text;
 
             if (rbText.Checked)
             {
                 if (collectorService.WriteTextFile())
                 {
                     lbFeedback.Text = "Success!";
-                    panelExport.Visible = false;
+                    ToggleActivePanel();
                 }
                 else
                     lbFeedback.Text = "Unable to write the output file. Maybe there is an another PC with the same name in the destination directory.";
@@ -65,7 +65,7 @@ namespace InfoCollector
                 if (collectorService.WriteJsonFile())
                 {
                     lbFeedback.Text = "Success!";
-                    panelExport.Visible = false;
+                    ToggleActivePanel();
                 }
                 else
                     lbFeedback.Text = "Unable to write the output file. Maybe there is an another PC with the same name in the destination directory.";
@@ -78,7 +78,7 @@ namespace InfoCollector
                 if (collectorService.WriteTextAndJSONFiles())
                 {
                     lbFeedback.Text = "Success!";
-                    panelExport.Visible = false;
+                    ToggleActivePanel();
                 }
                 else
                     lbFeedback.Text = "Unable to write the output file. Maybe there is an another PC with the same name in the destination directory.";
@@ -130,10 +130,10 @@ namespace InfoCollector
             child.BringToFront();
             child.Show();
 
-            TogglePanels();
+            ToggleActivePanel();
         }
 
-        public void TogglePanels()
+        public void ToggleActivePanel()
         {
             Panel activePanel = (panelExport.Visible) ? panelExport : panelIntroduceData;
             activePanel.Visible = !activePanel.Visible;
@@ -203,7 +203,7 @@ namespace InfoCollector
             this.Controls.Add(child);
             child.BringToFront();
             child.Show();
-            TogglePanels();
+            ToggleActivePanel();
         }
 
         private bool checkForValidity(string input)

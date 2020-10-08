@@ -15,7 +15,6 @@ namespace InfoCollector.Services
     {
         // Follows Singleton Design Pattern
         private static CollectorService instance;
-        public Computer computerInstance;
         private UserSettings userSettings = UserSettings.GetInstance();
 
         private CollectorService()
@@ -32,12 +31,12 @@ namespace InfoCollector.Services
 
         public void GetInfo(Label lbFeedback)
         {
-            computerInstance = BrowseService.CollectedInformation(lbFeedback);
+            BrowseService.CollectInformation(lbFeedback);
         }
 
         public bool WriteJsonFile()
         {
-            
+            Computer computerInstance = Computer.GetInstance();
             string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TempName) + ".json";
 
             if (File.Exists(fileName))
@@ -54,6 +53,7 @@ namespace InfoCollector.Services
 
         public bool WriteTextFile()
         {
+            Computer computerInstance = Computer.GetInstance();
             string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TempName) + ".txt";
 
             if (File.Exists(fileName))
@@ -74,6 +74,8 @@ namespace InfoCollector.Services
 
         private string GenerateNecessaryFoldersAndReturnFinalPath()
         {
+            Computer computerInstance = Computer.GetInstance();
+
             computerInstance.TempName = computerInstance.TempName.Replace('/', '\\');
             int backslashes = computerInstance.TempName.Count(x => x == '\\');
             if (backslashes == 0)

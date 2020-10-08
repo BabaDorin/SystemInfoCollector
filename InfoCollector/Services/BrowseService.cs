@@ -14,7 +14,7 @@ namespace InfoCollector.Services
     class BrowseService
     {
 
-        public static Computer CollectedInformation(Label lbFeedback)
+        public static void CollectInformation(Label lbFeedback)
         {
 
             lbFeedback.Text = "Initialization...";
@@ -34,8 +34,6 @@ namespace InfoCollector.Services
 
             lbFeedback.Text = "Looking for GPU (=";
             computer.GPU = GPU_Info.Info();
-
-            return computer;
         }
     }
 }

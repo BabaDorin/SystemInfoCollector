@@ -150,7 +150,7 @@ namespace InfoCollector.Forms
 
         private void btGoBack_Click(object sender, EventArgs e)
         {
-            parentInstance.TogglePanels();
+            parentInstance.ToggleActivePanel();
             this.Dispose();
         }
 
@@ -208,7 +208,7 @@ namespace InfoCollector.Forms
                 computer.Motherboard.BIOSManufacturer = getTextBoxValue("BIOSManufacturer");
                 computer.Motherboard.BIOSSerialNumber = getTextBoxValue("BIOSSerialNumber");
 
-                parentInstance.TogglePanels();
+                parentInstance.ToggleActivePanel();
                 this.Dispose();
             }
             catch (Exception)
