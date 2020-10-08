@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using InfoCollector.Services;
+﻿using InfoCollector.Forms;
 using InfoCollector.Models;
+using InfoCollector.Services;
+using System;
 using System.Diagnostics;
-using InfoCollector.Forms;
+using System.Windows.Forms;
 
 namespace InfoCollector
 {
@@ -100,7 +93,7 @@ namespace InfoCollector
 
         private void tbPCTempName_TextChanged(object sender, EventArgs e)
         {
-            if(tbPCTempName.Text != "")
+            if (tbPCTempName.Text != "")
                 btContinue.Enabled = true;
             else
                 btContinue.Enabled = false;
@@ -146,12 +139,14 @@ namespace InfoCollector
 
         private void tbDisks_TextChanged(object sender, EventArgs e)
         {
-            checkForValidity(tbDisks, DisksValid);
+            DisksValid = checkForValidity(tbDisks.Text.ToString());
+            enableBtIntroduceIfOK();
         }
 
         private void tbGPUs_TextChanged(object sender, EventArgs e)
         {
-            checkForValidity(tbGPUs, GPUsValid);
+            GPUsValid = checkForValidity(tbGPUs.Text.ToString());
+            enableBtIntroduceIfOK();
         }
 
         private void btIntroduceData_Click(object sender, EventArgs e)
@@ -162,32 +157,35 @@ namespace InfoCollector
 
         private void tbRAMChips_TextChanged(object sender, EventArgs e)
         {
-            checkForValidity(tbRAMChips, RAMChipsValid);
+            RAMChipsValid = checkForValidity(tbRAMChips.Text.ToString());
+            enableBtIntroduceIfOK();
         }
 
-        private void checkForValidity(TextBox textBox, bool validityIndicator)
+        private bool checkForValidity(string input)
         {
+            bool validInput;
             try
             {
-                int n = int.Parse(textBox.Text.ToString());
+                int n = int.Parse(input);
                 if (n > 0 && n < 10)
-                {
-                    validityIndicator = true;
-                    if (DisksValid && RAMChipsValid && GPUsValid)
-                        btIntroduce.Enabled = true;
-                    else
-                        btIntroduce.Enabled = false;
-                }
+                    validInput = true;
                 else
-                {
-                    validityIndicator = false;
-                    throw new Exception();
-                }
+                    validInput = false;
             }
             catch (Exception)
             {
-                btIntroduce.Enabled = false;
+                validInput = false;
             }
+
+            return validInput;
+        }
+        
+        private void enableBtIntroduceIfOK()
+        {
+            if (DisksValid && RAMChipsValid && GPUsValid)
+                btIntroduce.Enabled = true;
+            else
+                btIntroduce.Enabled = false;
         }
     }
 }
