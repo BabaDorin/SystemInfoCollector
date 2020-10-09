@@ -38,8 +38,8 @@
             this.lbExport = new System.Windows.Forms.Label();
             this.rbTestAndJSON = new System.Windows.Forms.RadioButton();
             this.rbJSON = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbScan = new System.Windows.Forms.Label();
+            this.lbIDM = new System.Windows.Forms.Label();
             this.btIntroduceData = new System.Windows.Forms.Button();
             this.btGetInfo = new System.Windows.Forms.Button();
             this.btSettings = new System.Windows.Forms.Button();
@@ -98,7 +98,6 @@
             // 
             // btContinue
             // 
-            this.btContinue.FlatAppearance.BorderSize = 0;
             this.btContinue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btContinue.Location = new System.Drawing.Point(388, 135);
             this.btContinue.Name = "btContinue";
@@ -137,7 +136,6 @@
             // 
             // btSeeModifyData
             // 
-            this.btSeeModifyData.FlatAppearance.BorderSize = 0;
             this.btSeeModifyData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSeeModifyData.Location = new System.Drawing.Point(230, 135);
             this.btSeeModifyData.Name = "btSeeModifyData";
@@ -180,23 +178,25 @@
             this.rbJSON.UseVisualStyleBackColor = true;
             this.rbJSON.CheckedChanged += new System.EventHandler(this.rb_CheckedChanged);
             // 
-            // label1
+            // lbScan
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(298, 124);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 17);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Scan";
+            this.lbScan.AutoSize = true;
+            this.lbScan.Location = new System.Drawing.Point(298, 124);
+            this.lbScan.Name = "lbScan";
+            this.lbScan.Size = new System.Drawing.Size(38, 17);
+            this.lbScan.TabIndex = 8;
+            this.lbScan.Text = "Scan";
+            this.lbScan.Visible = false;
             // 
-            // label2
+            // lbIDM
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(394, 124);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Introduce data manually";
+            this.lbIDM.AutoSize = true;
+            this.lbIDM.Location = new System.Drawing.Point(394, 124);
+            this.lbIDM.Name = "lbIDM";
+            this.lbIDM.Size = new System.Drawing.Size(157, 17);
+            this.lbIDM.TabIndex = 10;
+            this.lbIDM.Text = "Introduce data manually";
+            this.lbIDM.Visible = false;
             // 
             // btIntroduceData
             // 
@@ -212,6 +212,8 @@
             this.btIntroduceData.TabIndex = 9;
             this.btIntroduceData.UseVisualStyleBackColor = true;
             this.btIntroduceData.Click += new System.EventHandler(this.btIntroduceData_Click);
+            this.btIntroduceData.MouseEnter += new System.EventHandler(this.btIntroduceData_MouseEnter);
+            this.btIntroduceData.MouseLeave += new System.EventHandler(this.btIntroduceData_MouseLeave);
             // 
             // btGetInfo
             // 
@@ -227,6 +229,8 @@
             this.btGetInfo.TabIndex = 1;
             this.btGetInfo.UseVisualStyleBackColor = true;
             this.btGetInfo.Click += new System.EventHandler(this.btGetInfo_Click);
+            this.btGetInfo.MouseEnter += new System.EventHandler(this.btGetInfo_MouseEnter);
+            this.btGetInfo.MouseLeave += new System.EventHandler(this.btGetInfo_MouseLeave);
             // 
             // btSettings
             // 
@@ -260,7 +264,7 @@
             this.panelIntroduceData.Controls.Add(this.radioButton3);
             this.panelIntroduceData.Controls.Add(this.label4);
             this.panelIntroduceData.Controls.Add(this.btContinue2);
-            this.panelIntroduceData.Location = new System.Drawing.Point(2, 289);
+            this.panelIntroduceData.Location = new System.Drawing.Point(0, 289);
             this.panelIntroduceData.Name = "panelIntroduceData";
             this.panelIntroduceData.Size = new System.Drawing.Size(757, 185);
             this.panelIntroduceData.TabIndex = 11;
@@ -349,7 +353,6 @@
             // btIntroduce
             // 
             this.btIntroduce.Enabled = false;
-            this.btIntroduce.FlatAppearance.BorderSize = 0;
             this.btIntroduce.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btIntroduce.Location = new System.Drawing.Point(313, 38);
             this.btIntroduce.Name = "btIntroduce";
@@ -424,7 +427,6 @@
             // 
             // btContinue2
             // 
-            this.btContinue2.FlatAppearance.BorderSize = 0;
             this.btContinue2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btContinue2.Location = new System.Drawing.Point(647, 135);
             this.btContinue2.Name = "btContinue2";
@@ -441,9 +443,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(37)))), ((int)(((byte)(42)))));
             this.ClientSize = new System.Drawing.Size(757, 477);
             this.Controls.Add(this.panelIntroduceData);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbIDM);
             this.Controls.Add(this.btIntroduceData);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbScan);
             this.Controls.Add(this.panelExport);
             this.Controls.Add(this.lbFeedback);
             this.Controls.Add(this.btGetInfo);
@@ -480,8 +482,8 @@
         private System.Windows.Forms.RadioButton rbTestAndJSON;
         private System.Windows.Forms.RadioButton rbJSON;
         private System.Windows.Forms.Button btSeeModifyData;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbScan;
+        private System.Windows.Forms.Label lbIDM;
         private System.Windows.Forms.Button btIntroduceData;
         private System.Windows.Forms.Panel panelIntroduceData;
         private System.Windows.Forms.Button btIntroduce;

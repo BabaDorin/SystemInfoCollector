@@ -10,6 +10,7 @@ namespace InfoCollector
     public partial class Form1 : Form
     {
         private bool RAMChipsValid, DisksValid, GPUsValid;
+        public static Panel LastHiddenPanel;
         public Form1()
         {
             InitializeComponent();
@@ -52,7 +53,7 @@ namespace InfoCollector
                 if (collectorService.WriteTextFile())
                 {
                     lbFeedback.Text = "Success!";
-                    ToggleActivePanel();
+                    HideActivePanel();
                 }
                 else
                     lbFeedback.Text = "Unable to write the output file. Maybe there is an another PC with the same name in the destination directory.";
@@ -65,7 +66,7 @@ namespace InfoCollector
                 if (collectorService.WriteJsonFile())
                 {
                     lbFeedback.Text = "Success!";
-                    ToggleActivePanel();
+                    HideActivePanel();
                 }
                 else
                     lbFeedback.Text = "Unable to write the output file. Maybe there is an another PC with the same name in the destination directory.";
@@ -78,7 +79,7 @@ namespace InfoCollector
                 if (collectorService.WriteTextAndJSONFiles())
                 {
                     lbFeedback.Text = "Success!";
-                    ToggleActivePanel();
+                    HideActivePanel();
                 }
                 else
                     lbFeedback.Text = "Unable to write the output file. Maybe there is an another PC with the same name in the destination directory.";
@@ -129,14 +130,43 @@ namespace InfoCollector
             this.Controls.Add(child);
             child.BringToFront();
             child.Show();
-
-            ToggleActivePanel();
+            DisplayPanelExport();
         }
 
-        public void ToggleActivePanel()
+        public void DisplayLastHiddenPanel()
         {
-            Panel activePanel = (panelExport.Visible) ? panelExport : panelIntroduceData;
-            activePanel.Visible = !activePanel.Visible;
+            LastHiddenPanel.Visible = true;
+        }
+
+        public void DisplayPanelExport()
+        {
+            LastHiddenPanel = panelExport;
+            panelExport.Visible = true;
+            panelIntroduceData.Visible = false;
+        }
+
+        public void HideActivePanel()
+        {
+            if (panelExport.Visible)
+            {
+                LastHiddenPanel = panelExport;
+                panelExport.Visible = false;
+                return;
+            }
+
+            if (panelIntroduceData.Visible)
+            {
+                LastHiddenPanel = panelExport;
+                panelExport.Visible = false;
+                return;
+            }
+        }
+
+        public void DisplayPanelIntroduceData()
+        {
+            LastHiddenPanel = panelIntroduceData;
+            panelIntroduceData.Visible = true;
+            panelExport.Visible = false;
         }
 
         private void tbDisks_TextChanged(object sender, EventArgs e)
@@ -158,6 +188,7 @@ namespace InfoCollector
             Computer computer = Computer.GetInstanceCleaned();
             tbRAMChips.Enabled = tbDisks.Enabled = tbGPUs.Enabled = true;
             tbGPUs.Text = tbRAMChips.Text = tbDisks.Text = "";
+            lbFeedback.Text = "Introduce data manually. Start by indicating the number of RAM Chips, Disks and GPUs";
         }
 
         private void tbRAMChips_TextChanged(object sender, EventArgs e)
@@ -203,7 +234,27 @@ namespace InfoCollector
             this.Controls.Add(child);
             child.BringToFront();
             child.Show();
-            ToggleActivePanel();
+            DisplayPanelIntroduceData();
+        }
+
+        private void btGetInfo_MouseEnter(object sender, EventArgs e)
+        {
+            lbScan.Visible = true;
+        }
+
+        private void btGetInfo_MouseLeave(object sender, EventArgs e)
+        {
+            lbScan.Visible = false;
+        }
+
+        private void btIntroduceData_MouseEnter(object sender, EventArgs e)
+        {
+            lbIDM.Visible = true;
+        }
+
+        private void btIntroduceData_MouseLeave(object sender, EventArgs e)
+        {
+            lbIDM.Visible = false;
         }
 
         private bool checkForValidity(string input)

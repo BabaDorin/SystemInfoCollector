@@ -36,35 +36,50 @@ namespace InfoCollector.Services
 
         public bool WriteJsonFile()
         {
-            Computer computerInstance = Computer.GetInstance();
-            string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TempName) + ".json";
-
-            if (File.Exists(fileName))
-                return false;
-
-            
-            using (StreamWriter sw = new StreamWriter(fileName))
+            try
             {
-                sw.Write(computerInstance.Serialize());
-            }
+                Computer computerInstance = Computer.GetInstance();
+                string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TempName) + ".json";
 
-            return true;
+                if (File.Exists(fileName))
+                    return false;
+
+                using (StreamWriter sw = new StreamWriter(fileName))
+                {
+                    sw.Write(computerInstance.Serialize());
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to write json file. Invalid TempName");
+                return false;
+            }
+            
         }
 
         public bool WriteTextFile()
         {
-            Computer computerInstance = Computer.GetInstance();
-            string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TempName) + ".txt";
-
-            if (File.Exists(fileName))
-                return false;
-
-            using (StreamWriter sw = new StreamWriter(fileName))
+            try
             {
-                sw.Write(computerInstance.TextContent());
-            }
+                Computer computerInstance = Computer.GetInstance();
+                string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TempName) + ".txt";
+                if (File.Exists(fileName))
+                    return false;
 
-            return true;
+                using (StreamWriter sw = new StreamWriter(fileName))
+                {
+                    sw.Write(computerInstance.TextContent());
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to write text file. Invalid TempName");
+                return false;
+            }
         }
 
         public bool WriteTextAndJSONFiles()
@@ -75,7 +90,6 @@ namespace InfoCollector.Services
         private string GenerateNecessaryFoldersAndReturnFinalPath()
         {
             Computer computerInstance = Computer.GetInstance();
-
             computerInstance.TempName = computerInstance.TempName.Replace('/', '\\');
             int backslashes = computerInstance.TempName.Count(x => x == '\\');
             if (backslashes == 0)
