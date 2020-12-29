@@ -19,7 +19,8 @@ namespace InfoCollector.Services
             {
                 Manufacturer = LookForCPUInfo("Manufacturer"),
                 Architecture = LookForCPUInfo("Architecture"),
-                Name = LookForCPUInfo("Name"),
+                //Name = LookForCPUInfo("Name"),
+                Name = LookForCPUInfo("SocketDesignation"),
                 Status = LookForCPUInfo("Status"),
                 Description = LookForCPUInfo("Description"),
                 NumberOfCores = LookForCPUInfo("NumberOfCores"),

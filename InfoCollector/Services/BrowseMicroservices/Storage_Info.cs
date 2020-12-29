@@ -24,8 +24,13 @@ namespace InfoCollector.Services
 
             try
             {
+
                 foreach (ManagementObject queryObj in DriveSearcher.Get())
                 {
+                    Console.WriteLine("-----------------------------------");
+                    foreach (PropertyData data in queryObj.Properties)
+                        Console.WriteLine(data.Name + "\t" + data.Value);
+
                     StorageDevice storageDevice = new StorageDevice();
                     storageDevice.Type = queryObj["MediaType"].ToString();
                     if (storageDevice.Type != "Removable Media")
@@ -51,3 +56,5 @@ namespace InfoCollector.Services
         }
     }
 }
+
+

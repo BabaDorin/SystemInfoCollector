@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace InfoCollector.Models
 {
-    class GPUDevice
+    class PSUDevice
     {
-        // Add VideoModeDescription field
-        public string Name { get; set; }
-        public string VRAM { get; set; }
+        // PSU Fields: Model, Wattage, SerialNumber (Introduce them manually)
     }
 }

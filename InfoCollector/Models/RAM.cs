@@ -8,6 +8,7 @@ namespace InfoCollector.Models
 {
     class RAM
     {
+        
         public int NumberOfRAMChips { get; set; }
         public List<RAMDevice>  RAMChips { get; set; }
 

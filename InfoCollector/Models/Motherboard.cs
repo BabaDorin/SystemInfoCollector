@@ -8,7 +8,7 @@ namespace InfoCollector.Models
 {
     class Motherboard
     {
-        
+        // Fields to keep: Manufacturer, Product, SerialNumber, BiosManufacturer.
         public string Manufacturer { get; set; }
         public string Product { get; set; }
         public string SerialNumber { get; set; }

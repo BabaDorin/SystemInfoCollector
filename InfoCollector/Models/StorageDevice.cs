@@ -8,6 +8,8 @@ namespace InfoCollector.Models
 {
     class StorageDevice
     {
+        // These are the necessary fields:
+        // Caption, Description, InterfaceType, Model, SerialNumber, Size, 
         public string DeviceId { get; set; }
         public string Manufacturer { get; set; }
         public string Capacity { get; set; }

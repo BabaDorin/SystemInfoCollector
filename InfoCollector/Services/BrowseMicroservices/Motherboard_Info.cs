@@ -58,5 +58,7 @@ namespace InfoCollector.Services
                 return null;
             }
         }
+
+        
     }
 }

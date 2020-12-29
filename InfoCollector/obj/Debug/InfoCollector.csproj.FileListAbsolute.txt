@@ -12,3 +12,17 @@ C:\Users\Dorin\Desktop\  \Projects\Cih Tech\InfoCollector\systeminfocollector\
 C:\Users\Dorin\Desktop\  \Projects\Cih Tech\InfoCollector\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.pdb
 C:\Users\Dorin\Desktop\  \Projects\Cih Tech\InfoCollector\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.Settings.resources
 C:\Users\Dorin\Desktop\  \Projects\Cih Tech\InfoCollector\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.Forms.SeeModifyForm.resources
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\bin\Debug\InfoCollector.exe.config
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\bin\Debug\InfoCollector.exe
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\bin\Debug\InfoCollector.pdb
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.csprojAssemblyReference.cache
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.Form1.resources
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.Forms.SeeModifyForm.resources
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.Properties.Resources.resources
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.Settings.resources
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.csproj.GenerateResource.cache
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.csproj.CoreCompileInputs.cache
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.csproj.CopyComplete
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.exe
+C:\Users\Dorin\Desktop\repos\systeminfocollector\InfoCollector\obj\Debug\InfoCollector.pdb

@@ -24,6 +24,7 @@ namespace InfoCollector.Services.BrowseMicroservices
             {
                 foreach (ManagementObject queryObj in RAMSearcher.Get())
                 {
+
                     RAMDevice RAMDevice = new RAMDevice
                     {
                         Manufacturer = queryObj["Manufacturer"].ToString(),
