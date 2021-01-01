@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    class Storage
+    public class Storage : Device
     {
         public string Caption { get; set; }
         public string Description { get; set; }

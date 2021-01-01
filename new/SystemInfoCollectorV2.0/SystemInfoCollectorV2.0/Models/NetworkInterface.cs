@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    class NetworkInterface : Device
+    public class NetworkInterface : Device
     {
         public string Id { get; set; }
         public string Description { get; set; }

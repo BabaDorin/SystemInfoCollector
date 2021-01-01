@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    class CPU : Device
+    public class CPU : Device
     {
         private string architecture;
 
@@ -44,5 +44,21 @@ namespace SystemInfoCollectorV2._0.Models
         public int MaxClockSpeed { get; set; }
         public string SocketDesignation { get; set; }
         public bool VirtualizationFirmwareEnabled { get; set; }
+
+        public void TestData()
+        {
+            Manufacturer = "Test Manufacturer";
+            Name = "Test Name";
+            architecture = "Test Architecture";
+            ProcessorId = "Test ProcessorId";
+            Description = "Test Description";
+            SocketDesignation = "Test SocketDesignation";
+            NumberOfCores = 234;
+            L2CacheSize = 234;
+            L3CacheSize = 234;
+            ThreadCount = 234;
+            MaxClockSpeed = 234;
+            VirtualizationFirmwareEnabled = true;
+        }
     }
 }

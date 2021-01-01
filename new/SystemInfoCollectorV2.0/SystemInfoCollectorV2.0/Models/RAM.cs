@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    class RAM
+    public class RAM : Device
     {
         private string memoryType;
 

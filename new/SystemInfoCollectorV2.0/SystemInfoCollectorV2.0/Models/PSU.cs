@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    class PSU
+    public class PSU : Device
     {
         public string Model { get; set; }
         public int InputWattage { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    class GPU : Device
+    public class GPU : Device
     {
         private string videoMemoryType;
 

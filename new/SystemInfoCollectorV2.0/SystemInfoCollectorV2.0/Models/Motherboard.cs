@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    class Motherboard : Device
+    public class Motherboard : Device
     {
         public string Manufacturer { get; set; }
         public string Product { get; set; }
