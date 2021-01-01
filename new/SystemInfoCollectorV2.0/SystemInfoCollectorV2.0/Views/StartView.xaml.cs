@@ -17,11 +17,16 @@ namespace SystemInfoCollectorV2._0.Views
 {
     public partial class StartView : UserControl
     {
+
         // We need only one instance of this class
         private static StartView instance;
+        private MainWindow _mainWindow;
+
+        
         private StartView()
         {
             InitializeComponent();
+            _mainWindow = (MainWindow)Application.Current.MainWindow;
         }
 
         public static StartView GetInstance()
@@ -34,21 +39,6 @@ namespace SystemInfoCollectorV2._0.Views
             return instance;
         }
 
-        private void btTest_Click(object sender, RoutedEventArgs e)
-        {
-            btTest.Content = "cf muian";
-        }
-
-        private void btTest2_Click(object sender, RoutedEventArgs e)
-        {
-            var MainWindow = (MainWindow)System.Windows.Application.Current.MainWindow;
-            MainWindow.UpdateView("ViewUpdate");
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btScan_Click(object sender, RoutedEventArgs e)
         {
@@ -62,7 +52,7 @@ namespace SystemInfoCollectorV2._0.Views
 
         private void btViewUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            _mainWindow.UpdateView("ViewUpdate");
         }
 
         private void btWriteFile_Click(object sender, RoutedEventArgs e)

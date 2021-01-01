@@ -20,9 +20,17 @@ namespace SystemInfoCollectorV2._0.Views
     /// </summary>
     public partial class ViewUpdateView : UserControl
     {
+        private MainWindow _mainWindow;
         public ViewUpdateView()
         {
             InitializeComponent();
+
+            _mainWindow = (MainWindow)Application.Current.MainWindow;
+        }
+
+        private void btGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.UpdateView("Start");
         }
     }
 }
