@@ -55,6 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Computer.cs" />
+    <Compile Include="Models\CPU.cs" />
+    <Compile Include="Models\Device.cs" />
+    <Compile Include="Models\GPU.cs" />
+    <Compile Include="Models\Motherboard.cs" />
+    <Compile Include="Models\NetworkInterface.cs" />
+    <Compile Include="Models\PSU.cs" />
+    <Compile Include="Models\RAM.cs" />
+    <Compile Include="Models\Storage.cs" />
     <Compile Include="Views\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
     </Compile>

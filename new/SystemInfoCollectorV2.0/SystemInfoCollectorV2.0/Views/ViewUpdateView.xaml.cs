@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace SystemInfoCollectorV2._0.Views
 {
-    /// <summary>
-    /// Interaction logic for ViewUpdateView.xaml
-    /// </summary>
     public partial class ViewUpdateView : UserControl
     {
         private MainWindow _mainWindow;
