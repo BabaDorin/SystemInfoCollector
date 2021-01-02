@@ -45,6 +45,7 @@ namespace SystemInfoCollectorV2._0.Models
                     case "24": memoryType = "DDR3"; break;
                     case "25": memoryType = "FBD2"; break;
                     case "26": memoryType = "DDR4"; break;
+                    default: memoryType = value.ToString(); break;
                 }
             }
         }
