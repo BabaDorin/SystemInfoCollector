@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SystemInfoCollectorV2._0.Models;
 
 namespace SystemInfoCollectorV2._0.Views
 {
@@ -42,7 +43,8 @@ namespace SystemInfoCollectorV2._0.Views
 
         private void btScan_Click(object sender, RoutedEventArgs e)
         {
-
+            Computer computer = Computer.GetInstance();
+            computer.TestData();
         }
 
         private void btIntroduceManually_Click(object sender, RoutedEventArgs e)

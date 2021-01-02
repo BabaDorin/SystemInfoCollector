@@ -35,30 +35,14 @@ namespace SystemInfoCollectorV2._0.Models
                 }
             }
         }
-        public int NumberOfCores { get; set; }
+        public string NumberOfCores { get; set; }
         public string ProcessorId { get; set; }
         public string Description { get; set; }
-        public int L2CacheSize { get; set; }
-        public int L3CacheSize { get; set; }
-        public int ThreadCount { get; set; }
-        public int MaxClockSpeed { get; set; }
+        public string L2CacheSize { get; set; }
+        public string L3CacheSize { get; set; }
+        public string ThreadCount { get; set; }
+        public string MaxClockSpeed { get; set; }
         public string SocketDesignation { get; set; }
-        public bool VirtualizationFirmwareEnabled { get; set; }
-
-        public void TestData()
-        {
-            Manufacturer = "Test Manufacturer";
-            Name = "Test Name";
-            architecture = "Test Architecture";
-            ProcessorId = "Test ProcessorId";
-            Description = "Test Description";
-            SocketDesignation = "Test SocketDesignation";
-            NumberOfCores = 234;
-            L2CacheSize = 234;
-            L3CacheSize = 234;
-            ThreadCount = 234;
-            MaxClockSpeed = 234;
-            VirtualizationFirmwareEnabled = true;
-        }
+        public string VirtualizationFirmwareEnabled { get; set; }
     }
 }

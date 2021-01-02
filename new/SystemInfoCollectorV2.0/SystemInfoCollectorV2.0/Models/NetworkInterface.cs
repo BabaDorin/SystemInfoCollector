@@ -12,6 +12,6 @@ namespace SystemInfoCollectorV2._0.Models
         public string Description { get; set; }
         public string Name { get; set; }
         public string NetworkInterfaceType { get; set; }
-        public int Speed { get; set; }
+        public string Speed { get; set; }
     }
 }

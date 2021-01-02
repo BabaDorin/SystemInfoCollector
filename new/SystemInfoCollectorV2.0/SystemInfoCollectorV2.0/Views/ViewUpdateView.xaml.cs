@@ -37,7 +37,6 @@ namespace SystemInfoCollectorV2._0.Views
         private void DisplayFetchedData()
         {
             Computer computer = Computer.GetInstance();
-            computer.TestData();
 
             foreach (var property in computer.GetType().GetProperties())
             {
@@ -46,7 +45,6 @@ namespace SystemInfoCollectorV2._0.Views
 
                 // property is a list of devices.
                 var listOfDevices = property.GetValue(computer) as IList;
-                //var listOfDevices = (List<object>)property.GetValue(computer);
 
                 var currentParent = CreateGroupBoxForList(property.Name);
                 for (int i = 0; i < listOfDevices.Count; i++)
@@ -101,8 +99,6 @@ namespace SystemInfoCollectorV2._0.Views
             }
         }
 
-        
-
         private void CreateGroupBoxForObject(object obj, int index, UIElement parent)
         {
             GroupBox childGroupBox = new GroupBox();
@@ -127,5 +123,64 @@ namespace SystemInfoCollectorV2._0.Views
             childGroupBox.Visibility = Visibility.Collapsed;
             (parent as StackPanel).Children.Add(childGroupBox);
         }
+
+        private void btExitSavingChanges_Click(object sender, RoutedEventArgs e)
+        {
+            Computer computer = Computer.GetInstance();
+
+            foreach (GroupBox child in componentsStack.Children)
+            {
+                // Now we are in CPUs / GPUs ...
+                var currentProp = computer.GetType().GetProperties().First(p => p.Name.ToString() == child.Header.ToString());
+                
+                var tempListOfDevices = (IList)currentProp.GetValue(computer, null);
+                tempListOfDevices.Clear();
+
+                foreach (UIElement deviceProperties in (child.Content as StackPanel).Children)
+                {
+                    // Now we are in CPU #1 ...
+
+                    if (deviceProperties is Button) continue;
+
+                    object device = null;
+                    switch (child.Header.ToString())
+                    {
+                        case nameof(computer.CPUs): device = CreateObjectOfGenericType(computer.CPUs); break;
+                        case nameof(computer.GPUs): device = CreateObjectOfGenericType(computer.GPUs); break;
+                        case nameof(computer.Storages): device = CreateObjectOfGenericType(computer.Storages); break;
+                        case nameof(computer.PSUs): device = CreateObjectOfGenericType(computer.PSUs); break;
+                        case nameof(computer.RAMs): device = CreateObjectOfGenericType(computer.RAMs); break;
+                        case nameof(computer.Motherboards): device = CreateObjectOfGenericType(computer.Motherboards); break;
+                        case nameof(computer.NetworkInterfaces): device = CreateObjectOfGenericType(computer.NetworkInterfaces); break;
+                    }
+                    
+                    var devicePropertiesContainer = (deviceProperties as GroupBox).Content as StackPanel;
+                    for (int i = 1; i < devicePropertiesContainer.Children.Count; i+=2)
+                    {
+                        var propertyLabel = (devicePropertiesContainer.Children[i - 1] as Label);
+                        var propertyTextBox = (devicePropertiesContainer.Children[i] as TextBox);
+
+                        var currentDevicePropertyName = propertyLabel.Content.ToString().Split(' ')[0];
+                        var currentDeviceProperty = device.GetType().GetProperties().First(p => p.Name == currentDevicePropertyName);
+
+                        currentDeviceProperty.SetValue(device, propertyTextBox.Text);
+                    }
+
+                    tempListOfDevices.Add(device);
+                }
+
+                currentProp.SetValue(computer, tempListOfDevices);
+            }
+
+            computer.DisplayData();
+        }
+
+        private object CreateObjectOfGenericType<T>(List<T> list)
+        {
+            var device = Activator.CreateInstance<T>();
+            return device;
+        }
     }
 }
+
+

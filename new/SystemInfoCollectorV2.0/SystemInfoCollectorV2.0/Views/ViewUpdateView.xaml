@@ -36,5 +36,8 @@
 
         <Button Content="go back" HorizontalAlignment="Left" VerticalAlignment="Top" Name="btGoBack" Click="btGoBack_Click"/>
 
+        <Button Grid.Row="1" Name="btExitSavingChanges" Content="Exit saving changes" Margin="20 10"
+                Click="btExitSavingChanges_Click"/>
+
     </Grid>
 </UserControl>

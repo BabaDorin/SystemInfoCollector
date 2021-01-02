@@ -1,0 +1,8 @@
+﻿**DONE	1. Create models with necessary properties
+**DONE	2. Create a simple interface to work with
+**DONE  3. Generate Test Data
+**DONE 4. Display data on ViewUpdateView in a dynamic way
+**DONE 5. Save modified data in a dynamic way
+
+6. Build CollectorService in a dynamic way
+7. Generate files

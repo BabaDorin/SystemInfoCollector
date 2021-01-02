@@ -13,6 +13,6 @@ namespace SystemInfoCollectorV2._0.Models
         public string InterfaceTyoe { get; set; }
         public string Model { get; set; }
         public string SerialNumber { get; set; }
-        public int Size { get; set; }
+        public string Size { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,18 @@ namespace SystemInfoCollectorV2._0.Models
             return instance;
         }
 
+        public void DisplayData()
+        {
+            Debug.WriteLine("000000000000000000000000000000000000000000000000000000000");
+            Debug.WriteLine(TEMSID);
+            CPUs.ForEach(s => s.DisplayData());
+            GPUs.ForEach(s => s.DisplayData());
+            PSUs.ForEach(s => s.DisplayData());
+            Motherboards.ForEach(s => s.DisplayData());
+            NetworkInterfaces.ForEach(s => s.DisplayData());
+            RAMs.ForEach(s => s.DisplayData());
+            Storages.ForEach(s => s.DisplayData());
+        }
 
         public string TEMSID { get; set; }
 

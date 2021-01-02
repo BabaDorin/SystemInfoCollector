@@ -31,19 +31,6 @@ namespace SystemInfoCollectorV2._0
         {
             InitializeComponent();
             UpdateView("Start");
-
-            Computer computer = Computer.GetInstance();
-            computer.TestData();
-            MessageBox.Show("Done");
-            
-
-
-
-            //intProperty = 1;
-            //floatProperty = 1;
-            //MessageBox.Show(intProperty.GetType().ToString());
-            //MessageBox.Show(floatProperty.GetType().ToString());
-            //MessageBox.Show(boolProperty.GetType().ToString());
         }
 
         public void UpdateView(string parameter)
