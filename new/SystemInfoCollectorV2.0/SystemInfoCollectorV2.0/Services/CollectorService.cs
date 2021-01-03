@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SystemInfoCollectorV2._0.Models;
+using SystemInfoCollectorV2._0.Services.Collectors;
 
 namespace SystemInfoCollectorV2._0.Services
 {
@@ -15,70 +16,27 @@ namespace SystemInfoCollectorV2._0.Services
              typeof(CPU), typeof(GPU), typeof(RAM), typeof(Storage)
         };
 
-        public CollectorService()
-        {
-        }
-
         /// <summary>
         /// Collects data about the system and returns the list of devices of Type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="listOfDevices"></param>
         /// <returns></returns>
-        public static List<T> CollectDataAndReturnListOfType<T>(List<T> InitialListOfDevices)
+        public static List<T> CollectDataAndReturnListOfType<T>(List<T> initialListOfDevices)
         {
             if (ClassicTypes.Contains(typeof(T)))
-                return ClassicInfoCollector(InitialListOfDevices);
+                return ClassicInfoCollector.GetInfo(initialListOfDevices);
 
             if (typeof(T) == typeof(PSU))
-                return PSUInfoCollector() as List<T>;
+                return PSUInfoCollector.GetInfo() as List<T>;
 
             if (typeof(T) == typeof(Motherboard))
-                return MotherboardInfoCollector() as List<T>;
+                return MotherboardInfoCollector.GetInfo() as List<T>;
 
             if (typeof(T) == typeof(NetworkInterface))
-                return NetworkInterfaceInfoCollector() as List<T>;
+                return NetworkInterfaceInfoCollector.GetInfo() as List<T>;
 
             return new List<T>();
-        }
-
-        private static List<T> ClassicInfoCollector<T>(List<T> InitialListOfDevices)
-        {
-            var list = new List<T>();
-            var obj = Activator.CreateInstance<T>();
-            
-            (obj as Device).TestData();
-            
-            list.Add(obj);
-            
-            return list;
-        }
-
-        private static List<PSU> PSUInfoCollector()
-        {
-            var list = new List<PSU>();
-            var obj = Activator.CreateInstance<PSU>();
-            list.Add(obj);
-            
-            return list;
-        }
-
-        private static List<Motherboard> MotherboardInfoCollector()
-        {
-            var list = new List<Motherboard>();
-            var obj = Activator.CreateInstance<Motherboard>();
-            list.Add(obj);
-
-            return list;
-        }
-
-        private static List<NetworkInterface> NetworkInterfaceInfoCollector()
-        {
-            var list = new List<NetworkInterface>();
-            var obj = Activator.CreateInstance<NetworkInterface>();
-            list.Add(obj);
-
-            return list;
         }
     }
 }
