@@ -55,10 +55,8 @@ namespace SystemInfoCollectorV2._0.Models
             RAMs = CollectorService.CollectDataAndReturnListOfType(RAMs);
             Storages = CollectorService.CollectDataAndReturnListOfType(Storages);
 
-            // Other conditions
+            // Filters
             Storages.RemoveAll(q => q.MediaType == "Removable Media");
-
-        
         }
 
         public string TEMSID { get; set; }
