@@ -114,7 +114,8 @@ namespace SystemInfoCollectorV2._0.Views
                 propertyLabel.Content = $"{prop.Name} ({prop.GetType().Name})";
 
                 TextBox propertyValue = new TextBox();
-                propertyValue.Text = prop.GetValue(obj).ToString();
+                var value = prop.GetValue(obj);
+                propertyValue.Text = (value == null) ? "" : value.ToString();
 
                 childStackPanel.Children.Add(propertyLabel);
                 childStackPanel.Children.Add(propertyValue);

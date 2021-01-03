@@ -64,6 +64,7 @@
     <Compile Include="Models\PSU.cs" />
     <Compile Include="Models\RAM.cs" />
     <Compile Include="Models\Storage.cs" />
+    <Compile Include="Services\CollectorService.cs" />
     <Compile Include="Views\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
     </Compile>

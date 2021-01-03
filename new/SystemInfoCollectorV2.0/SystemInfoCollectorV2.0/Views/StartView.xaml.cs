@@ -44,7 +44,8 @@ namespace SystemInfoCollectorV2._0.Views
         private void btScan_Click(object sender, RoutedEventArgs e)
         {
             Computer computer = Computer.GetInstance();
-            computer.TestData();
+            //computer.TestData();
+            computer.RetrieveData();
         }
 
         private void btIntroduceManually_Click(object sender, RoutedEventArgs e)

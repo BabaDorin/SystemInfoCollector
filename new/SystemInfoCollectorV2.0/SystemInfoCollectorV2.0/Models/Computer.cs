@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SystemInfoCollectorV2._0.Services;
 
 namespace SystemInfoCollectorV2._0.Models
 {
@@ -42,6 +43,17 @@ namespace SystemInfoCollectorV2._0.Models
             NetworkInterfaces.ForEach(s => s.DisplayData());
             RAMs.ForEach(s => s.DisplayData());
             Storages.ForEach(s => s.DisplayData());
+        }
+
+        public void RetrieveData()
+        {
+            CPUs = CollectorService.CollectDataAndReturnListOfType(CPUs);
+            GPUs = CollectorService.CollectDataAndReturnListOfType(GPUs);
+            PSUs = CollectorService.CollectDataAndReturnListOfType(PSUs);
+            Motherboards = CollectorService.CollectDataAndReturnListOfType(Motherboards);
+            NetworkInterfaces = CollectorService.CollectDataAndReturnListOfType(NetworkInterfaces);
+            RAMs = CollectorService.CollectDataAndReturnListOfType(RAMs);
+            Storages = CollectorService.CollectDataAndReturnListOfType(Storages);
         }
 
         public string TEMSID { get; set; }
