@@ -54,6 +54,11 @@ namespace SystemInfoCollectorV2._0.Models
             NetworkInterfaces = CollectorService.CollectDataAndReturnListOfType(NetworkInterfaces);
             RAMs = CollectorService.CollectDataAndReturnListOfType(RAMs);
             Storages = CollectorService.CollectDataAndReturnListOfType(Storages);
+
+            // Other conditions
+            Storages.RemoveAll(q => q.MediaType == "Removable Media");
+
+        
         }
 
         public string TEMSID { get; set; }
