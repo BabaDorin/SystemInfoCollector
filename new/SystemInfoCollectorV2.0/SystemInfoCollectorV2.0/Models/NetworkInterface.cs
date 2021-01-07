@@ -8,7 +8,7 @@ namespace SystemInfoCollectorV2._0.Models
 {
     public class NetworkInterface : Device
     {
-        public string Id { get; set; }
+        public string PhysicalAddress { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
         public string NetworkInterfaceType { get; set; }
