@@ -11,6 +11,7 @@ namespace SystemInfoCollectorV2._0.Services.Collectors
     {
         public static List<PSU> GetInfo()
         {
+            // Prompt the user to enter data about PSU
             var list = new List<PSU>();
             var obj = Activator.CreateInstance<PSU>();
             list.Add(obj);

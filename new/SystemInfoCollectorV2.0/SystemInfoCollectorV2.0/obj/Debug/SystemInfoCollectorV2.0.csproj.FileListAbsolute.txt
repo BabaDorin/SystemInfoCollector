@@ -1,14 +1,17 @@
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\bin\Debug\SystemInfoCollectorV2.0.exe.config
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\bin\Debug\SystemInfoCollectorV2.0.exe
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\bin\Debug\SystemInfoCollectorV2.0.pdb
-C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\SystemInfoCollectorV2.0.csprojAssemblyReference.cache
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\MainWindow.g.cs
+C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\EnterPSUSpecs.g.cs
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\StartView.g.cs
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\ViewUpdateView.g.cs
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\App.g.cs
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\SystemInfoCollectorV2.0_MarkupCompile.cache
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\SystemInfoCollectorV2.0_MarkupCompile.lref
+C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\App.baml
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\MainWindow.baml
+C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Styles\Styles.baml
+C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\EnterPSUSpecs.baml
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\StartView.baml
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\ViewUpdateView.baml
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\SystemInfoCollectorV2.0.g.resources
@@ -17,5 +20,3 @@ C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\Syst
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\SystemInfoCollectorV2.0.csproj.CoreCompileInputs.cache
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\SystemInfoCollectorV2.0.exe
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\SystemInfoCollectorV2.0.pdb
-C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\App.baml
-C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Styles\Styles.baml

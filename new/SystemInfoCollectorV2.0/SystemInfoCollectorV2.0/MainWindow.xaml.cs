@@ -31,6 +31,9 @@ namespace SystemInfoCollectorV2._0
         {
             InitializeComponent();
             UpdateView("Start");
+
+            EnterPSUSpecs enterPSUSpecs = new EnterPSUSpecs();
+            enterPSUSpecs.Show();
         }
 
         public void UpdateView(string parameter)

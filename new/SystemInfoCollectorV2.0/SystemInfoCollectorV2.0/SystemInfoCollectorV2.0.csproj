@@ -70,6 +70,9 @@
     <Compile Include="Services\Collectors\MotherboardInfoCollector.cs" />
     <Compile Include="Services\Collectors\NetworkInterfaceInfoCollector.cs" />
     <Compile Include="Services\Collectors\PSUInfoCollector.cs" />
+    <Compile Include="Views\EnterPSUSpecs.xaml.cs">
+      <DependentUpon>EnterPSUSpecs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EnterPSUSpecs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,6 +137,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Plan.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\2.jfif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
