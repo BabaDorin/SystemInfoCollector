@@ -6,3 +6,4 @@
 
 6. Build CollectorService in a dynamic way
 7. Generate files
+8. 'Remove' buttons for devices [ViewUpdateView]

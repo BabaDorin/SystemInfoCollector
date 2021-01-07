@@ -56,7 +56,7 @@ namespace SystemInfoCollectorV2._0.Models
             Storages = CollectorService.CollectDataAndReturnListOfType(Storages);
 
             // Filters
-            Storages.RemoveAll(q => q.MediaType == "Removable Media");
+            Storages.RemoveAll(q => q.MediaType != "Fixed hard disk media");
         }
 
         public string TEMSID { get; set; }
