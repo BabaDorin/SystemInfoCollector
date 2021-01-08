@@ -5,7 +5,8 @@
 **DONE 5. Save modified data in a dynamic way
 **DONE 6. Build CollectorService in a dynamic way
 **DONE 8. 'Remove' buttons for devices [ViewUpdateView]
+**DONE 9. Collect information about monitor (Test it on laptop)
 
 7. Generate files
-9. Collect information about monitor (Test it on laptop)
 10. Find out why ConfiguredClockSpeed is null for RAM Chips
+11. Build Preferences view.

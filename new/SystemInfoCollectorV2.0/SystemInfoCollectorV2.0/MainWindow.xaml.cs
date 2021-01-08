@@ -30,7 +30,7 @@ namespace SystemInfoCollectorV2._0
         public MainWindow()
         {
             InitializeComponent();
-            UpdateView("Start");
+            UpdateView("Info");
         }
 
         public void UpdateView(string parameter)
@@ -42,6 +42,9 @@ namespace SystemInfoCollectorV2._0
                     break;
                 case "ViewUpdate":
                     childWindow.Content = new ViewUpdateView();
+                    break;
+                case "Info":
+                    childWindow.Content = new InfoView();
                     break;
                 default:
                     childWindow.Content = StartView.GetInstance();
@@ -62,6 +65,11 @@ namespace SystemInfoCollectorV2._0
         private void btPreferences_Click(object sender, RoutedEventArgs e)
         {
             UpdateView("Preferences");
+        }
+
+        private void btInfo_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateView("Info");
         }
     }
 }

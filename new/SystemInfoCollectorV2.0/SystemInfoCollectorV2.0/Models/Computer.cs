@@ -23,6 +23,7 @@ namespace SystemInfoCollectorV2._0.Models
             RAMs = new List<RAM>();
             Storages = new List<Storage>();
             PSUs = new List<PSU>();
+            Monitors = new List<Monitor>();
         }
 
         public static Computer GetInstance()

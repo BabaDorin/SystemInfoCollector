@@ -23,3 +23,5 @@ C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\Syst
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\SystemInfoCollectorV2.0.csprojAssemblyReference.cache
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\Preferences.g.cs
 C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\Preferences.baml
+C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\InfoView.g.cs
+C:\Users\Maria\Desktop\repo\systeminfocollector\new\SystemInfoCollectorV2.0\SystemInfoCollectorV2.0\obj\Debug\Views\InfoView.baml
