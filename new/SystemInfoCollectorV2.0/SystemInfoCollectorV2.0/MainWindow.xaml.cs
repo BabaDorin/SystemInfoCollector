@@ -46,6 +46,9 @@ namespace SystemInfoCollectorV2._0
                 case "Info":
                     childWindow.Content = new InfoView();
                     break;
+                case "Preferences":
+                    childWindow.Content = new Preferences();
+                    break;
                 default:
                     childWindow.Content = StartView.GetInstance();
                     break;
