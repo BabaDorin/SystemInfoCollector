@@ -38,7 +38,7 @@ namespace SystemInfoCollectorV2._0.Views
                 // property is a list of devices.
                 var listOfDevices = property.GetValue(computer) as IList;
 
-                var currentParent = CreateGroupBoxForList(property.Name);
+                var currentParent = CreateGroupBoxForList(property.Name, listOfDevices);
                 for (int i = 0; i < listOfDevices.Count; i++)
                 {
                     CreateGroupBoxForObject(listOfDevices[i], i, currentParent);
@@ -46,7 +46,7 @@ namespace SystemInfoCollectorV2._0.Views
             }
         }
 
-        private StackPanel CreateGroupBoxForList(string listName)
+        private StackPanel CreateGroupBoxForList(string listName, IList list)
         {
             GroupBox listGroupBox = new GroupBox();
             listGroupBox.Header = listName;
@@ -60,10 +60,30 @@ namespace SystemInfoCollectorV2._0.Views
             btnToggleVisibility.Style = Application.Current.FindResource("CollapseButtonStyle") as Style;
             stackPanelForChildElements.Children.Add(btnToggleVisibility);
 
+            Button btnAddChild = new Button();
+            btnAddChild.Click += BtnAddChild_Click;
+            btnAddChild.Tag = list.GetType().GetProperty("Item").PropertyType;
+            btnAddChild.Content = "Add";
+            btnAddChild.Style = Application.Current.FindResource("CollapseButtonStyle") as Style;
+            stackPanelForChildElements.Children.Add(btnAddChild);
+
             listGroupBox.Content = stackPanelForChildElements;
             componentsStack.Children.Add(listGroupBox);
 
             return stackPanelForChildElements;
+        }
+
+        private void BtnAddChild_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            var parent = button.Parent as StackPanel;
+            var index = parent.Children.Count - 2; // Stackpanel contains 2 uncounted buttons. 
+            Type objType = (Type)button.Tag;
+            var obj = Activator.CreateInstance(objType);
+            CreateGroupBoxForObject(obj, index, parent);
+
+            SetChildrenVisibility(parent, Visibility.Visible);
+            (parent.Children[0] as Button).Content = "Collapse";
         }
 
         private void BtnToggleVisibility_Click(object sender, RoutedEventArgs e)
@@ -83,7 +103,12 @@ namespace SystemInfoCollectorV2._0.Views
                 btSender.Content = "Expand";
             }
 
-            foreach (var item in stackPanel.Children)
+            SetChildrenVisibility(stackPanel, visibilityToBeSet);
+        }
+
+        private void SetChildrenVisibility(StackPanel parent, Visibility visibilityToBeSet)
+        {
+            foreach (var item in parent.Children)
             {
                 if (item is Button)
                     continue;
