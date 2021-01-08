@@ -54,6 +54,7 @@ namespace SystemInfoCollectorV2._0.Models
             NetworkInterfaces = CollectorService.CollectDataAndReturnListOfType(NetworkInterfaces);
             RAMs = CollectorService.CollectDataAndReturnListOfType(RAMs);
             Storages = CollectorService.CollectDataAndReturnListOfType(Storages);
+            Monitors = CollectorService.CollectDataAndReturnListOfType(Monitors);
             PSUs = CollectorService.CollectDataAndReturnListOfType(PSUs);
 
             // Filters
@@ -67,6 +68,7 @@ namespace SystemInfoCollectorV2._0.Models
         public List<PSU> PSUs { get; set; }
         public List<Motherboard> Motherboards { get; set; } // The motherboard is stored in a list to follow the design.
         public List<NetworkInterface> NetworkInterfaces { get; set; }
+        public List<Monitor> Monitors { get; set; }
         public List<RAM> RAMs { get; set; }
         public List<Storage> Storages { get; set; }
 

@@ -43,6 +43,12 @@ namespace SystemInfoCollectorV2._0.Services.Collectors
                 Type = typeof(RAM),
                 SearcherClass = "Win32_PhysicalMemory"
             },
+
+            new Searcher
+            {
+                Type = typeof(Monitor),
+                SearcherClass = "Win32_DesktopMonitor"
+            },
         };
 
         public static List<T> GetInfo<T>(List<T> initialListOfDevices)
@@ -55,29 +61,28 @@ namespace SystemInfoCollectorV2._0.Services.Collectors
 
             ManagementObjectSearcher ObjectSearcher = new ManagementObjectSearcher("root\\CIMV2", $"SELECT * FROM {searcherClass}");
 
-            try
+            foreach (ManagementObject managementObject in ObjectSearcher.Get())
             {
-                foreach (ManagementObject managementObject in ObjectSearcher.Get())
-                {
-                    var device = Activator.CreateInstance<T>();
+                var device = Activator.CreateInstance<T>();
 
-                    foreach (var deviceProperty in device.GetType().GetProperties())
+                foreach (var deviceProperty in device.GetType().GetProperties())
+                {
+                    try
                     {
                         var propValue = managementObject[deviceProperty.Name];
                         string finalPropValue = (propValue == null) ? "" : propValue.ToString();
 
                         deviceProperty.SetValue(device, finalPropValue);
                     }
-
-                    listOfDevices.Add(device);
+                    catch (Exception)
+                    {
+                        deviceProperty.SetValue(device, "");
+                    }
                 }
+
+                listOfDevices.Add(device);
             }
-            catch (Exception)
-            {
-                throw new Exception($"There are property names in {typeof(T)} which don't match with " +
-                    $"property names from {searcherClass} class");
-            }
-            
+
             return listOfDevices;
         }
     }

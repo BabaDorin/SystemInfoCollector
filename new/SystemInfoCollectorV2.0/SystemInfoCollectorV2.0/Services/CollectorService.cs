@@ -13,7 +13,7 @@ namespace SystemInfoCollectorV2._0.Services
         // Stores types which behave the same
         private static List<Type> ClassicTypes = new List<Type>
         {
-             typeof(CPU), typeof(GPU), typeof(RAM), typeof(Storage)
+             typeof(CPU), typeof(GPU), typeof(RAM), typeof(Storage), typeof(Monitor)
         };
 
         /// <summary>
