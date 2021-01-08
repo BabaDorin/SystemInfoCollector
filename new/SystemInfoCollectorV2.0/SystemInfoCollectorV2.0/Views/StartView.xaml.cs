@@ -45,6 +45,8 @@ namespace SystemInfoCollectorV2._0.Views
             Computer computer = Computer.GetInstance();
             //computer.TestData();
             computer.RetrieveData();
+
+           
         }
 
         private void btIntroduceManually_Click(object sender, RoutedEventArgs e)

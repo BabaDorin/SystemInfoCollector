@@ -4,19 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SystemInfoCollectorV2._0.Models;
+using SystemInfoCollectorV2._0.Views;
 
 namespace SystemInfoCollectorV2._0.Services.Collectors
 {
     class PSUInfoCollector
     {
-        public static List<PSU> GetInfo()
+        public static void GetInfo()
         {
             // Prompt the user to enter data about PSU
-            var list = new List<PSU>();
-            var obj = Activator.CreateInstance<PSU>();
-            list.Add(obj);
 
-            return list;
+            EnterPSUSpecs enterPSUSpecs = new EnterPSUSpecs();
+            enterPSUSpecs.ShowDialog();
         }
     }
 }

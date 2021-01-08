@@ -17,6 +17,12 @@
     <Style TargetType="Grid" x:Key="MutedGrid">
         <Setter Property="Background" Value="{StaticResource Muted}"/>
     </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+    </Style>
     
     <Style TargetType="Window">
         <Setter Property="Background" Value="{StaticResource Light}"/>

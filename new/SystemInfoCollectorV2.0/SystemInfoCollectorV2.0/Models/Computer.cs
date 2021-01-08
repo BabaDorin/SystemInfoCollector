@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SystemInfoCollectorV2._0.Services;
+using SystemInfoCollectorV2._0.Services.Collectors;
 
 namespace SystemInfoCollectorV2._0.Models
 {
@@ -49,11 +50,11 @@ namespace SystemInfoCollectorV2._0.Models
         {
             CPUs = CollectorService.CollectDataAndReturnListOfType(CPUs);
             GPUs = CollectorService.CollectDataAndReturnListOfType(GPUs);
-            PSUs = CollectorService.CollectDataAndReturnListOfType(PSUs);
             Motherboards = CollectorService.CollectDataAndReturnListOfType(Motherboards);
             NetworkInterfaces = CollectorService.CollectDataAndReturnListOfType(NetworkInterfaces);
             RAMs = CollectorService.CollectDataAndReturnListOfType(RAMs);
             Storages = CollectorService.CollectDataAndReturnListOfType(Storages);
+            PSUs = CollectorService.CollectDataAndReturnListOfType(PSUs);
 
             // Filters
             Storages.RemoveAll(q => q.MediaType != "Fixed hard disk media");

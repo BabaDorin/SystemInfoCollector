@@ -146,10 +146,15 @@
     <Resource Include="Plan.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\1.jpg">
+    <Resource Include="images\PSUModel.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="images\2.jfif">
+    <Resource Include="images\PSUSerialNumber.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\PSUMaxOutWatt.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

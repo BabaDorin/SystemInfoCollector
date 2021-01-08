@@ -28,8 +28,11 @@ namespace SystemInfoCollectorV2._0.Services
                 return ClassicInfoCollector.GetInfo(initialListOfDevices);
 
             if (typeof(T) == typeof(PSU))
-                return PSUInfoCollector.GetInfo() as List<T>;
-
+            {
+                PSUInfoCollector.GetInfo();
+                return Computer.GetInstance().PSUs as List<T>;
+            }
+            
             if (typeof(T) == typeof(Motherboard))
                 return MotherboardInfoCollector.GetInfo() as List<T>;
 

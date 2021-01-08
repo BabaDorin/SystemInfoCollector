@@ -3,7 +3,9 @@
 **DONE  3. Generate Test Data
 **DONE 4. Display data on ViewUpdateView in a dynamic way
 **DONE 5. Save modified data in a dynamic way
+**DONE 6. Build CollectorService in a dynamic way
+**DONE 8. 'Remove' buttons for devices [ViewUpdateView]
 
-6. Build CollectorService in a dynamic way
 7. Generate files
-8. 'Remove' buttons for devices [ViewUpdateView]
+9. Collect information about monitor (Test it on laptop)
+10. Find out why ConfiguredClockSpeed is null for RAM Chips
