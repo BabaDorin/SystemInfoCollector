@@ -31,9 +31,6 @@ namespace SystemInfoCollectorV2._0
         {
             InitializeComponent();
             UpdateView("Start");
-
-            EnterPSUSpecs enterPSUSpecs = new EnterPSUSpecs();
-            enterPSUSpecs.Show();
         }
 
         public void UpdateView(string parameter)
@@ -50,6 +47,21 @@ namespace SystemInfoCollectorV2._0
                     childWindow.Content = StartView.GetInstance();
                     break;
             }
+        }
+
+        private void btHome_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateView("Start");
+        }
+
+        private void btViewUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateView("ViewUpdate");
+        }
+
+        private void btPreferences_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateView("Preferences");
         }
     }
 }

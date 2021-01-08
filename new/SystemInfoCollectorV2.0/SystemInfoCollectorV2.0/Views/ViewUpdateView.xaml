@@ -15,6 +15,7 @@
         <ScrollViewer>
             <StackPanel Grid.Row="0" Name="componentsStack"
                     Margin="30">
+                <TextBlock Name="tbHeader" Text="Computer specifications" Style="{StaticResource Header}"/>
                 <!--<GroupBox Header="CPUs" Style="{StaticResource groupBoxStyle}">
                     <StackPanel>
                         <GroupBox Header="CPU #1" Style="{StaticResource groupBoxStyle}">
@@ -34,9 +35,9 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Button Content="go back" HorizontalAlignment="Left" VerticalAlignment="Top" Name="btGoBack" Click="btGoBack_Click"/>
-
-        <Button Grid.Row="1" Name="btExitSavingChanges" Content="Exit saving changes" Margin="20 10"
+        <Button Grid.Row="1" Name="btExitSavingChanges" Content="Save changes" Margin="20 10"
+                Style="{StaticResource SecondaryButton}"
+                Background="{StaticResource Dark}"
                 Click="btExitSavingChanges_Click"/>
 
     </Grid>

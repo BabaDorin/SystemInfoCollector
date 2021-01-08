@@ -5,7 +5,7 @@
     <!--Colors-->
     <SolidColorBrush x:Key="Dark" Color="#173853"/> 
     <SolidColorBrush x:Key="Light" Color="#fff"/>
-    <SolidColorBrush x:Key="Muted" Color="#fafafa"/> 
+    <SolidColorBrush x:Key="Muted" Color="#e8e8e8"/> 
     <SolidColorBrush x:Key="Secondary" Color="#14bfc3"/> 
 
     <!--default font style-->
@@ -43,13 +43,22 @@
         <Setter Property="Background" Value="{StaticResource Secondary}"/>
         <Setter Property="Foreground" Value="{StaticResource Light}"/>
         <Setter Property="FontWeight" Value="Bold"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource Dark}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <Style x:Key="MenuButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
-        <Setter Property="Background" Value="{StaticResource Secondary}"/>
+    <Style x:Key="MenuButtonStyle" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
         <Setter Property="Foreground" Value="{StaticResource Muted}"/>
-        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Height" Value="30"/>
+    </Style>
+
+    <Style x:Key="CollapseButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="Background" Value="{StaticResource Muted}"/>
+        <Setter Property="Foreground" Value="{StaticResource Dark}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
     </Style>
 
     <Style TargetType="RadioButton">
@@ -59,7 +68,16 @@
     </Style>
 
     <Style x:Key="groupBoxStyle" TargetType="GroupBox">
-        <Setter Property="Margin" Value="15 10"/>
+        <Setter Property="Margin" Value="20"/>
+        <Setter Property="Background" Value="{StaticResource Light}"/>
+        <Setter Property="Foreground" Value="{StaticResource Dark}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="nestedGroupBoxStyle" TargetType="GroupBox">
+        <Setter Property="Margin" Value="20"/>
+        <Setter Property="Background" Value="{StaticResource Muted}"/>
+        <Setter Property="Foreground" Value="{StaticResource Dark}"/>
     </Style>
 
     <Style x:Key="clickableLabelStyle" TargetType="Label">
@@ -69,5 +87,12 @@
                 <Setter Property="Cursor" Value="Hand"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Header" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource Dark}"/>
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
     </Style>
 </ResourceDictionary>

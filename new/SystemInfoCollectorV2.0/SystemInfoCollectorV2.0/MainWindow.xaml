@@ -13,9 +13,12 @@
         </Grid.ColumnDefinitions>
 
         <DockPanel Grid.Column="0" Background="{StaticResource Dark}">
-            <Button Style="{StaticResource MenuButtonStyle}" Content="Home" DockPanel.Dock="Top" VerticalAlignment="Top"/>
-            <Button Style="{StaticResource MenuButtonStyle}" Content="View Update" DockPanel.Dock="Top" VerticalAlignment="Top"/>
-            <Button Style="{StaticResource MenuButtonStyle}" Content="Preferences" DockPanel.Dock="Top" VerticalAlignment="Top"/>
+            <Button Name="btHome" Style="{StaticResource MenuButtonStyle}" Content="Home" DockPanel.Dock="Top" VerticalAlignment="Top"
+                    Click="btHome_Click"/>
+            <Button Name="btViewUpdate" Style="{StaticResource MenuButtonStyle}" Content="View Update" DockPanel.Dock="Top" VerticalAlignment="Top"
+                    Click="btViewUpdate_Click"/>
+            <Button Name="btPreferences" Style="{StaticResource MenuButtonStyle}" Content="Preferences" DockPanel.Dock="Top" VerticalAlignment="Top"
+                    Click="btPreferences_Click"/>
         </DockPanel>
         
         <ContentControl Grid.Column="1" Name="childWindow">

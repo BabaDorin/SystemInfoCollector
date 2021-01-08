@@ -19,19 +19,11 @@ namespace SystemInfoCollectorV2._0.Views
 {
     public partial class ViewUpdateView : UserControl
     {
-        private MainWindow _mainWindow;
         public ViewUpdateView()
         {
             InitializeComponent();
 
-            _mainWindow = (MainWindow)Application.Current.MainWindow;
-
             DisplayFetchedData();
-        }
-
-        private void btGoBack_Click(object sender, RoutedEventArgs e)
-        {
-            _mainWindow.UpdateView("Start");
         }
 
         private void DisplayFetchedData()
@@ -58,13 +50,14 @@ namespace SystemInfoCollectorV2._0.Views
         {
             GroupBox listGroupBox = new GroupBox();
             listGroupBox.Header = listName;
-            listGroupBox.Style = Resources["groupBoxStyle"] as Style;
+            listGroupBox.Style = Application.Current.FindResource("groupBoxStyle") as Style;
 
             StackPanel stackPanelForChildElements = new StackPanel();
 
             Button btnToggleVisibility = new Button();
             btnToggleVisibility.Click += BtnToggleVisibility_Click;
             btnToggleVisibility.Content = "Expand";
+            btnToggleVisibility.Style = Application.Current.FindResource("CollapseButtonStyle") as Style;
             stackPanelForChildElements.Children.Add(btnToggleVisibility);
 
             listGroupBox.Content = stackPanelForChildElements;
@@ -103,7 +96,7 @@ namespace SystemInfoCollectorV2._0.Views
         {
             GroupBox childGroupBox = new GroupBox();
             childGroupBox.Header = $"{obj.GetType().Name} #{index}";
-            childGroupBox.Style = Resources["groupBoxStyle"] as Style;
+            childGroupBox.Style = Application.Current.FindResource("nestedGroupBoxStyle") as Style;
 
             StackPanel childStackPanel = new StackPanel();
             childGroupBox.Content = childStackPanel;
@@ -129,8 +122,13 @@ namespace SystemInfoCollectorV2._0.Views
         {
             Computer computer = Computer.GetInstance();
 
-            foreach (GroupBox child in componentsStack.Children)
+            foreach (UIElement cschild in componentsStack.Children)
             {
+                if (!(cschild is GroupBox))
+                    continue;
+
+                var child = (GroupBox)cschild;
+
                 // Now we are in CPUs / GPUs ...
                 var currentProp = computer.GetType().GetProperties().First(p => p.Name.ToString() == child.Header.ToString());
                 

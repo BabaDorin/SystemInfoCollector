@@ -22,7 +22,6 @@ namespace SystemInfoCollectorV2._0.Views
         // We need only one instance of this class
         private static StartView instance;
         private MainWindow _mainWindow;
-
         
         private StartView()
         {
