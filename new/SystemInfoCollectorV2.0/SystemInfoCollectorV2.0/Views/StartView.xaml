@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SystemInfoCollectorV2._0.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Cornsilk">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -21,15 +21,17 @@
             <Button Height="150" Width="200" Grid.Column="0"
                     Content="Scan"
                     Name="btScan"
+                    Style="{StaticResource BigButton}"
                     Click="btScan_Click"/>
             
             <Button Height="150" Width="200" Grid.Column="1"
                     Content="Introduce Manually"
                     Name="btIntroduceManually"
+                    Style="{StaticResource BigButton}"
                     Click="btIntroduceManually_Click"/>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1"  Style="{StaticResource MutedGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -38,7 +40,7 @@
 
             <TextBox x:Name="tbTEMSID" Width="300" Height="40"/>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1"  Style="{StaticResource MutedGrid}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -49,14 +51,23 @@
                 <RadioButton Grid.Column="2" Content="Text and JSON File" Name="tbTextJSON" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </Grid>
 
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="2"  Style="{StaticResource MutedGrid}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Button Margin="10" Name="btViewUpdate" Grid.Column="0" Click="btViewUpdate_Click" Content="View / Modify data"/>
-                <Button Margin="10" Name="btWriteFile" Grid.Column="1" Click="btWriteFile_Click" Content="Write File"/>
+                <Button Margin="10" Name="btViewUpdate"
+                        Grid.Column="0" Click="btViewUpdate_Click" 
+                        Content="View / Modify data"
+                        Style="{StaticResource SecondaryButton}"/>
+                
+                <Button Margin="10" 
+                        Name="btWriteFile" 
+                        Grid.Column="1" 
+                        Click="btWriteFile_Click" 
+                        Content="Write File"
+                        Style="{StaticResource SecondaryButton}"/>
 
             </Grid>
             

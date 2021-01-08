@@ -7,7 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ContentControl Name="childWindow">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="0" Background="{StaticResource Dark}">
+            <Button Style="{StaticResource MenuButtonStyle}" Content="Home" DockPanel.Dock="Top" VerticalAlignment="Top"/>
+            <Button Style="{StaticResource MenuButtonStyle}" Content="View Update" DockPanel.Dock="Top" VerticalAlignment="Top"/>
+            <Button Style="{StaticResource MenuButtonStyle}" Content="Preferences" DockPanel.Dock="Top" VerticalAlignment="Top"/>
+        </DockPanel>
+        
+        <ContentControl Grid.Column="1" Name="childWindow">
         </ContentControl>
     </Grid>
 </Window>
