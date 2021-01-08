@@ -35,10 +35,10 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Button Grid.Row="1" Name="btExitSavingChanges" Content="Save changes" Margin="20 10"
+        <Button Grid.Row="1" Name="btSaveChanges" Content="Save changes" Margin="20 10"
                 Style="{StaticResource SecondaryButton}"
                 Background="{StaticResource Dark}"
-                Click="btExitSavingChanges_Click"/>
+                Click="btSaveChanges_Click"/>
 
     </Grid>
 </UserControl>

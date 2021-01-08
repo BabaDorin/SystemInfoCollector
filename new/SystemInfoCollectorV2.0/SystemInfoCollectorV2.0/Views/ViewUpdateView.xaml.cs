@@ -24,6 +24,7 @@ namespace SystemInfoCollectorV2._0.Views
             InitializeComponent();
 
             DisplayFetchedData();
+            btSaveChanges.IsEnabled = false;
         }
 
         private void DisplayFetchedData()
@@ -63,8 +64,8 @@ namespace SystemInfoCollectorV2._0.Views
             Button btnAddChild = new Button();
             btnAddChild.Click += BtnAddChild_Click;
             btnAddChild.Tag = list.GetType().GetProperty("Item").PropertyType;
-            btnAddChild.Content = "Add";
-            btnAddChild.Style = Application.Current.FindResource("CollapseButtonStyle") as Style;
+            btnAddChild.Content = "+ new object";
+            btnAddChild.Style = Application.Current.FindResource("AddButtonStyle") as Style;
             stackPanelForChildElements.Children.Add(btnAddChild);
 
             listGroupBox.Content = stackPanelForChildElements;
@@ -84,6 +85,8 @@ namespace SystemInfoCollectorV2._0.Views
 
             SetChildrenVisibility(parent, Visibility.Visible);
             (parent.Children[0] as Button).Content = "Collapse";
+
+            btSaveChanges.IsEnabled = true;
         }
 
         private void BtnToggleVisibility_Click(object sender, RoutedEventArgs e)
@@ -127,9 +130,9 @@ namespace SystemInfoCollectorV2._0.Views
             childGroupBox.Content = childStackPanel;
 
             Button btRemove = new Button();
-            btRemove.Content = "Remove object";
+            btRemove.Content = "- remove object";
             btRemove.Click += BtRemove_Click;
-            btRemove.Style = Application.Current.FindResource("CollapseButtonStyle") as Style;
+            btRemove.Style = Application.Current.FindResource("RemoveButtonStyle") as Style;
             childStackPanel.Children.Add(btRemove);
 
             foreach (var prop in obj.GetType().GetProperties())
@@ -140,6 +143,7 @@ namespace SystemInfoCollectorV2._0.Views
                 TextBox propertyValue = new TextBox();
                 var value = prop.GetValue(obj);
                 propertyValue.Text = (value == null) ? "" : value.ToString();
+                propertyValue.TextChanged += PropertyValue_TextChanged;
 
                 childStackPanel.Children.Add(propertyLabel);
                 childStackPanel.Children.Add(propertyValue);
@@ -149,6 +153,11 @@ namespace SystemInfoCollectorV2._0.Views
             (parent as StackPanel).Children.Add(childGroupBox);
         }
 
+        private void PropertyValue_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btSaveChanges.IsEnabled = true;
+        }
+
         private void BtRemove_Click(object sender, RoutedEventArgs e)
         {
             // button => stackpaned => groupbox => stackpanel.
@@ -156,9 +165,11 @@ namespace SystemInfoCollectorV2._0.Views
             var parentOfParent = parent.Parent as GroupBox;
             var parentOfParentOfParent = parentOfParent.Parent as StackPanel;
             parentOfParentOfParent.Children.Remove(parentOfParent);
+
+            btSaveChanges.IsEnabled = true;
         }
 
-        private void btExitSavingChanges_Click(object sender, RoutedEventArgs e)
+        private void btSaveChanges_Click(object sender, RoutedEventArgs e)
         {
             Computer computer = Computer.GetInstance();
 
@@ -194,7 +205,7 @@ namespace SystemInfoCollectorV2._0.Views
                     }
                     
                     var devicePropertiesContainer = (deviceProperties as GroupBox).Content as StackPanel;
-                    for (int i = 1; i < devicePropertiesContainer.Children.Count; i+=2)
+                    for (int i = 2; i < devicePropertiesContainer.Children.Count; i+=2)
                     {
                         var propertyLabel = (devicePropertiesContainer.Children[i - 1] as Label);
                         var propertyTextBox = (devicePropertiesContainer.Children[i] as TextBox);
@@ -211,7 +222,7 @@ namespace SystemInfoCollectorV2._0.Views
                 currentProp.SetValue(computer, tempListOfDevices);
             }
 
-            computer.DisplayData();
+            btSaveChanges.IsEnabled = false;
         }
 
         private object CreateObjectOfGenericType<T>(List<T> list)
