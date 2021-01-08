@@ -126,6 +126,12 @@ namespace SystemInfoCollectorV2._0.Views
             StackPanel childStackPanel = new StackPanel();
             childGroupBox.Content = childStackPanel;
 
+            Button btRemove = new Button();
+            btRemove.Content = "Remove object";
+            btRemove.Click += BtRemove_Click;
+            btRemove.Style = Application.Current.FindResource("CollapseButtonStyle") as Style;
+            childStackPanel.Children.Add(btRemove);
+
             foreach (var prop in obj.GetType().GetProperties())
             {
                 Label propertyLabel = new Label();
@@ -141,6 +147,15 @@ namespace SystemInfoCollectorV2._0.Views
 
             childGroupBox.Visibility = Visibility.Collapsed;
             (parent as StackPanel).Children.Add(childGroupBox);
+        }
+
+        private void BtRemove_Click(object sender, RoutedEventArgs e)
+        {
+            // button => stackpaned => groupbox => stackpanel.
+            var parent = (sender as Button).Parent as StackPanel;
+            var parentOfParent = parent.Parent as GroupBox;
+            var parentOfParentOfParent = parentOfParent.Parent as StackPanel;
+            parentOfParentOfParent.Children.Remove(parentOfParent);
         }
 
         private void btExitSavingChanges_Click(object sender, RoutedEventArgs e)
