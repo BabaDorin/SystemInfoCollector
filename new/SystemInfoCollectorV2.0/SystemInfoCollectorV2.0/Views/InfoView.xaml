@@ -37,7 +37,7 @@
             'Preferinte' pentru a alege unde sa fie salvat fisierul.
             <LineBreak/>
             <LineBreak/>
-            <Bold>5. </Bold> Exportati datele (Write file). Fisierul rezultat poate fi incarcat pe platforma TEMS.
+            <Bold>5. </Bold> Exportati datele (Export JSON). Fisierul rezultat poate fi incarcat pe platforma TEMS.
 
             </TextBlock>
         </ScrollViewer>

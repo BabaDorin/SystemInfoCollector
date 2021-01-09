@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using SystemInfoCollectorV2._0.Services;
 using SystemInfoCollectorV2._0.Services.Collectors;
 
@@ -63,6 +64,7 @@ namespace SystemInfoCollectorV2._0.Models
         }
 
         public string TEMSID { get; set; }
+        public string Room { get; set; }
 
         public List<CPU> CPUs { get; set; }
         public List<GPU> GPUs { get; set; }

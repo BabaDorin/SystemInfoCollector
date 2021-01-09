@@ -22,6 +22,7 @@ namespace SystemInfoCollectorV2._0.Views
         // We need only one instance of this class
         private static StartView instance;
         private MainWindow _mainWindow;
+        private Computer _computer = Computer.GetInstance();
         
         private StartView()
         {
@@ -42,11 +43,8 @@ namespace SystemInfoCollectorV2._0.Views
 
         private void btScan_Click(object sender, RoutedEventArgs e)
         {
-            Computer computer = Computer.GetInstance();
             //computer.TestData();
-            computer.RetrieveData();
-
-           
+            _computer.RetrieveData();
         }
 
         private void btIntroduceManually_Click(object sender, RoutedEventArgs e)
@@ -61,7 +59,10 @@ namespace SystemInfoCollectorV2._0.Views
 
         private void btWriteFile_Click(object sender, RoutedEventArgs e)
         {
+            _computer.TEMSID = tbTEMSID.Text.Trim();
+            _computer.Room = tbRoom.Text.Trim();
 
+            JSONSerializer.Serialize();
         }
     }
 }

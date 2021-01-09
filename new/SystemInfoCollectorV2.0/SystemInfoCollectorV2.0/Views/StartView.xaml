@@ -25,7 +25,6 @@
                 <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="1.5*"/>
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -35,8 +34,7 @@
                        FontSize="{StaticResource BaseFontSize}"/>
                 <TextBox x:Name="tbTEMSID" Width="300" 
                      FontFamily="{StaticResource BaseFontFamily}"
-                     FontSize="{StaticResource BigFontSize}"
-                     FontWeight="Bold"/>
+                     FontSize="{StaticResource BigFontSize}"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -45,23 +43,10 @@
                        FontSize="{StaticResource BaseFontSize}"/>
                 <TextBox x:Name="tbRoom" Width="300" 
                      FontFamily="{StaticResource BaseFontFamily}"
-                     FontSize="{StaticResource BigFontSize}"
-                     FontWeight="Bold"/>
+                     FontSize="{StaticResource BigFontSize}"/>
             </StackPanel>
 
-
             <Grid Grid.Row="2"  Style="{StaticResource MutedGrid}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <RadioButton Grid.Column="0" Content="Text File" Name="rbText" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <RadioButton Grid.Column="1" Content="JSON File" Name="rbJSON" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <RadioButton IsChecked="True" Grid.Column="2" Content="Text and JSON File" Name="tbTextJSON" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            </Grid>
-
-            <Grid Grid.Row="3"  Style="{StaticResource MutedGrid}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -76,7 +61,7 @@
                         Name="btWriteFile" 
                         Grid.Column="1" 
                         Click="btWriteFile_Click" 
-                        Content="Write File"
+                        Content="Export JSON"
                         Style="{StaticResource SecondaryButton}"/>
 
             </Grid>
