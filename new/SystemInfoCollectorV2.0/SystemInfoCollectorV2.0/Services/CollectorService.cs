@@ -10,7 +10,7 @@ namespace SystemInfoCollectorV2._0.Services
 {
     class CollectorService
     {
-        // Stores types which behave the same
+        // Stores types which behave the same (ClassicInfoCollector will be applied to them)
         private static List<Type> ClassicTypes = new List<Type>
         {
              typeof(CPU), typeof(GPU), typeof(RAM), typeof(Storage), typeof(Monitor)

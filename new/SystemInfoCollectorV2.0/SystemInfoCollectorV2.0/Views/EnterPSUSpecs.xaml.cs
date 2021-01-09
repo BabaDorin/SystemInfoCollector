@@ -16,9 +16,6 @@ using SystemInfoCollectorV2._0.Models;
 
 namespace SystemInfoCollectorV2._0.Views
 {
-    /// <summary>
-    /// Interaction logic for EnterPSUSpecs.xaml
-    /// </summary>
     public partial class EnterPSUSpecs : Window
     {
         private static Regex serialNumberRegex = new Regex(@"^[a-zA-Z0-9]+$");
@@ -26,12 +23,6 @@ namespace SystemInfoCollectorV2._0.Views
         public EnterPSUSpecs()
         {
             InitializeComponent();
-        }
-
-        private void lbModel_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
-            
         }
 
         private void tbSerialNumber_KeyDown(object sender, KeyEventArgs e)
@@ -56,6 +47,10 @@ namespace SystemInfoCollectorV2._0.Views
             this.Close();
         }
 
+        /// <summary>
+        /// Create an instance of PSU having provided by user values and inserts it into
+        /// computer's list of PSUs
+        /// </summary>
         private void SaveData()
         {
             Computer computer = Computer.GetInstance();

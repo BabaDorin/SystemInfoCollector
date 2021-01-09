@@ -13,7 +13,6 @@ namespace SystemInfoCollectorV2._0.Services.Collectors
         public static void GetInfo()
         {
             // Prompt the user to enter data about PSU
-
             EnterPSUSpecs enterPSUSpecs = new EnterPSUSpecs();
             enterPSUSpecs.ShowDialog();
         }

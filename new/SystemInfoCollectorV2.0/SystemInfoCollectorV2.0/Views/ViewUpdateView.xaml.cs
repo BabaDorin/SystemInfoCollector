@@ -27,13 +27,135 @@ namespace SystemInfoCollectorV2._0.Views
             btSaveChanges.IsEnabled = false;
         }
 
+        private void btSaveChanges_Click(object sender, RoutedEventArgs e)
+        {
+            // Basically it creates new lists for each type of objects (CPUs, GPUs), for each child groubox
+            // a new object is created which in added to the list.
+
+            // This is repeated for every list of components.
+
+            // It might get optimized later.
+
+            Computer computer = Computer.GetInstance();
+
+            foreach (UIElement cschild in componentsStack.Children)
+            {
+                if (!(cschild is GroupBox))
+                    continue;
+
+                var child = (GroupBox)cschild;
+
+                // Now we are in CPUs / GPUs ...
+                var currentProp = computer.GetType().GetProperties().First(p => p.Name.ToString() == child.Header.ToString());
+
+                var tempListOfDevices = (IList)currentProp.GetValue(computer, null);
+                tempListOfDevices.Clear();
+
+                foreach (UIElement deviceProperties in (child.Content as StackPanel).Children)
+                {
+                    // Now we are in CPU #1 ...
+
+                    if (deviceProperties is Button) continue;
+
+                    object device = null;
+                    switch (child.Header.ToString())
+                    {
+                        case nameof(computer.CPUs): device = CreateObjectOfType(computer.CPUs); break;
+                        case nameof(computer.GPUs): device = CreateObjectOfType(computer.GPUs); break;
+                        case nameof(computer.Storages): device = CreateObjectOfType(computer.Storages); break;
+                        case nameof(computer.PSUs): device = CreateObjectOfType(computer.PSUs); break;
+                        case nameof(computer.RAMs): device = CreateObjectOfType(computer.RAMs); break;
+                        case nameof(computer.Motherboards): device = CreateObjectOfType(computer.Motherboards); break;
+                        case nameof(computer.NetworkInterfaces): device = CreateObjectOfType(computer.NetworkInterfaces); break;
+                        case nameof(computer.Monitors): device = CreateObjectOfType(computer.NetworkInterfaces); break;
+                    }
+
+                    var devicePropertiesContainer = (deviceProperties as GroupBox).Content as StackPanel;
+                    for (int i = 2; i < devicePropertiesContainer.Children.Count; i += 2)
+                    {
+                        var propertyLabel = (devicePropertiesContainer.Children[i - 1] as Label);
+                        var propertyTextBox = (devicePropertiesContainer.Children[i] as TextBox);
+
+                        var currentDevicePropertyName = propertyLabel.Content.ToString();
+                        var currentDeviceProperty = device.GetType().GetProperties().First(p => p.Name == currentDevicePropertyName);
+
+                        currentDeviceProperty.SetValue(device, propertyTextBox.Text);
+                    }
+
+                    tempListOfDevices.Add(device);
+                }
+
+                currentProp.SetValue(computer, tempListOfDevices);
+            }
+
+            btSaveChanges.IsEnabled = false;
+        }
+
+        private void BtnAddChild_Click(object sender, RoutedEventArgs e)
+        {
+            // Adds a new gropbox representing a new object of necessary type (CPU, GPU...)
+
+            Button button = sender as Button;
+            var parent = button.Parent as StackPanel;
+            var index = parent.Children.Count - 2; // Stackpanel contains 2 uncounted buttons. 
+            Type objType = (Type)button.Tag;
+            var obj = Activator.CreateInstance(objType);
+            CreateGroupBoxForObject(obj, index, parent);
+
+            SetChildrenVisibility(parent, Visibility.Visible);
+            (parent.Children[0] as Button).Content = "Collapse";
+
+            btSaveChanges.IsEnabled = true;
+        }
+
+        private void BtRemove_Click(object sender, RoutedEventArgs e)
+        {
+            // Removes the groubox representing an object.
+            // button => stackpaned => groupbox => stackpanel.
+            var parent = (sender as Button).Parent as StackPanel;
+            var parentOfParent = parent.Parent as GroupBox;
+            var parentOfParentOfParent = parentOfParent.Parent as StackPanel;
+            parentOfParentOfParent.Children.Remove(parentOfParent);
+
+            btSaveChanges.IsEnabled = true;
+        }
+
+        private void BtnToggleVisibility_Click(object sender, RoutedEventArgs e)
+        {
+            // Expands or collapses object within a list.
+            var btSender = sender as Button;
+            var stackPanel = btSender.Parent as StackPanel;
+            var visibilityToBeSet = Visibility.Visible;
+            
+            if (btSender.Content.ToString() == "Expand")
+            {
+                visibilityToBeSet = Visibility.Visible;
+                btSender.Content = "Collapse";
+            }
+            else
+            {
+                visibilityToBeSet = Visibility.Collapsed;
+                btSender.Content = "Expand";
+            }
+
+            SetChildrenVisibility(stackPanel, visibilityToBeSet);
+        }
+
+        private void PropertyValue_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btSaveChanges.IsEnabled = true;
+        }
+
+        /// <summary>
+        /// Displays (on view) the lists of components.
+        /// </summary>
         private void DisplayFetchedData()
         {
             Computer computer = Computer.GetInstance();
 
             foreach (var property in computer.GetType().GetProperties())
             {
-                if(property.PropertyType.Name.ToString() == "String")
+                if (property.PropertyType.Name.ToString() == "String")
                     continue;
 
                 // property is a list of devices.
@@ -74,52 +196,6 @@ namespace SystemInfoCollectorV2._0.Views
             return stackPanelForChildElements;
         }
 
-        private void BtnAddChild_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = sender as Button;
-            var parent = button.Parent as StackPanel;
-            var index = parent.Children.Count - 2; // Stackpanel contains 2 uncounted buttons. 
-            Type objType = (Type)button.Tag;
-            var obj = Activator.CreateInstance(objType);
-            CreateGroupBoxForObject(obj, index, parent);
-
-            SetChildrenVisibility(parent, Visibility.Visible);
-            (parent.Children[0] as Button).Content = "Collapse";
-
-            btSaveChanges.IsEnabled = true;
-        }
-
-        private void BtnToggleVisibility_Click(object sender, RoutedEventArgs e)
-        {
-            var btSender = sender as Button;
-            var stackPanel = btSender.Parent as StackPanel;
-            var visibilityToBeSet = Visibility.Visible;
-
-            if (btSender.Content.ToString() == "Expand")
-            {
-                visibilityToBeSet = Visibility.Visible;
-                btSender.Content = "Collapse";
-            }
-            else
-            {
-                visibilityToBeSet = Visibility.Collapsed;
-                btSender.Content = "Expand";
-            }
-
-            SetChildrenVisibility(stackPanel, visibilityToBeSet);
-        }
-
-        private void SetChildrenVisibility(StackPanel parent, Visibility visibilityToBeSet)
-        {
-            foreach (var item in parent.Children)
-            {
-                if (item is Button)
-                    continue;
-
-                (item as UIElement).Visibility = visibilityToBeSet;
-            }
-        }
-
         private void CreateGroupBoxForObject(object obj, int index, UIElement parent)
         {
             GroupBox childGroupBox = new GroupBox();
@@ -138,7 +214,7 @@ namespace SystemInfoCollectorV2._0.Views
             foreach (var prop in obj.GetType().GetProperties())
             {
                 Label propertyLabel = new Label();
-                propertyLabel.Content = $"{prop.Name} ({prop.GetType().Name})";
+                propertyLabel.Content = prop.Name;
 
                 TextBox propertyValue = new TextBox();
                 var value = prop.GetValue(obj);
@@ -153,79 +229,19 @@ namespace SystemInfoCollectorV2._0.Views
             (parent as StackPanel).Children.Add(childGroupBox);
         }
 
-        private void PropertyValue_TextChanged(object sender, TextChangedEventArgs e)
+        private void SetChildrenVisibility(StackPanel parent, Visibility visibilityToBeSet)
         {
-            btSaveChanges.IsEnabled = true;
-        }
-
-        private void BtRemove_Click(object sender, RoutedEventArgs e)
-        {
-            // button => stackpaned => groupbox => stackpanel.
-            var parent = (sender as Button).Parent as StackPanel;
-            var parentOfParent = parent.Parent as GroupBox;
-            var parentOfParentOfParent = parentOfParent.Parent as StackPanel;
-            parentOfParentOfParent.Children.Remove(parentOfParent);
-
-            btSaveChanges.IsEnabled = true;
-        }
-
-        private void btSaveChanges_Click(object sender, RoutedEventArgs e)
-        {
-            Computer computer = Computer.GetInstance();
-
-            foreach (UIElement cschild in componentsStack.Children)
+            // Shows / Hides children (except buttons) within a stackpanel
+            foreach (var item in parent.Children)
             {
-                if (!(cschild is GroupBox))
+                if (item is Button)
                     continue;
 
-                var child = (GroupBox)cschild;
-
-                // Now we are in CPUs / GPUs ...
-                var currentProp = computer.GetType().GetProperties().First(p => p.Name.ToString() == child.Header.ToString());
-                
-                var tempListOfDevices = (IList)currentProp.GetValue(computer, null);
-                tempListOfDevices.Clear();
-
-                foreach (UIElement deviceProperties in (child.Content as StackPanel).Children)
-                {
-                    // Now we are in CPU #1 ...
-
-                    if (deviceProperties is Button) continue;
-
-                    object device = null;
-                    switch (child.Header.ToString())
-                    {
-                        case nameof(computer.CPUs): device = CreateObjectOfGenericType(computer.CPUs); break;
-                        case nameof(computer.GPUs): device = CreateObjectOfGenericType(computer.GPUs); break;
-                        case nameof(computer.Storages): device = CreateObjectOfGenericType(computer.Storages); break;
-                        case nameof(computer.PSUs): device = CreateObjectOfGenericType(computer.PSUs); break;
-                        case nameof(computer.RAMs): device = CreateObjectOfGenericType(computer.RAMs); break;
-                        case nameof(computer.Motherboards): device = CreateObjectOfGenericType(computer.Motherboards); break;
-                        case nameof(computer.NetworkInterfaces): device = CreateObjectOfGenericType(computer.NetworkInterfaces); break;
-                    }
-                    
-                    var devicePropertiesContainer = (deviceProperties as GroupBox).Content as StackPanel;
-                    for (int i = 2; i < devicePropertiesContainer.Children.Count; i+=2)
-                    {
-                        var propertyLabel = (devicePropertiesContainer.Children[i - 1] as Label);
-                        var propertyTextBox = (devicePropertiesContainer.Children[i] as TextBox);
-
-                        var currentDevicePropertyName = propertyLabel.Content.ToString().Split(' ')[0];
-                        var currentDeviceProperty = device.GetType().GetProperties().First(p => p.Name == currentDevicePropertyName);
-
-                        currentDeviceProperty.SetValue(device, propertyTextBox.Text);
-                    }
-
-                    tempListOfDevices.Add(device);
-                }
-
-                currentProp.SetValue(computer, tempListOfDevices);
+                (item as UIElement).Visibility = visibilityToBeSet;
             }
-
-            btSaveChanges.IsEnabled = false;
         }
 
-        private object CreateObjectOfGenericType<T>(List<T> list)
+        private object CreateObjectOfType<T>(List<T> list)
         {
             var device = Activator.CreateInstance<T>();
             return device;

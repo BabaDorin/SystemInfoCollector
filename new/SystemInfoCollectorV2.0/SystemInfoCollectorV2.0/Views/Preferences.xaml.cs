@@ -19,9 +19,6 @@ using System.Windows.Forms;
 
 namespace SystemInfoCollectorV2._0.Views
 {
-    /// <summary>
-    /// Interaction logic for Preferences.xaml
-    /// </summary>
     public partial class Preferences : System.Windows.Controls.UserControl
     {
         private UserSettings userSettings;

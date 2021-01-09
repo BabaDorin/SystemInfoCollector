@@ -51,6 +51,13 @@ namespace SystemInfoCollectorV2._0.Services.Collectors
             },
         };
 
+        /// <summary>
+        /// Returns a list containing objects along with info that have been gathered about them, according to 
+        /// objects properties.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="initialListOfDevices"></param>
+        /// <returns></returns>
         public static List<T> GetInfo<T>(List<T> initialListOfDevices)
         {
             var listOfDevices = new List<T>();
@@ -64,7 +71,6 @@ namespace SystemInfoCollectorV2._0.Services.Collectors
             foreach (ManagementObject managementObject in ObjectSearcher.Get())
             {
                 var device = Activator.CreateInstance<T>();
-
                 foreach (var deviceProperty in device.GetType().GetProperties())
                 {
                     try

@@ -45,6 +45,7 @@ namespace SystemInfoCollectorV2._0.Views
 
         private void btScan_Click(object sender, RoutedEventArgs e)
         {
+            // Starts a new thead which will collect information about the computer.
             try
             {
                 btScan.IsEnabled = false;

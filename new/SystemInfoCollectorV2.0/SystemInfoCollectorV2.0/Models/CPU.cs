@@ -43,6 +43,5 @@ namespace SystemInfoCollectorV2._0.Models
         public string ThreadCount { get; set; }
         public string MaxClockSpeed { get; set; }
         public string SocketDesignation { get; set; }
-        public string VirtualizationFirmwareEnabled { get; set; }
     }
 }

@@ -33,6 +33,11 @@ namespace SystemInfoCollectorV2._0
             UpdateView("Info");
         }
 
+        /// <summary>
+        /// Updates the view according to the parameter. The paramenter is the view's name without the 'View' suffix,
+        /// ex: Start for StartView.
+        /// </summary>
+        /// <param name="parameter"></param>
         public void UpdateView(string parameter)
         {
             switch (parameter)

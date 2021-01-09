@@ -20,6 +20,7 @@ namespace SystemInfoCollectorV2._0.Models
 
         private Computer()
         {
+            TEMSID = "";
             CPUs = new List<CPU>();
             GPUs = new List<GPU>();
             Motherboards = new List<Motherboard>();
@@ -30,6 +31,10 @@ namespace SystemInfoCollectorV2._0.Models
             Monitors = new List<Monitor>();
         }
 
+        /// <summary>
+        /// Returns the only instance of computer class (Singleton design pattern).
+        /// </summary>
+        /// <returns></returns>
         public static Computer GetInstance()
         {
             if (instance == null)
@@ -38,9 +43,26 @@ namespace SystemInfoCollectorV2._0.Models
             return instance;
         }
 
+        public string TEMSID { get; set; }
+        public string Room { get; set; }
+
+        // All of the components are stored in generic lists, which makes 
+        // generic functions for Reading / wrinting simpler and easier to implement.
+        public List<CPU> CPUs { get; set; }
+        public List<GPU> GPUs { get; set; }
+        public List<PSU> PSUs { get; set; }
+        public List<Motherboard> Motherboards { get; set; } 
+        public List<NetworkInterface> NetworkInterfaces { get; set; }
+        public List<Monitor> Monitors { get; set; }
+        public List<RAM> RAMs { get; set; }
+        public List<Storage> Storages { get; set; }
+
+        /// <summary>
+        /// Displays collected information in Output (For debugging).
+        /// </summary>
         public void DisplayData()
         {
-            Debug.WriteLine("000000000000000000000000000000000000000000000000000000000");
+            Debug.WriteLine("==============================================");
             Debug.WriteLine(TEMSID);
             CPUs.ForEach(s => s.DisplayData());
             GPUs.ForEach(s => s.DisplayData());
@@ -49,8 +71,12 @@ namespace SystemInfoCollectorV2._0.Models
             NetworkInterfaces.ForEach(s => s.DisplayData());
             RAMs.ForEach(s => s.DisplayData());
             Storages.ForEach(s => s.DisplayData());
+            Monitors.ForEach(s => s.DisplayData());
         }
 
+        /// <summary>
+        /// Retrieves information about computer components and stores it in computer's properties.
+        /// </summary>
         public void RetrieveData()
         {
             CPUs = CollectorService.CollectDataAndReturnListOfType(CPUs);
@@ -71,19 +97,9 @@ namespace SystemInfoCollectorV2._0.Models
             Monitors.RemoveAll(q => q.Name == "Default Monitor" || q.Name == "Generic PnP Monitor");
         }
 
-        public string TEMSID { get; set; }
-        public string Room { get; set; }
-
-        public List<CPU> CPUs { get; set; }
-        public List<GPU> GPUs { get; set; }
-        public List<PSU> PSUs { get; set; }
-        public List<Motherboard> Motherboards { get; set; } // The motherboard is stored in a list to follow the design.
-        public List<NetworkInterface> NetworkInterfaces { get; set; }
-        public List<Monitor> Monitors { get; set; }
-        public List<RAM> RAMs { get; set; }
-        public List<Storage> Storages { get; set; }
-
-
+        /// <summary>
+        /// Generates data for testing purposes
+        /// </summary>
         public void TestData()
         {
             TEMSID = "307PC1";
@@ -95,6 +111,7 @@ namespace SystemInfoCollectorV2._0.Models
             RAMs = PopulateTestList(RAMs);
             Storages = PopulateTestList(Storages);
             PSUs = PopulateTestList(PSUs);
+            Monitors = PopulateTestList(Monitors);
 
             CPUs[0].DisplayData();
             GPUs[0].DisplayData();
@@ -105,6 +122,12 @@ namespace SystemInfoCollectorV2._0.Models
             PSUs[0].DisplayData();
         }
 
+        /// <summary>
+        /// Populate the list sent as parameter with two objects of necessary type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public List<T> PopulateTestList<T>(List<T> list)
         {
             InitList(ref list);
@@ -115,6 +138,11 @@ namespace SystemInfoCollectorV2._0.Models
             return list;
         }
 
+        /// <summary>
+        /// Initializes the list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
         public void InitList<T>(ref List<T> list)
         {
             list = new List<T>();

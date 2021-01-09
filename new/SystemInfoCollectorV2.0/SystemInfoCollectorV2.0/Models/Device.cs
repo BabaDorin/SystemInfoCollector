@@ -9,6 +9,9 @@ namespace SystemInfoCollectorV2._0.Models
 {
     public class Device
     {
+        /// <summary>
+        /// Generates test data for all of object's properties
+        /// </summary>
         public void TestData()
         {
             foreach (var prop in this.GetType().GetProperties())
@@ -37,6 +40,9 @@ namespace SystemInfoCollectorV2._0.Models
             }
         }
 
+        /// <summary>
+        /// Displays properties along with their values in Output (for debugging).
+        /// </summary>
         public void DisplayData()
         {
             Debug.WriteLine(this.GetType().Name + "----------------------------------");

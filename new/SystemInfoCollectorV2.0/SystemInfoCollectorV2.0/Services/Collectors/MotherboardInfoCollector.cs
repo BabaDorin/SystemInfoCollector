@@ -44,7 +44,7 @@ namespace SystemInfoCollectorV2._0.Services.Collectors
                     }
                     catch (Exception)
                     {
-                        // Not found - The property has not been found in this searcher class. propValue will remain null.
+                        // Not found - The property has not been found in this searcher class. propValue will remain null, it's OK.
                     }
                     string finalPropValue = (propValue == null) ? "" : propValue.ToString();
                     deviceProperty.SetValue(motherboard, finalPropValue);
