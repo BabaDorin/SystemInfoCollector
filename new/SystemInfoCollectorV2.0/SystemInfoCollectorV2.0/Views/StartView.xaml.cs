@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,13 +45,25 @@ namespace SystemInfoCollectorV2._0.Views
 
         private void btScan_Click(object sender, RoutedEventArgs e)
         {
-            //computer.TestData();
-            _computer.RetrieveData();
-        }
-
-        private void btIntroduceManually_Click(object sender, RoutedEventArgs e)
-        {
-
+            try
+            {
+                btScan.IsEnabled = false;
+                btScanContent.Text = "Scanning...";
+                new Thread(() => {
+                    _computer.RetrieveData();
+                    Application.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        btScanContent.Text = "See results on View / Update page" + Environment.NewLine + "Click to start scanning again";
+                        btScan.IsEnabled = true;
+                    });
+                }).Start();
+            }
+            catch (Exception ex)
+            {
+                btScan.Content = "An unknown error happened when looking for data.";
+                Debug.WriteLine("Error in btScan.Click: " + ex.Message);
+                return;
+            }
         }
 
         private void btViewUpdate_Click(object sender, RoutedEventArgs e)
@@ -61,6 +75,14 @@ namespace SystemInfoCollectorV2._0.Views
         {
             _computer.TEMSID = tbTEMSID.Text.Trim();
             _computer.Room = tbRoom.Text.Trim();
+
+            if (_computer.TEMSID == "" || _computer.Room == "")
+            {
+                var Result = MessageBox.Show("N-au fost indicate valori pentru TEMSID si numarul salii. Doriti sa continuati?", ";(", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+
+                if (Result == MessageBoxResult.No || Result == MessageBoxResult.Cancel)
+                    return;
+            }
 
             JSONSerializer.Serialize();
         }

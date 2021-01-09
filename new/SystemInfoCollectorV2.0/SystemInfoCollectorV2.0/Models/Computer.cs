@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using SystemInfoCollectorV2._0.Services;
 using SystemInfoCollectorV2._0.Services.Collectors;
+using System.Windows.Threading;
+using System.Threading;
+using System.Windows;
 
 namespace SystemInfoCollectorV2._0.Models
 {
@@ -57,7 +60,11 @@ namespace SystemInfoCollectorV2._0.Models
             RAMs = CollectorService.CollectDataAndReturnListOfType(RAMs);
             Storages = CollectorService.CollectDataAndReturnListOfType(Storages);
             Monitors = CollectorService.CollectDataAndReturnListOfType(Monitors);
-            PSUs = CollectorService.CollectDataAndReturnListOfType(PSUs);
+            
+            // This action accesses UI Thread.
+            Application.Current.Dispatcher.Invoke((Action)delegate {
+                PSUs = CollectorService.CollectDataAndReturnListOfType(PSUs);
+            });
 
             // Filters
             Storages.RemoveAll(q => q.MediaType != "Fixed hard disk media");

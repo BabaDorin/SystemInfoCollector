@@ -6,6 +6,20 @@
              xmlns:local="clr-namespace:SystemInfoCollectorV2._0.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="btScanStyle" TargetType="Button" BasedOn="{StaticResource BigButton}">
+            <Setter Property="Height" Value="150"/>
+            <Setter Property="Width" Value="400"/>
+            <Setter Property="Width" Value="400"/>
+            <Setter Property="Background" Value="{StaticResource Secondary}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource Dark}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
@@ -13,11 +27,18 @@
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0">
-            <Button Height="150" Width="400" Grid.Column="0"
-                    Content="Cauta informatii"
+            <Button Grid.Column="0"
                     Name="btScan"
-                    Style="{StaticResource BigButton}"
-                    Click="btScan_Click"/>
+                    Style="{StaticResource btScanStyle}"
+                    Click="btScan_Click">
+                <TextBlock Name="btScanContent" FontSize="{StaticResource BigFontSize}" 
+                           Foreground="{StaticResource Dark}"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           FontWeight="Bold">
+                    Scan
+                </TextBlock>
+            </Button>
         </Grid>
 
         <Grid Grid.Row="1"  Style="{StaticResource MutedGrid}">
@@ -55,14 +76,16 @@
                 <Button Margin="10" Name="btViewUpdate"
                         Grid.Column="0" Click="btViewUpdate_Click" 
                         Content="View / Modify data"
-                        Style="{StaticResource SecondaryButton}"/>
+                        Style="{StaticResource SecondaryButton}"
+                        Background="{StaticResource Dark}"/>
                 
                 <Button Margin="10" 
                         Name="btWriteFile" 
                         Grid.Column="1" 
                         Click="btWriteFile_Click" 
                         Content="Export JSON"
-                        Style="{StaticResource SecondaryButton}"/>
+                        Style="{StaticResource SecondaryButton}"
+                        Background="{StaticResource Dark}"/>
 
             </Grid>
             
