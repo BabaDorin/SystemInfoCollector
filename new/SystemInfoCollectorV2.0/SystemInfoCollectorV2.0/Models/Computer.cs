@@ -61,6 +61,7 @@ namespace SystemInfoCollectorV2._0.Models
 
             // Filters
             Storages.RemoveAll(q => q.MediaType != "Fixed hard disk media");
+            Monitors.RemoveAll(q => q.Name == "Default Monitor" || q.Name == "Generic PnP Monitor");
         }
 
         public string TEMSID { get; set; }

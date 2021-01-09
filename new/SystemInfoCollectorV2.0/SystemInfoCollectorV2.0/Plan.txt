@@ -6,7 +6,16 @@
 **DONE 6. Build CollectorService in a dynamic way
 **DONE 8. 'Remove' buttons for devices [ViewUpdateView]
 **DONE 9. Collect information about monitor (Test it on laptop)
+**DONE 7. Generate files
+**DONE 11. Build Preferences view.
+**DONE 10. Find out why ConfiguredClockSpeed is null for RAM Chips - SOLUTION: Win32_PhysicalMemory does not always work properly.
+**DONE 14. Video memory type always null - SOLUTION: Win32_PhysicalMemory does not always work properly.
+**DONE 12. Eliminate invalid monitor records (Like Default Monitor or PnP Monitor) - SOLUTION: Simple (unreliable) filter added.
 
-7. Generate files
-10. Find out why ConfiguredClockSpeed is null for RAM Chips
-11. Build Preferences view.
+Current Task
+	13.1 - Asyncronous information gathering
+
+Upcoming tasks
+13. Enhancements here and there
+	13.2 - Treat the case when there is already a file with the same name in the output path (Write JSON)
+	13.3 - Code sanitary
