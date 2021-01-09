@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="SystemInfoCollectorV2._0.Views.InfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SystemInfoCollectorV2._0.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ScrollViewer>
+            <TextBlock Margin="30" FontSize="{StaticResource BaseFontSize}" Foreground="{StaticResource Dark}"
+                   FontFamily="{StaticResource BaseFontFamily}" TextWrapping="WrapWithOverflow">
+            <Bold>Informatii generale</Bold>
+            <LineBreak/>
+            <LineBreak/>
+            Aplicatia vine sa usureze procesul de colectare a datelor despre calculatoare pentru platforma TEMS. In urma efectuarii
+            scanarii, datele pot fi exportate intr-un fisier JSON.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold FontSize="{StaticResource BigFontSize}">Modul de utilizare</Bold>
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>1.</Bold> Efectuati o scanare a calculatorului (Din fereastra Home)
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>2.</Bold> Dupa efectuarea scanarii va aparea o fereastra in care va trebui sa introduceti datele
+            despre blocul de alimentare al calculatorului sau laptop-ului. 
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>3.</Bold> Din fereastra View / Update Accesati compartimentul 'Monitors' si introduceti datele despre monitorul sau
+            monitoarele calculatorului. Daca a fost scanat un laptop, atunci goliti lista de monitoare identificate (Ecranul laptop-ului nu este 
+            tratat ca obiect aparte).
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>4. </Bold> In fereastra Home indicati TEMSID-ul calculatorului si sala in care se afla (Puteti indica si numele
+            folderului, spre exemplu /Folder1/Folder2/TEMSID. Daca folderele nu exista, acestea vor fi create). Consultati fereastra
+            'Preferinte' pentru a alege unde sa fie salvat fisierul.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>5. </Bold> Exportati datele (Export JSON). Fisierul rezultat poate fi incarcat pe platforma TEMS.
+
+            </TextBlock>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

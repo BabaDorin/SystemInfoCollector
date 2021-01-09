@@ -1,0 +1,21 @@
+﻿**DONE	1. Create models with necessary properties
+**DONE	2. Create a simple interface to work with
+**DONE  3. Generate Test Data
+**DONE 4. Display data on ViewUpdateView in a dynamic way
+**DONE 5. Save modified data in a dynamic way
+**DONE 6. Build CollectorService in a dynamic way
+**DONE 8. 'Remove' buttons for devices [ViewUpdateView]
+**DONE 9. Collect information about monitor (Test it on laptop)
+**DONE 7. Generate files
+**DONE 11. Build Preferences view.
+**DONE 10. Find out why ConfiguredClockSpeed is null for RAM Chips - SOLUTION: Win32_PhysicalMemory does not always work properly.
+**DONE 14. Video memory type always null - SOLUTION: Win32_PhysicalMemory does not always work properly.
+**DONE 12. Eliminate invalid monitor records (Like Default Monitor or PnP Monitor) - SOLUTION: Simple (unreliable) filter added.
+**DONE 13.1 - Asyncronous information gathering
+**DONE 13.2 - Treat the case when there is already a file with the same name in the output path (Write JSON)
+
+Current Task
+	13.3 - Code sanitary
+
+Upcoming tasks
+13. Enhancements here and there
