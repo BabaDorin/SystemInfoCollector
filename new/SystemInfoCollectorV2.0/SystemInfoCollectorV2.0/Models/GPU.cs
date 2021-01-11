@@ -12,7 +12,6 @@ namespace SystemInfoCollectorV2._0.Models
         private string videoMemoryType;
 
         public string Name { get; set; }
-        public string DeviceID { get; set; }
         public string AdapterRAM { get; set; }
         public string VideoModeDescription { get; set; }
         public string VideoProcessor { get; set; }
@@ -27,7 +26,7 @@ namespace SystemInfoCollectorV2._0.Models
                 switch (value)
                 {
                     case "1": videoMemoryType = "Other"; break; 
-                    case "2": videoMemoryType = "Unknown "; break; 
+                    case "2": videoMemoryType = ""; break; 
                     case "3": videoMemoryType = "VRAM "; break; 
                     case "4": videoMemoryType = "DRAM "; break; 
                     case "5": videoMemoryType = "SRAM "; break; 
@@ -39,7 +38,7 @@ namespace SystemInfoCollectorV2._0.Models
                     case "11": videoMemoryType = "3DRAM"; break;
                     case "12": videoMemoryType = "SDRAM"; break;
                     case "13": videoMemoryType = "SGRAM "; break;
-                    default: videoMemoryType = "Unknown"; break;
+                    default: videoMemoryType = ""; break;
                 }
             }
         }
