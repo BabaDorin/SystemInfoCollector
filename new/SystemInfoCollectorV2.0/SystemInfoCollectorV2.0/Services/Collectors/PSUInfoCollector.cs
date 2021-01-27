@@ -8,7 +8,7 @@ using SystemInfoCollectorV2._0.Views;
 
 namespace SystemInfoCollectorV2._0.Services.Collectors
 {
-    class PSUInfoCollector
+    static class PSUInfoCollector
     {
         public static void GetInfo()
         {

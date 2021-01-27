@@ -15,7 +15,10 @@
 **DONE 13.2 - Treat the case when there is already a file with the same name in the output path (Write JSON)
 
 Current Task
-	13.3 - Code sanitary
+-- fix writing file Bug
+- Add support for TeamViewer ID, Password and identifier.
+
+Always here	13.3 - Code sanitary
 
 Upcoming tasks
 13. Enhancements here and there

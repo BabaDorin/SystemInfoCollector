@@ -24,7 +24,9 @@ namespace SystemInfoCollectorV2._0.Properties
         {
             get
             {
-                return (this["OutputPath"] == null) ? "" : this["OutputPath"].ToString();
+                return (this["OutputPath"] == null)
+                    ? Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+                    : this["OutputPath"].ToString();
             }
             set
             {

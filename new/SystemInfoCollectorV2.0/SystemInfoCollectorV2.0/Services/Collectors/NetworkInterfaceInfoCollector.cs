@@ -10,7 +10,7 @@ using SystemInfoCollectorV2._0.Models;
 
 namespace SystemInfoCollectorV2._0.Services.Collectors
 {
-    class NetworkInterfaceInfoCollector
+    static class NetworkInterfaceInfoCollector
     {
         public static List<SystemInfoCollectorV2._0.Models.NetworkInterface> GetInfo()
         {

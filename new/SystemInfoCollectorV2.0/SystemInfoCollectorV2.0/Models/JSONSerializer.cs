@@ -10,7 +10,7 @@ using SystemInfoCollectorV2._0.Properties;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    class JSONSerializer
+    static class JSONSerializer
     {
         private static UserSettings userSettings = UserSettings.GetInstance();
 
@@ -26,6 +26,8 @@ namespace SystemInfoCollectorV2._0.Models
                 Computer computerInstance = Computer.GetInstance();
                 string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TEMSID) + ".json";
                 computerInstance.TEMSID = Path.GetFileName(computerInstance.TEMSID);
+
+                MessageBox.Show(fileName);
 
                 if (File.Exists(fileName))
                 {

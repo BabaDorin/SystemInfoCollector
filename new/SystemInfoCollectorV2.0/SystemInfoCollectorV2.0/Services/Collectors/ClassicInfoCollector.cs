@@ -10,7 +10,7 @@ using SystemInfoCollectorV2._0.Models;
 
 namespace SystemInfoCollectorV2._0.Services.Collectors
 {
-    class ClassicInfoCollector
+    static class ClassicInfoCollector
     {
         private struct Searcher
         {

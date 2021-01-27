@@ -8,7 +8,7 @@ using SystemInfoCollectorV2._0.Models;
 
 namespace SystemInfoCollectorV2._0.Services.Collectors
 {
-    class MotherboardInfoCollector
+    static class MotherboardInfoCollector
     {
         public static List<Motherboard> GetInfo()
         {
