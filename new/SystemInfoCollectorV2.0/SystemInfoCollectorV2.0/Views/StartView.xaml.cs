@@ -25,7 +25,7 @@ namespace SystemInfoCollectorV2._0.Views
         private static StartView instance;
         private MainWindow _mainWindow;
         private Computer _computer = Computer.GetInstance();
-        
+
         private StartView()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace SystemInfoCollectorV2._0.Views
 
         public static StartView GetInstance()
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = new StartView();
             }
@@ -50,7 +50,8 @@ namespace SystemInfoCollectorV2._0.Views
             {
                 btScan.IsEnabled = false;
                 btScanContent.Text = "Scanning...";
-                new Thread(() => {
+                new Thread(() =>
+                {
                     _computer.RetrieveData();
                     Application.Current.Dispatcher.Invoke((Action)delegate
                     {
@@ -76,6 +77,10 @@ namespace SystemInfoCollectorV2._0.Views
         {
             _computer.TEMSID = tbTEMSID.Text.Trim();
             _computer.Room = tbRoom.Text.Trim();
+            _computer.Identifier = tbPCIdentifier.Text.Trim();
+            _computer.TeamViewerID = tbTVID.Text.Trim();
+            _computer.TeamViewerPassword = tbTVPassword.Text.Trim();
+            _computer.Description = tbDescription.Text.Trim();
 
             if (_computer.TEMSID == "" || _computer.Room == "")
             {

@@ -45,6 +45,10 @@ namespace SystemInfoCollectorV2._0.Models
 
         public string TEMSID { get; set; }
         public string Room { get; set; }
+        public string Identifier { get; set; }
+        public string TeamViewerID { get; set; }
+        public string TeamViewerPassword { get; set; }
+        public string Description { get; set; }
 
         // All of the components are stored in generic lists, which makes 
         // generic functions for Reading / wrinting simpler and easier to implement.

@@ -19,13 +19,13 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="2.3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3.7*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0">
             <Button Grid.Column="0"
                     Name="btScan"
@@ -42,32 +42,160 @@
         </Grid>
 
         <Grid Grid.Row="1"  Style="{StaticResource MutedGrid}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
             <Grid.RowDefinitions>
-                <RowDefinition Height="1.5*"/>
-                <RowDefinition Height="1.5*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.8*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label Content="TEMSID-ul calculatorului"
+            <Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource MutedGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel 
+                    Grid.Row="0"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Label Content="TEMSID-ul calculatorului"
+                       FontFamily="{StaticResource BaseFontFamily}"
+                       FontSize="{StaticResource BaseFontSize}"/>
+                    <TextBox x:Name="tbTEMSID" Width="300" 
+                     FontFamily="{StaticResource BaseFontFamily}"
+                     FontSize="{StaticResource BigFontSize}"/>
+                </StackPanel>
+
+                <StackPanel 
+                    Grid.Row="1"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Label Content="Sala"
+                       FontFamily="{StaticResource BaseFontFamily}"
+                       FontSize="{StaticResource BaseFontSize}"/>
+                    <TextBox x:Name="tbRoom" Width="300" 
+                     FontFamily="{StaticResource BaseFontFamily}"
+                     FontSize="{StaticResource BigFontSize}"/>
+                </StackPanel>
+
+                <StackPanel 
+                    Grid.Row="2"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Label Content="Identificator"
+                       FontFamily="{StaticResource BaseFontFamily}"
+                       FontSize="{StaticResource BaseFontSize}"/>
+                    <TextBox x:Name="tbPCIdentifier" Width="300" 
+                     FontFamily="{StaticResource BaseFontFamily}"
+                     FontSize="{StaticResource BigFontSize}"/>
+                </StackPanel>
+
+                <StackPanel 
+                    Grid.Row="3"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Label Content="Description"
+                       FontFamily="{StaticResource BaseFontFamily}"
+                       FontSize="{StaticResource BaseFontSize}"/>
+                    <TextBox x:Name="tbDescription" Width="300" 
+                     FontFamily="{StaticResource BaseFontFamily}"
+                     FontSize="{StaticResource BigFontSize}"/>
+                </StackPanel>
+            </Grid>
+
+
+            <Grid Grid.Row="0" Grid.Column="1" Style="{StaticResource MutedGrid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackPanel 
+                    Grid.Row="0"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Label Content="Team Viewer ID"
                        HorizontalAlignment="Center"
                        FontFamily="{StaticResource BaseFontFamily}"
                        FontSize="{StaticResource BaseFontSize}"/>
-                <TextBox x:Name="tbTEMSID" Width="300" 
+                    <TextBox x:Name="tbTVID" Width="300" 
                      FontFamily="{StaticResource BaseFontFamily}"
                      FontSize="{StaticResource BigFontSize}"/>
-            </StackPanel>
+                </StackPanel>
 
-            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Label Content="Sala" HorizontalAlignment="Center"
+                <StackPanel 
+                    Grid.Row="1"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Label Content="Team Viewer Password"
+                       HorizontalAlignment="Center"
                        FontFamily="{StaticResource BaseFontFamily}"
                        FontSize="{StaticResource BaseFontSize}"/>
-                <TextBox x:Name="tbRoom" Width="300" 
+                    <TextBox x:Name="tbTVPassword" Width="300" 
                      FontFamily="{StaticResource BaseFontFamily}"
                      FontSize="{StaticResource BigFontSize}"/>
-            </StackPanel>
+                </StackPanel>
+            </Grid>
 
-            <Grid Grid.Row="2"  Style="{StaticResource MutedGrid}">
+
+            <!--<Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource MutedGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                
+            </Grid>
+
+            <Grid Grid.Row="1" Style="{StaticResource MutedGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel 
+                    Grid.Column="0"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Label Content="Sala" HorizontalAlignment="Center"
+                       FontFamily="{StaticResource BaseFontFamily}"
+                       FontSize="{StaticResource BaseFontSize}"/>
+                    <TextBox x:Name="tbRoom" Width="300" 
+                     FontFamily="{StaticResource BaseFontFamily}"
+                     FontSize="{StaticResource BigFontSize}"/>
+                </StackPanel>
+
+                <StackPanel 
+                    Grid.Column="1"
+                    Orientation="Vertical" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+                    <Label Content="Team Viewer Password" HorizontalAlignment="Center"
+                       FontFamily="{StaticResource BaseFontFamily}"
+                       FontSize="{StaticResource BaseFontSize}"/>
+                    <TextBox x:Name="tbTWPassword" Width="300" 
+                     FontFamily="{StaticResource BaseFontFamily}"
+                     FontSize="{StaticResource BigFontSize}"/>
+                </StackPanel>
+            </Grid>-->
+
+
+
+            <Grid Grid.Row="2" Grid.ColumnSpan="2"  Style="{StaticResource MutedGrid}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -78,7 +206,7 @@
                         Content="View / Modify data"
                         Style="{StaticResource SecondaryButton}"
                         Background="{StaticResource Dark}"/>
-                
+
                 <Button Margin="10" 
                         Name="btWriteFile" 
                         Grid.Column="1" 
@@ -88,8 +216,8 @@
                         Background="{StaticResource Dark}"/>
 
             </Grid>
-            
+
         </Grid>
-        
+
     </Grid>
 </UserControl>
