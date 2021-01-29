@@ -67,7 +67,7 @@ namespace SystemInfoCollectorV2._0.Views
                         case nameof(computer.RAMs): device = CreateObjectOfType(computer.RAMs); break;
                         case nameof(computer.Motherboards): device = CreateObjectOfType(computer.Motherboards); break;
                         case nameof(computer.NetworkInterfaces): device = CreateObjectOfType(computer.NetworkInterfaces); break;
-                        case nameof(computer.Monitors): device = CreateObjectOfType(computer.NetworkInterfaces); break;
+                        case nameof(computer.Monitors): device = CreateObjectOfType(computer.Monitors); break;
                     }
 
                     var devicePropertiesContainer = (deviceProperties as GroupBox).Content as StackPanel;
