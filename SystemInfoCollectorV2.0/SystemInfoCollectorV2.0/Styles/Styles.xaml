@@ -4,10 +4,10 @@
     
     <!--Colors-->
     <SolidColorBrush x:Key="Primary" Color="#5548e0"/>
-    <SolidColorBrush x:Key="Dark" Color="#173853"/>
+    <SolidColorBrush x:Key="Dark" Color="#FF1D1857"/>
     <SolidColorBrush x:Key="Light" Color="#fff"/>
     <SolidColorBrush x:Key="Muted" Color="#e8e8e8"/> 
-    <SolidColorBrush x:Key="Secondary" Color="#14bfc3"/> 
+    <SolidColorBrush x:Key="Secondary" Color="#FF149BC3"/> 
 
     <!--default font style-->
     <FontFamily x:Key="BaseFontFamily">Leelawadee</FontFamily>
@@ -19,12 +19,17 @@
         <Setter Property="Background" Value="{StaticResource Muted}"/>
     </Style>
 
-    <!--<Style TargetType="TextBox">
+    <Style TargetType="TextBox">
         <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
         <Setter Property="FontWeight" Value="Normal"/>
-    </Style>-->
-    
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
+    </Style>
+
     <Style TargetType="Window">
         <Setter Property="Background" Value="{StaticResource Light}"/>
         <Setter Property="Foreground" Value="{StaticResource Dark}"/>
@@ -63,6 +68,7 @@
         <Setter Property="Padding" Value="10 0 0 0"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Height" Value="35"/>
+        <Setter Property="Cursor" Value="Hand"/>
     </Style>
 
     <Style x:Key="CollapseButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
@@ -118,5 +124,27 @@
         <Setter Property="Foreground" Value="{StaticResource Dark}"/>
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
         <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
+    </Style>
+    
+    
+    <!--Label styles-->
+    <Style x:Key="SecondaryLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="{StaticResource Dark}"/>
+    </Style>
+
+    <Style x:Key="PrimaryLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="{StaticResource Primary}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+    
+    <!--DockPanel styles-->
+    <Style x:Key="StretchedDockPanel" TargetType="DockPanel">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Height" Value="auto"/>
     </Style>
 </ResourceDictionary>

@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Windows;
 using SystemInfoCollectorV2._0.Properties;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    static class JSONSerializer
+    static class ComputerJSONSerializer
     {
         private static UserSettings userSettings = UserSettings.GetInstance();
 
@@ -39,8 +36,7 @@ namespace SystemInfoCollectorV2._0.Models
                 {
                     sw.Write(new JavaScriptSerializer().Serialize(computerInstance));
                 }
-
-                MessageBox.Show("The file has been written.");
+                
                 return true;
             }
             catch (Exception)
