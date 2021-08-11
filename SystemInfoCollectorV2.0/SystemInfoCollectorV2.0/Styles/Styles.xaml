@@ -3,14 +3,15 @@
                     xmlns:local="clr-namespace:SystemInfoCollectorV2._0.Styles" xmlns:system="clr-namespace:System;assembly=mscorlib">
     
     <!--Colors-->
-    <SolidColorBrush x:Key="Dark" Color="#173853"/> 
+    <SolidColorBrush x:Key="Primary" Color="#5548e0"/>
+    <SolidColorBrush x:Key="Dark" Color="#173853"/>
     <SolidColorBrush x:Key="Light" Color="#fff"/>
     <SolidColorBrush x:Key="Muted" Color="#e8e8e8"/> 
     <SolidColorBrush x:Key="Secondary" Color="#14bfc3"/> 
 
     <!--default font style-->
     <FontFamily x:Key="BaseFontFamily">Leelawadee</FontFamily>
-    <system:Double x:Key="BaseFontSize">15</system:Double>
+    <system:Double x:Key="BaseFontSize">13</system:Double>
     <system:Double x:Key="BigFontSize">21</system:Double>
     <system:Double x:Key="SmallFontSize">11</system:Double>
 
@@ -18,11 +19,11 @@
         <Setter Property="Background" Value="{StaticResource Muted}"/>
     </Style>
 
-    <Style TargetType="TextBox">
+    <!--<Style TargetType="TextBox">
         <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
         <Setter Property="FontWeight" Value="Normal"/>
-    </Style>
+    </Style>-->
     
     <Style TargetType="Window">
         <Setter Property="Background" Value="{StaticResource Light}"/>
@@ -57,8 +58,11 @@
     </Style>
 
     <Style x:Key="MenuButtonStyle" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
-        <Setter Property="Foreground" Value="{StaticResource Muted}"/>
-        <Setter Property="Height" Value="30"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Padding" Value="10 0 0 0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Height" Value="35"/>
     </Style>
 
     <Style x:Key="CollapseButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">

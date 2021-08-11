@@ -1,35 +1,64 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
+using System.Runtime.CompilerServices;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SystemInfoCollectorV2._0.Models;
 
 namespace SystemInfoCollectorV2._0.Views
 {
-    public partial class StartView : UserControl
+    public partial class StartView : UserControl, INotifyPropertyChanged
     {
+        private Visibility usedVisibility;
+
+        public Visibility UsedVisibility
+        {
+            get { return usedVisibility; }
+            set { usedVisibility = value; NotifyPropertyChanged("UsedVisibility"); }
+        }
+
+        private Visibility notUsedVisibility;
+
+        public Visibility NotUsedVisibility
+        {
+            get { return notUsedVisibility; }
+            set { notUsedVisibility = value; NotifyPropertyChanged("NotUsedVisibility"); }
+        }
+
+        private Visibility workingVisibility;
+
+        public Visibility WorkingVisibility
+        {
+            get { return workingVisibility; }
+            set { workingVisibility = value; NotifyPropertyChanged("WorkingVisibility"); }
+        }
+
+        private Visibility notWorkingVisibility;
+
+        public Visibility NotWorkingVisibility
+        {
+            get { return notWorkingVisibility; }
+            set { notWorkingVisibility = value; NotifyPropertyChanged("NotWorkingVisibility"); }
+        }
 
         // We need only one instance of this class
         private static StartView instance;
         private MainWindow _mainWindow;
         private Computer _computer = Computer.GetInstance();
 
+
         private StartView()
         {
             InitializeComponent();
             _mainWindow = (MainWindow)Application.Current.MainWindow;
+            this.DataContext = this;
+            
+            WorkingVisibility = Visibility.Visible;
+            NotWorkingVisibility = Visibility.Hidden;
+            UsedVisibility = Visibility.Visible;
+            NotUsedVisibility = Visibility.Hidden;
         }
 
         public static StartView GetInstance()
@@ -49,20 +78,20 @@ namespace SystemInfoCollectorV2._0.Views
             try
             {
                 btScan.IsEnabled = false;
-                btScanContent.Text = "Scanning...";
+                btScanContent.Text = "Scanare...";
                 new Thread(() =>
                 {
                     _computer.RetrieveData();
-                    Application.Current.Dispatcher.Invoke((Action)delegate
+                    Application.Current.Dispatcher.Invoke(() => 
                     {
-                        btScanContent.Text = "See results on View / Update page" + Environment.NewLine + "Click to start scanning again";
+                        btScanContent.Text = "Rezultatele pot fi vizualizate" + Environment.NewLine + "Click pentru a scana din nou";
                         btScan.IsEnabled = true;
                     });
                 }).Start();
             }
             catch (Exception ex)
             {
-                btScan.Content = "An unknown error happened when looking for data.";
+                btScan.Content = "S-a produs o eroare la scanarea datelor";
                 Debug.WriteLine("Error in btScan.Click: " + ex.Message);
                 return;
             }
@@ -76,15 +105,14 @@ namespace SystemInfoCollectorV2._0.Views
         private void btWriteFile_Click(object sender, RoutedEventArgs e)
         {
             _computer.TEMSID = tbTEMSID.Text.Trim();
-            _computer.Room = tbRoom.Text.Trim();
             _computer.Identifier = tbPCIdentifier.Text.Trim();
             _computer.TeamViewerID = tbTVID.Text.Trim();
             _computer.TeamViewerPassword = tbTVPassword.Text.Trim();
             _computer.Description = tbDescription.Text.Trim();
 
-            if (_computer.TEMSID == "" || _computer.Room == "")
+            if (_computer.TEMSID == "")
             {
-                var Result = MessageBox.Show("N-au fost indicate valori pentru TEMSID si numarul salii. Doriti sa continuati?", ";(", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                var Result = MessageBox.Show("N-au fost indicate valori pentru TEMSID. Doriti sa continuati?", ";(", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
 
                 if (Result == MessageBoxResult.No || Result == MessageBoxResult.Cancel)
                     return;
@@ -92,5 +120,45 @@ namespace SystemInfoCollectorV2._0.Views
 
             JSONSerializer.Serialize();
         }
+
+        private void btUsed_Click(object sender, RoutedEventArgs e)
+        {
+            _computer.IsUsed = Convert.ToBoolean((sender as Button).Tag.ToString());
+
+            if (_computer.IsUsed)
+            {
+                UsedVisibility = Visibility.Visible;
+                NotUsedVisibility = Visibility.Hidden;
+                return;
+            }
+
+            UsedVisibility = Visibility.Hidden;
+            NotUsedVisibility = Visibility.Visible;
+        }
+
+        private void btWorking_Click(object sender, RoutedEventArgs e)
+        {
+            _computer.Working = Convert.ToBoolean((sender as Button).Tag.ToString());
+
+            if (_computer.Working)
+            {
+                WorkingVisibility = Visibility.Visible;
+                NotWorkingVisibility = Visibility.Hidden;
+                return;
+            }
+
+            WorkingVisibility = Visibility.Hidden;
+            NotWorkingVisibility = Visibility.Visible;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
     }
 }

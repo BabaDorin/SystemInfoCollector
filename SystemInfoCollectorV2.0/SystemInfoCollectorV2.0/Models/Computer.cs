@@ -1,15 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Script.Serialization;
-using SystemInfoCollectorV2._0.Services;
-using SystemInfoCollectorV2._0.Services.Collectors;
-using System.Windows.Threading;
-using System.Threading;
 using System.Windows;
+using SystemInfoCollectorV2._0.Services;
 
 namespace SystemInfoCollectorV2._0.Models
 {
@@ -44,9 +37,10 @@ namespace SystemInfoCollectorV2._0.Models
         }
 
         public string TEMSID { get; set; }
-        public string Room { get; set; }
         public string Identifier { get; set; }
         public string TeamViewerID { get; set; }
+        public bool IsUsed { get; set; }
+        public bool Working { get; set; }
         public string TeamViewerPassword { get; set; }
         public string Description { get; set; }
 

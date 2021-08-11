@@ -6,25 +6,27 @@
         xmlns:local="clr-namespace:SystemInfoCollectorV2._0"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
-        Title="MainWindow" Height="450" Width="800">
+        Title="SIC" Height="600" Width="1000"
+        MinHeight="450" MinWidth="600">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="7*"/>
-        </Grid.ColumnDefinitions>
-
-        <DockPanel Grid.Column="0" Background="{StaticResource Dark}">
-            <Button Name="btInfo" Style="{StaticResource MenuButtonStyle}" Content="Info" DockPanel.Dock="Top" VerticalAlignment="Top"
+        <DockPanel
+        HorizontalAlignment="Stretch" 
+        VerticalAlignment="Stretch" 
+        Height="Auto" >
+            <DockPanel DockPanel.Dock="Left" Width="200"  Background="{StaticResource Dark}">
+                <Button Name="btInfo" Style="{StaticResource MenuButtonStyle}" Content="Info" DockPanel.Dock="Top" VerticalAlignment="Top"
                     Click="btInfo_Click"/>
-            <Button Name="btHome" Style="{StaticResource MenuButtonStyle}" Content="Home" DockPanel.Dock="Top" VerticalAlignment="Top"
+                <Button Name="btHome" Style="{StaticResource MenuButtonStyle}" Content="Home" DockPanel.Dock="Top" VerticalAlignment="Top"
                     Click="btHome_Click"/>
-            <Button Name="btViewUpdate" Style="{StaticResource MenuButtonStyle}" Content="View / Update" DockPanel.Dock="Top" VerticalAlignment="Top"
+                <Button Name="btViewUpdate" Style="{StaticResource MenuButtonStyle}" Content="View / Update" DockPanel.Dock="Top" VerticalAlignment="Top"
                     Click="btViewUpdate_Click"/>
-            <Button Name="btPreferences" Style="{StaticResource MenuButtonStyle}" Content="Preferences" DockPanel.Dock="Top" VerticalAlignment="Top"
+                <Button Name="btPreferences" Style="{StaticResource MenuButtonStyle}" Content="Preferences" DockPanel.Dock="Top" VerticalAlignment="Top"
                     Click="btPreferences_Click"/>
+                <Image Margin="60 10" DockPanel.Dock="Bottom" VerticalAlignment="Bottom" Source="pack://application:,,,/images/befree.png"/>
+            </DockPanel>
+            
+            <ContentControl Name="childWindow">
+            </ContentControl>
         </DockPanel>
-        
-        <ContentControl Grid.Column="1" Name="childWindow">
-        </ContentControl>
     </Grid>
 </Window>

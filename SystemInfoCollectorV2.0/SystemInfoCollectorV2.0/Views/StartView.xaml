@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SystemInfoCollectorV2._0.Views"
+             xmlns:local="clr-namespace:SystemInfoCollectorV2._0.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             Height="550" Width="800">
     <UserControl.Resources>
         <Style x:Key="btScanStyle" TargetType="Button" BasedOn="{StaticResource BigButton}">
             <Setter Property="Height" Value="150"/>
@@ -18,10 +18,268 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="SecondaryLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Foreground" Value="{StaticResource Dark}"/>
+        </Style>
+
+        <Style x:Key="PrimaryLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Foreground" Value="{StaticResource Primary}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="FormPanel" TargetType="DockPanel">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+        <Style x:Key="Info" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"/>
+            <Setter Property="Foreground" Value="{StaticResource Dark}"/>
+            <Setter Property="FontWeight" Value="Light"/>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
+
+        <DockPanel 
+            Margin="15" 
+            HorizontalAlignment="Stretch" 
+            VerticalAlignment="Stretch"
+            Height="auto">
+            <StackPanel DockPanel.Dock="Top" Margin="10 0">
+                <Label Style="{StaticResource PrimaryLabel}">
+                    System Info Collector
+                </Label>
+                <Label Style="{StaticResource SecondaryLabel}">
+                    Technical Equipment Management System Extension
+                </Label>
+            </StackPanel>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <DockPanel 
+                    Margin="10"
+                    Style="{StaticResource FormPanel}">
+                    <StackPanel Margin="20" VerticalAlignment="Stretch">
+
+                        <!--Scan button-->
+                        <Button 
+                            Name="btScan"
+                            Click="btScan_Click"
+                            Margin="0 0 0 20">
+                            <TextBlock Name="btScanContent" TextWrapping="WrapWithOverflow">
+                                Scanare Calculator
+                            </TextBlock>
+                        </Button>
+
+                        <!--TEMS ID-->
+                        <Label Content="TEMSID*"
+                            FontFamily="{StaticResource BaseFontFamily}"
+                            FontSize="{StaticResource BaseFontSize}"/>
+                        <TextBlock Style="{StaticResource Info}">
+                            Numărul de identificare al echipamentului, exemplu: LPB002
+                        </TextBlock>
+                        <TextBox x:Name="tbTEMSID"
+                            FontFamily="{StaticResource BaseFontFamily}"
+                            FontSize="{StaticResource BaseFontSize}"
+                                 Background="Transparent">
+                        </TextBox>
+
+                        <!--Identificator-->
+                        <Label Content="Identificator*"
+                            Margin="0 10 0 0"
+                            FontFamily="{StaticResource BaseFontFamily}"
+                            FontSize="{StaticResource BaseFontSize}"/>
+                        <TextBlock Style="{StaticResource Info}">
+                            Definiția calculatorului. Exemple: Hantol, Asus Vivobook Pro 15
+                        </TextBlock>
+                        <TextBox x:Name="tbPCIdentifier"
+                                 Background="Transparent"
+                            FontFamily="{StaticResource BaseFontFamily}"
+                            FontSize="{StaticResource BaseFontSize}"/>
+
+                        <!--TW ID & TW Password-->
+                        <Grid Background="Transparent" Margin="0 10 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Margin="0 0 5 0">
+                                <Label Content="TeamViewer ID"
+                                    Margin="0 10 0 0"
+                                    FontFamily="{StaticResource BaseFontFamily}"
+                                    FontSize="{StaticResource BaseFontSize}"/>
+                                <TextBox x:Name="tbTVID"
+                                         Background="Transparent"
+                                    FontFamily="{StaticResource BaseFontFamily}"
+                                    FontSize="{StaticResource BaseFontSize}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Margin="5 0 0 0">
+                                <Label Content="TeamViewer Password"
+                                    Margin="0 10 0 0"
+                                    FontFamily="{StaticResource BaseFontFamily}"
+                                    FontSize="{StaticResource BaseFontSize}"/>
+                                <TextBox x:Name="tbTVPassword"
+                                         Background="Transparent"
+                                    FontFamily="{StaticResource BaseFontFamily}"
+                                    FontSize="{StaticResource BaseFontSize}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!--Descriere-->
+                        <Label Content="Descriere (Opțional)"
+                            Margin="0 10 0 0"
+                            FontFamily="{StaticResource BaseFontFamily}"
+                            FontSize="{StaticResource BaseFontSize}"/>
+                        <TextBox x:Name="tbDescription"
+                            MinLines="4"
+                                 Background="Transparent"
+                            FontFamily="{StaticResource BaseFontFamily}"
+                            FontSize="{StaticResource BaseFontSize}"/>
+                    </StackPanel>
+                </DockPanel>
+
+                <DockPanel
+                    Grid.Column="1" 
+                    Margin="10"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Height="auto"
+                    Style="{StaticResource FormPanel}">
+
+                    <StackPanel DockPanel.Dock="Top" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Grid>
+                            <Button Click="btUsed_Click"  
+                                Tag="true"
+                                Height="100" 
+                                Width="120" 
+                                Padding="5"
+                                Background="#FF33CBD3"
+                                BorderBrush="#FF33CBD3">
+                                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center">
+                                În folosință
+                                <TextBlock Margin="0 10 0 0"
+                                    TextWrapping="WrapWithOverflow"
+                                    FontSize="{StaticResource SmallFontSize}" 
+                                    Foreground="{StaticResource Muted}">
+                                    Calculatorul se află în utilizare
+                                </TextBlock>
+                            </TextBlock>
+                            </Button>
+                            <Image
+                                Visibility="{Binding UsedVisibility}"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Width="30"
+                                Source="pack://application:,,,/images/selected.png"/>
+                        </Grid>
+
+                        <Grid Margin="30 0 0 0" >
+                            <Button 
+                            Click="btUsed_Click" 
+                            Tag="false"
+                            Height="100" 
+                            Width="120" 
+                            Padding="5"
+                            Background="#FFDE5D5D"
+                            BorderBrush="#FFDE5D5D">
+                                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center">
+                                Neutilizat
+                                <TextBlock Margin="0 10 0 0"
+                                    TextWrapping="WrapWithOverflow"
+                                    FontSize="{StaticResource SmallFontSize}" 
+                                    Foreground="{StaticResource Muted}">
+                                    Calculatorul este depozitat sau nu este utilizat
+                                </TextBlock>
+                            </TextBlock>
+                            </Button>
+                            <Image
+                                Visibility="{Binding NotUsedVisibility}"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Width="30"
+                                Source="pack://application:,,,/images/selected.png"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel DockPanel.Dock="Top" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Grid>
+                            <Button 
+                            Click="btWorking_Click"
+                            Tag="true"
+                            Height="100" 
+                            Width="120" 
+                            Padding="5"
+                            Background="#FF33CBD3"
+                            BorderBrush="#FF33CBD3">
+                                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center">
+                                Funcțional
+                                <TextBlock Margin="0 10 0 0"
+                                    TextWrapping="WrapWithOverflow"
+                                    FontSize="{StaticResource SmallFontSize}" 
+                                    Foreground="{StaticResource Muted}">
+                                    Calculatorul e ceas
+                                </TextBlock>
+                            </TextBlock>
+                            </Button>
+                            <Image
+                                Visibility="{Binding WorkingVisibility}"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Width="30"
+                                Source="pack://application:,,,/images/selected.png"/>
+                        </Grid>
+
+                        <Grid Margin="30 0 0 0" >
+                            <Button 
+                            Height="100" 
+                            Width="120" 
+                            Click="btWorking_Click"
+                            Tag="false"
+                            Padding="5"
+                            Background="#FFDE5D5D"
+                            BorderBrush="#FFDE5D5D">
+                                <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Center">
+                                Defect
+                                <TextBlock Margin="0 10 0 0"
+                                    TextWrapping="WrapWithOverflow"
+                                    FontSize="{StaticResource SmallFontSize}" 
+                                    Foreground="{StaticResource Muted}">
+                                    Calculatorul nu funcționează corect
+                                </TextBlock>
+                            </TextBlock>
+                            </Button>
+                            <Image
+                                Visibility="{Binding NotWorkingVisibility}"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Left"
+                                Width="30"
+                                Source="pack://application:,,,/images/selected.png"/>
+                        </Grid>
+
+                    </StackPanel>
+
+                    <Button 
+                        x:Name="btExport" 
+                        Margin="20"
+                        VerticalAlignment="Bottom">
+                        Exportă în format JSON
+                    </Button>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="3.7*"/>
         </Grid.RowDefinitions>
@@ -52,67 +310,32 @@
                 <RowDefinition Height="0.8*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource MutedGrid}">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
-
-                <StackPanel 
-                    Grid.Row="0"
-                    Orientation="Vertical" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center">
-                    <Label Content="TEMSID-ul calculatorului"
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label Content="TEMSID-ul calculatorului"
                        FontFamily="{StaticResource BaseFontFamily}"
                        FontSize="{StaticResource BaseFontSize}"/>
-                    <TextBox x:Name="tbTEMSID" Width="300" 
+                <TextBox x:Name="tbTEMSID" Width="300" 
                      FontFamily="{StaticResource BaseFontFamily}"
                      FontSize="{StaticResource BigFontSize}"/>
-                </StackPanel>
-
-                <StackPanel 
-                    Grid.Row="1"
-                    Orientation="Vertical" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center">
-                    <Label Content="Sala"
+                <Label Content="Sala"
                        FontFamily="{StaticResource BaseFontFamily}"
                        FontSize="{StaticResource BaseFontSize}"/>
-                    <TextBox x:Name="tbRoom" Width="300" 
+                <TextBox x:Name="tbRoom" Width="300" 
                      FontFamily="{StaticResource BaseFontFamily}"
                      FontSize="{StaticResource BigFontSize}"/>
-                </StackPanel>
-
-                <StackPanel 
-                    Grid.Row="2"
-                    Orientation="Vertical" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center">
-                    <Label Content="Identificator"
+                <Label Content="Identificator"
                        FontFamily="{StaticResource BaseFontFamily}"
                        FontSize="{StaticResource BaseFontSize}"/>
-                    <TextBox x:Name="tbPCIdentifier" Width="300" 
+                <TextBox x:Name="tbPCIdentifier" Width="300" 
                      FontFamily="{StaticResource BaseFontFamily}"
                      FontSize="{StaticResource BigFontSize}"/>
-                </StackPanel>
-
-                <StackPanel 
-                    Grid.Row="3"
-                    Orientation="Vertical" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center">
-                    <Label Content="Description"
+                <Label Content="Description"
                        FontFamily="{StaticResource BaseFontFamily}"
                        FontSize="{StaticResource BaseFontSize}"/>
-                    <TextBox x:Name="tbDescription" Width="300" 
+                <TextBox x:Name="tbDescription" Width="300" 
                      FontFamily="{StaticResource BaseFontFamily}"
                      FontSize="{StaticResource BigFontSize}"/>
-                </StackPanel>
-            </Grid>
-
+            </StackPanel>
 
             <Grid Grid.Row="0" Grid.Column="1" Style="{StaticResource MutedGrid}">
                 <Grid.RowDefinitions>
@@ -151,7 +374,8 @@
             </Grid>
 
 
-            <!--<Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource MutedGrid}">
+            -->
+        <!--<Grid Grid.Row="0" Grid.Column="0" Style="{StaticResource MutedGrid}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -192,6 +416,7 @@
                      FontSize="{StaticResource BigFontSize}"/>
                 </StackPanel>
             </Grid>-->
+        <!--
 
 
 
@@ -217,7 +442,7 @@
 
             </Grid>
 
-        </Grid>
+        </Grid>-->
 
     </Grid>
 </UserControl>
