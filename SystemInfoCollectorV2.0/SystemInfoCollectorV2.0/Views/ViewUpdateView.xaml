@@ -7,16 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="White">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="9*"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <ScrollViewer>
-            <StackPanel Grid.Row="0" Name="componentsStack"
-                    Margin="30">
-                <TextBlock Name="tbHeader" Text="Computer specifications" Style="{StaticResource Header}"/>
-                <!--<GroupBox Header="CPUs" Style="{StaticResource groupBoxStyle}">
+        <DockPanel HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Height="auto">
+            <ScrollViewer DockPanel.Dock="Top">
+                <StackPanel Name="componentsStack"
+                            Margin="30">
+                    <TextBlock Name="tbHeader" Text="Computer specifications" Style="{StaticResource Header}"/>
+                    <!--<GroupBox Header="CPUs" Style="{StaticResource groupBoxStyle}">
                     <StackPanel>
                         <GroupBox Header="CPU #1" Style="{StaticResource groupBoxStyle}">
                             <StackPanel Orientation="Vertical">
@@ -32,13 +30,15 @@
                         </GroupBox>
                     </StackPanel>
                 </GroupBox>-->
-            </StackPanel>
-        </ScrollViewer>
+                </StackPanel>
+            </ScrollViewer>
 
-        <Button Grid.Row="1" Name="btSaveChanges" Content="Save changes" Margin="20 10"
-                Style="{StaticResource SecondaryButton}"
-                Background="{StaticResource Dark}"
+            <Button Name="btSaveChanges" 
+                    Content="Save changes" 
+                    Margin="20 10"
+                    DockPanel.Dock="Bottom"
+                    VerticalAlignment="Bottom"
                 Click="btSaveChanges_Click"/>
-
+        </DockPanel>
     </Grid>
 </UserControl>

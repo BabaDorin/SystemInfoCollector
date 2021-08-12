@@ -1,5 +1,4 @@
-﻿using System.Collections.Specialized;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using SystemInfoCollectorV2._0.ViewModels;
 
 namespace SystemInfoCollectorV2._0.Views

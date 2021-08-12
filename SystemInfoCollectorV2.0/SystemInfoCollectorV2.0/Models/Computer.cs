@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
@@ -6,7 +7,7 @@ using SystemInfoCollectorV2._0.Services;
 
 namespace SystemInfoCollectorV2._0.Models
 {
-    class Computer
+    class Computer : IEnumerable
     {
         // follows singleton pattern
         private static Computer instance;
@@ -144,6 +145,11 @@ namespace SystemInfoCollectorV2._0.Models
         public void InitList<T>(ref List<T> list)
         {
             list = new List<T>();
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new DeviceCollectionPropertyEnumerator();
         }
     }
 }

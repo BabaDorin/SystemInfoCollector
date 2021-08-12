@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SystemInfoCollectorV2._0.Models;
 
 namespace SystemInfoCollectorV2._0.Views
@@ -30,13 +23,10 @@ namespace SystemInfoCollectorV2._0.Views
         private void btSaveChanges_Click(object sender, RoutedEventArgs e)
         {
             // Basically it creates new lists for each type of objects (CPUs, GPUs), for each child groubox
-            // a new object is created which in added to the list.
-
-            // This is repeated for every list of components.
-
-            // It might get optimized later.
+            // a new object is created and added tot he list of components.
 
             Computer computer = Computer.GetInstance();
+            PropertyInfo[] computerProperties = computer.GetType().GetProperties();
 
             foreach (UIElement cschild in componentsStack.Children)
             {
@@ -46,40 +36,58 @@ namespace SystemInfoCollectorV2._0.Views
                 var child = (GroupBox)cschild;
 
                 // Now we are in CPUs / GPUs ...
+                // Search the property with the same name as current gropubox header
                 var currentProp = computer.GetType().GetProperties().First(p => p.Name.ToString() == child.Header.ToString());
 
+                // Get and then update the current list of components
                 var tempListOfDevices = (IList)currentProp.GetValue(computer, null);
+               
+                // We clear the list because it will be constructed from scratch based on information provided by the UI
                 tempListOfDevices.Clear();
 
-                foreach (UIElement deviceProperties in (child.Content as StackPanel).Children)
+                var devices = (child.Content as StackPanel).Children;
+                foreach (UIElement devicePropertyCollection in devices)
                 {
                     // Now we are in CPU #1 ...
+                    // It is a GrouBox with the following structure
+                    // • GroupBox
+                    //    |
+                    //    |---- Stackpanel
+                    //    |         |
+                    //    |         |----- Remove button
+                    //    |         |
+                    //    |         |----- CPU's properties (Label = property name, TextBox = property value) 
+                    //    |
+                    //    |---- + Add New Button
 
-                    if (deviceProperties is Button) continue;
+                    if (devicePropertyCollection is Button) continue;
 
+                    // A new device is created of list type
                     object device = null;
                     switch (child.Header.ToString())
                     {
-                        case nameof(computer.CPUs): device = CreateObjectOfType(computer.CPUs); break;
-                        case nameof(computer.GPUs): device = CreateObjectOfType(computer.GPUs); break;
-                        case nameof(computer.Storages): device = CreateObjectOfType(computer.Storages); break;
-                        case nameof(computer.PSUs): device = CreateObjectOfType(computer.PSUs); break;
-                        case nameof(computer.RAMs): device = CreateObjectOfType(computer.RAMs); break;
-                        case nameof(computer.Motherboards): device = CreateObjectOfType(computer.Motherboards); break;
-                        case nameof(computer.NetworkInterfaces): device = CreateObjectOfType(computer.NetworkInterfaces); break;
-                        case nameof(computer.Monitors): device = CreateObjectOfType(computer.Monitors); break;
+                        case nameof(computer.CPUs): device = CreateObjectOfType<CPU>(); break;
+                        case nameof(computer.GPUs): device = CreateObjectOfType<GPU>(); break;
+                        case nameof(computer.Storages): device = CreateObjectOfType<Storage>(); break;
+                        case nameof(computer.PSUs): device = CreateObjectOfType<PSU>(); break;
+                        case nameof(computer.RAMs): device = CreateObjectOfType<RAM>(); break;
+                        case nameof(computer.Motherboards): device = CreateObjectOfType<Motherboard>(); break;
+                        case nameof(computer.NetworkInterfaces): device = CreateObjectOfType<NetworkInterface>(); break;
+                        case nameof(computer.Monitors): device = CreateObjectOfType<Monitor>(); break;
                     }
 
-                    var devicePropertiesContainer = (deviceProperties as GroupBox).Content as StackPanel;
+                    var devicePropertiesContainer = (devicePropertyCollection as GroupBox).Content as StackPanel;
+
+                    // The first element within the stackpanel is a button. We skip it.
+                    // For each property (Where the name is label's content and value - the text within the textbox placed right after the label
+                    // This way the device object is being populated with values for it's properties
                     for (int i = 2; i < devicePropertiesContainer.Children.Count; i += 2)
                     {
-                        var propertyLabel = (devicePropertiesContainer.Children[i - 1] as Label);
-                        var propertyTextBox = (devicePropertiesContainer.Children[i] as TextBox);
+                        var propertyName = (devicePropertiesContainer.Children[i - 1] as Label).Content.ToString();
+                        var propertyValue = (devicePropertiesContainer.Children[i] as TextBox).Text.ToString();
 
-                        var currentDevicePropertyName = propertyLabel.Content.ToString();
-                        var currentDeviceProperty = device.GetType().GetProperties().First(p => p.Name == currentDevicePropertyName);
-
-                        currentDeviceProperty.SetValue(device, propertyTextBox.Text);
+                        var currentDeviceProperty = device.GetType().GetProperties().First(p => p.Name == propertyName);
+                        currentDeviceProperty.SetValue(device, propertyValue);
                     }
 
                     tempListOfDevices.Add(device);
@@ -91,15 +99,18 @@ namespace SystemInfoCollectorV2._0.Views
             btSaveChanges.IsEnabled = false;
         }
 
+        /// <summary>
+        /// Creates a new GroupBox represeting a new instance of a specific type (Ex. CPU, GPU etc.) and appends it
+        /// to the collection of groupbox of the same type 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAddChild_Click(object sender, RoutedEventArgs e)
         {
-            // Adds a new gropbox representing a new object of necessary type (CPU, GPU...)
-
-            Button button = sender as Button;
+            var button = sender as Button;
             var parent = button.Parent as StackPanel;
             var index = parent.Children.Count - 2; // Stackpanel contains 2 uncounted buttons. 
-            Type objType = (Type)button.Tag;
-            var obj = Activator.CreateInstance(objType);
+            var obj = Activator.CreateInstance((Type)button.Tag);
             CreateGroupBoxForObject(obj, index, parent);
 
             SetChildrenVisibility(parent, Visibility.Visible);
@@ -111,7 +122,8 @@ namespace SystemInfoCollectorV2._0.Views
         private void BtRemove_Click(object sender, RoutedEventArgs e)
         {
             // Removes the groubox representing an object.
-            // button => stackpaned => groupbox => stackpanel.
+            // button => stackpanel[0] => groupbox => stackpanel[1].
+            // Button click triggers the removal of groupbox from stackpanel[1]
             var parent = (sender as Button).Parent as StackPanel;
             var parentOfParent = parent.Parent as GroupBox;
             var parentOfParentOfParent = parentOfParent.Parent as StackPanel;
@@ -148,28 +160,23 @@ namespace SystemInfoCollectorV2._0.Views
 
         /// <summary>
         /// Displays (on view) the lists of components.
+        /// BEFREE: Enumetator pattern 
         /// </summary>
         private void DisplayFetchedData()
         {
             Computer computer = Computer.GetInstance();
-
-            foreach (var property in computer.GetType().GetProperties())
+    
+            foreach(PropertyInfo collectionProperty in computer)
             {
-                if (property.PropertyType.Name.ToString() == "String")
-                    continue;
+                var listOfDevices = collectionProperty.GetValue(computer) as IList;
 
-                // property is a list of devices.
-                var listOfDevices = property.GetValue(computer) as IList;
-
-                var currentParent = CreateGroupBoxForList(property.Name, listOfDevices);
+                var currentParent = CreateGroupBoxForCollection(collectionProperty.Name, listOfDevices);
                 for (int i = 0; i < listOfDevices.Count; i++)
-                {
                     CreateGroupBoxForObject(listOfDevices[i], i, currentParent);
-                }
             }
         }
 
-        private StackPanel CreateGroupBoxForList(string listName, IList list)
+        private StackPanel CreateGroupBoxForCollection(string listName, IList list)
         {
             GroupBox listGroupBox = new GroupBox();
             listGroupBox.Header = listName;
@@ -241,12 +248,10 @@ namespace SystemInfoCollectorV2._0.Views
             }
         }
 
-        private object CreateObjectOfType<T>(List<T> list)
+        private object CreateObjectOfType<T>()
         {
             var device = Activator.CreateInstance<T>();
             return device;
         }
     }
 }
-
-
