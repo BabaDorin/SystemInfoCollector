@@ -234,11 +234,12 @@ namespace SystemInfoCollectorV2._0.Views
             {
                 Label propertyLabel = new Label();
                 propertyLabel.Content = prop.Name;
+                propertyLabel.Margin = new Thickness(0, 10, 0, 0);
 
                 TextBox propertyValue = new TextBox();
                 var value = prop.GetValue(obj);
                 propertyValue.Text = (value == null) ? "" : value.ToString();
-                propertyValue.TextChanged += PropertyValue_TextChanged;
+                propertyValue.SetValue(TextBlock.FontWeightProperty, FontWeights.Normal);
 
                 childStackPanel.Children.Add(propertyLabel);
                 childStackPanel.Children.Add(propertyValue);
