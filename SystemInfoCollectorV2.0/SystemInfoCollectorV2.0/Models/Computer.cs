@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,9 +8,11 @@ using SystemInfoCollectorV2._0.Services;
 
 namespace SystemInfoCollectorV2._0.Models
 {
+    [JsonObject]
     class Computer : IEnumerable
     {
         // follows singleton pattern
+        [JsonIgnore]
         private static Computer instance;
 
         private Computer()

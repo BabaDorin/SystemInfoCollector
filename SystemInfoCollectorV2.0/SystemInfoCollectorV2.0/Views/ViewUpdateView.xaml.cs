@@ -20,6 +20,28 @@ namespace SystemInfoCollectorV2._0.Views
             btSaveChanges.IsEnabled = false;
         }
 
+        /// Computer's state is represented on the UI the following way
+        /// It is a GrouBox with the following structure
+        /// 
+        /// GroupBox (For each collection, example: CPUs)
+        ///     |
+        ///     |---- StackPanel
+        ///                 |
+        ///                 |---- Expand Button
+        ///                 |---- Add New Button
+        ///                 |---- Collection of devices (Example: CPU #1) GroupBox
+        ///                             |
+        ///                             |---- StackPanel
+        ///                                         |
+        ///                                         |---- Remove Buttom                |---- Label (Property name)
+        ///                                         |---- Collection of Properties --- |
+        ///                                                                            |---- TextBox (Property value)
+
+        /// <summary>
+        /// Saves the new state of computer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btSaveChanges_Click(object sender, RoutedEventArgs e)
         {
             // Basically it creates new lists for each type of objects (CPUs, GPUs), for each child groubox
@@ -49,16 +71,6 @@ namespace SystemInfoCollectorV2._0.Views
                 foreach (UIElement devicePropertyCollection in devices)
                 {
                     // Now we are in CPU #1 ...
-                    // It is a GrouBox with the following structure
-                    // • GroupBox
-                    //    |
-                    //    |---- Stackpanel
-                    //    |         |
-                    //    |         |----- Remove button
-                    //    |         |
-                    //    |         |----- CPU's properties (Label = property name, TextBox = property value) 
-                    //    |
-                    //    |---- + Add New Button
 
                     if (devicePropertyCollection is Button) continue;
 

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Linq;
-using System.Web.Script.Serialization;
 using System.Windows;
 using SystemInfoCollectorV2._0.Properties;
 
@@ -24,24 +24,21 @@ namespace SystemInfoCollectorV2._0.Models
                 string fileName = GenerateNecessaryFoldersAndReturnFinalPath() + '\\' + Path.GetFileName(computerInstance.TEMSID) + ".json";
                 computerInstance.TEMSID = Path.GetFileName(computerInstance.TEMSID);
 
-                MessageBox.Show(fileName);
-
                 if (File.Exists(fileName))
                 {
-                    MessageBox.Show("There is already a file with the same name in output directory. The file has not been written.");
+                    MessageBox.Show("Există deja un fișier cu același nume în folderul indicat. Fișierul nu a fost scris.");
                     return false;
                 }
 
                 using (StreamWriter sw = new StreamWriter(fileName))
-                {
-                    sw.Write(new JavaScriptSerializer().Serialize(computerInstance));
-                }
-                
+                sw.Write(JsonConvert.SerializeObject(computerInstance));
+
+                MessageBox.Show(fileName);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Unable to write json file. Invalid TempName");
+                MessageBox.Show("S-a produs o eroare: " + ex.Message);
                 return false;
             }
         }
