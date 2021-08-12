@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="SystemInfoCollector.Views.Preferences"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SystemInfoCollector.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="30" Grid.Row="0">
+            <Label Content="Output path" FontSize="{StaticResource BaseFontSize}" Foreground="{StaticResource Dark}"
+                   FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="tbOutputPath" Width="300" HorizontalAlignment="Left"
+                     TextChanged="tbOutputPath_TextChanged"/>
+                <Button x:Name="btBrowse" Content="..." Padding="10 0"
+                        Click="btBrowse_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Button Grid.Row="1" Name="btSaveChanges" Content="Save changes" Margin="20 10"
+                Style="{StaticResource SecondaryButton}"
+                Background="{StaticResource Dark}"
+                Click="btSaveChanges_Click"/>
+
+    </Grid>
+</UserControl>

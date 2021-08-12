@@ -1,0 +1,198 @@
+﻿<UserControl x:Class="SystemInfoCollector.Views.StartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style x:Key="OptionButton" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+        <Style x:Key="SelectedMark" TargetType="Image">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Source" Value="pack://application:,,,/images/selected.png"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <DockPanel Style="{StaticResource StretchedDockPanel}"
+                   Margin="15">
+            <StackPanel DockPanel.Dock="Top" 
+                        Margin="10 0">
+                <Label Style="{StaticResource PrimaryLabel}" 
+                       Content="System Info Collector"/>
+                <Label Style="{StaticResource SecondaryLabel}" 
+                       Content="Technical Equipment Management System Extension"/>
+            </StackPanel>
+            <Grid  MaxWidth="1400"
+                   MaxHeight="900"
+                   VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <DockPanel 
+                    Margin="10">
+                    <StackPanel Margin="20" 
+                                VerticalAlignment="Stretch">
+
+                        <!--Scan button-->
+                        <Button 
+                            Command="{Binding Path=ScanCommand}"
+                            IsEnabled="{Binding FormModel.ScanningEnabled}"
+                            Height="60"
+                            Margin="0 0 0 20">
+                            <TextBlock Text="{Binding FormModel.BtScanContent}" TextWrapping="WrapWithOverflow"/>
+                        </Button>
+
+                        <!--TEMS ID-->
+                        <Label Content="TEMSID*"/>
+                        <TextBox materialDesign:HintAssist.HelperText="Numărul de identificare al echipamentului, exemplu: LPB002"
+                                 Text="{Binding FormModel.TEMSID}"/>
+
+                        <!--Identificator-->
+                        <Label Content="Identificator*"
+                            Margin="0 20 0 0"/>
+                        <TextBox materialDesign:HintAssist.HelperText="Definiția calculatorului. Exemple: Hantol, Asus Vivobook Pro 15"
+                             Text="{Binding FormModel.Identifier}"/>
+
+                        <!--TW ID & TW Password-->
+                        <Grid Margin="0 20 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Margin="0 0 5 0">
+                                <Label Content="TeamViewer ID"/>
+                                <TextBox Text="{Binding FormModel.TeamViewerID}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Margin="5 0 0 0">
+                                <Label Content="TeamViewer Password"/>
+                                <TextBox Text="{Binding FormModel.TeamViewerPassword}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!--Descriere-->
+                        <Label Content="Descriere (Opțional)"
+                            Margin="0 10 0 0"/>
+                        <TextBox MinLines="4"
+                                 Text="{Binding FormModel.Description}"/>
+                    </StackPanel>
+                </DockPanel>
+
+                <DockPanel
+                    Grid.Column="1" 
+                    Margin="10"
+                    Style="{StaticResource StretchedDockPanel}">
+
+                    <StackPanel DockPanel.Dock="Top" 
+                                Margin="0 30 0 0" 
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Center">
+                        <Grid>
+                            <Button Command="{Binding ChangeUsingStatusCommand}"
+                                    CommandParameter="true"
+                                    Style="{StaticResource OptionButton}"
+                                    Background="#FF33CBD3"
+                                    BorderBrush="#FF33CBD3">
+                                <TextBlock TextWrapping="WrapWithOverflow" 
+                                           TextAlignment="Center">
+                                În folosință
+                                <TextBlock Margin="0 10 0 0"
+                                           TextWrapping="WrapWithOverflow"
+                                           FontSize="{StaticResource SmallFontSize}" 
+                                           Foreground="{StaticResource Muted}">
+                                    Calculatorul se află în utilizare
+                                </TextBlock>
+                            </TextBlock>
+                            </Button>
+                            <Image Visibility="{Binding FormModel.UsedVisibility}"
+                                   Style="{StaticResource SelectedMark}"/>
+                        </Grid>
+
+                        <Grid Margin="30 0 0 0" >
+                            <Button Command="{Binding ChangeUsingStatusCommand}" 
+                                    CommandParameter="false"
+                                    Style="{StaticResource OptionButton}"
+                                    Background="#FFDE5D5D"
+                                    BorderBrush="#FFDE5D5D">
+                                <TextBlock TextWrapping="WrapWithOverflow" 
+                                           TextAlignment="Center">
+                                Neutilizat
+                                <TextBlock Margin="0 10 0 0"
+                                           TextWrapping="WrapWithOverflow"
+                                           FontSize="{StaticResource SmallFontSize}" 
+                                           Foreground="{StaticResource Muted}">
+                                    Calculatorul este depozitat sau nu este utilizat
+                                </TextBlock>
+                            </TextBlock>
+                            </Button>
+                            <Image Visibility="{Binding FormModel.NotUsedVisibility}"
+                                   Style="{StaticResource SelectedMark}"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <StackPanel DockPanel.Dock="Top" Margin="0 30 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Grid>
+                            <Button Command="{Binding ChangeWorkingStatusCommand}"
+                                    CommandParameter="true"
+                                    Style="{StaticResource OptionButton}"
+                                    Background="#FF33CBD3"
+                                    BorderBrush="#FF33CBD3">
+                                <TextBlock TextWrapping="WrapWithOverflow" 
+                                           TextAlignment="Center">
+                                Funcțional
+                                <TextBlock Margin="0 10 0 0"
+                                           TextWrapping="WrapWithOverflow"
+                                           FontSize="{StaticResource SmallFontSize}" 
+                                           Foreground="{StaticResource Muted}">
+                                    Calculatorul e ceas
+                                </TextBlock>
+                            </TextBlock>
+                            </Button>
+                            <Image Visibility="{Binding FormModel.WorkingVisibility}"
+                                   Style="{StaticResource SelectedMark}"/>
+                        </Grid>
+
+                        <Grid Margin="30 0 0 0" >
+                            <Button Command="{Binding ChangeWorkingStatusCommand}"
+                                    CommandParameter="false"
+                                    Style="{StaticResource OptionButton}"
+                                    Background="#FFDE5D5D"
+                                    BorderBrush="#FFDE5D5D">
+                                <TextBlock TextWrapping="WrapWithOverflow" 
+                                           TextAlignment="Center">
+                                Defect
+                                <TextBlock Margin="0 10 0 0"
+                                           TextWrapping="WrapWithOverflow"
+                                           FontSize="{StaticResource SmallFontSize}" 
+                                           Foreground="{StaticResource Muted}">
+                                    Calculatorul nu funcționează corect
+                                </TextBlock>
+                            </TextBlock>
+                            </Button>
+                            <Image Visibility="{Binding FormModel.NotWorkingVisibility}"
+                                   Style="{StaticResource SelectedMark}"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <Button Command="{Binding ExportToJsonCommand}"
+                            Margin="20"
+                            Height="40"
+                            VerticalAlignment="Bottom">
+                        Exportă datele în format JSON
+                    </Button>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>
