@@ -1,13 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:SystemInfoCollector.Styles" xmlns:system="clr-namespace:System;assembly=mscorlib">
-    
+
     <!--Colors-->
     <SolidColorBrush x:Key="Primary" Color="#5548e0"/>
     <SolidColorBrush x:Key="Dark" Color="#FF1D1857"/>
     <SolidColorBrush x:Key="Light" Color="#fff"/>
-    <SolidColorBrush x:Key="Muted" Color="#e8e8e8"/> 
-    <SolidColorBrush x:Key="Secondary" Color="#FF149BC3"/> 
+    <SolidColorBrush x:Key="Muted" Color="#e8e8e8"/>
+    <SolidColorBrush x:Key="Secondary" Color="#FF149BC3"/>
 
     <!--default font style-->
     <FontFamily x:Key="BaseFontFamily">Leelawadee</FontFamily>
@@ -44,7 +44,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
     </Style>
-    
+
     <Style x:Key="BigButton" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
         <Setter Property="FontSize" Value="{StaticResource BigFontSize}"/>
         <Setter Property="Background" Value="Transparent"/>
@@ -126,8 +126,8 @@
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}"/>
         <Setter Property="FontSize" Value="{StaticResource BaseFontSize}"/>
     </Style>
-    
-    
+
+
     <!--Label styles-->
     <Style x:Key="SecondaryLabel" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource SmallFontSize}"/>
@@ -141,7 +141,7 @@
         <Setter Property="Foreground" Value="{StaticResource Primary}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
-    
+
     <!--DockPanel styles-->
     <Style x:Key="StretchedDockPanel" TargetType="DockPanel">
         <Setter Property="HorizontalAlignment" Value="Stretch"/>

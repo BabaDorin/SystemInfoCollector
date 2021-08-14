@@ -4,6 +4,9 @@ using SystemInfoCollector.Views;
 
 namespace SystemInfoCollector
 {
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -17,7 +20,7 @@ namespace SystemInfoCollector
         /// ex: Start for StartView.
         /// </summary>
         /// <param name="parameter">The paramenter is the view's name without the 'View' suffix. Example: 'Start' for StartView</param>
-        public void UpdateView(string parameter)
+        public void UpdateView(string? parameter)
         {
             switch (parameter)
             {
@@ -41,7 +44,8 @@ namespace SystemInfoCollector
 
         private void btMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            UpdateView((sender as Button).Tag.ToString());
+            string? viewName = (sender as Button)?.Tag.ToString();
+            UpdateView(viewName);
         }
     }
 }

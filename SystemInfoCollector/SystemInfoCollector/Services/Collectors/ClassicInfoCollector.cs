@@ -76,7 +76,7 @@ namespace SystemInfoCollector.Services.Collectors
                     try
                     {
                         var propValue = managementObject[deviceProperty.Name];
-                        string finalPropValue = (propValue == null) ? "" : propValue.ToString();
+                        string finalPropValue = propValue?.ToString() ?? "";
 
                         deviceProperty.SetValue(device, finalPropValue);
                     }

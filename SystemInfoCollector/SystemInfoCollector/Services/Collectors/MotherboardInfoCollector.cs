@@ -33,8 +33,8 @@ namespace SystemInfoCollector.Services.Collectors
             {
                 foreach (var deviceProperty in motherboard.GetType().GetProperties())
                 {
-                    var currentPropValue = deviceProperty.GetValue(motherboard);
-                    if (currentPropValue != null && currentPropValue.ToString().Trim()!="")
+                    var currentPropValue = deviceProperty.GetValue(motherboard) ?? String.Empty;
+                    if (currentPropValue != null && currentPropValue?.ToString()?.Trim()!="")
                         continue;
 
                     object propValue = null;

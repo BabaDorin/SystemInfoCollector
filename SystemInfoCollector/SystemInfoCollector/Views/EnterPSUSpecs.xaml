@@ -45,7 +45,7 @@
                     Margin="10">
             <Label Content="Model" Name="lbModel"/>
             <TextBox x:Name="tbModel"/>
-            <Image Margin="0 5" Source="pack://application:,,,/images/PSUModel.jpg"/>
+            <Image Margin="0 5" Source="pack://application:,,,/Resources/Images/PSUModel.jpg"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1"
@@ -55,7 +55,7 @@
             <Label Content="Serial Number (Numarul de serie)"/>
             <TextBox x:Name="tbSerialNumber"
                      PreviewKeyDown="tbSerialNumber_PreviewKeyDown"/>
-            <Image Margin="0 5" Source="pack://application:,,,/images/PSUSerialNumber.jpg"/>
+            <Image Margin="0 5" Source="pack://application:,,,/Resources/Images/PSUSerialNumber.jpg"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="2"
@@ -69,7 +69,7 @@
                          Width="60"/>
                 <Label Content="Watt" FontSize="10"/>
             </StackPanel>
-            <Image Margin="0 5" Source="pack://application:,,,/images/PSUMaxOutWatt.jpg"/>
+            <Image Margin="0 5" Source="pack://application:,,,/Resources/Images/PSUMaxOutWatt.jpg"/>
         </StackPanel>
 
         <TextBlock Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" Foreground="{StaticResource Dark}"> 

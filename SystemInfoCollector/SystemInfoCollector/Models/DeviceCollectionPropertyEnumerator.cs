@@ -15,7 +15,7 @@ namespace SystemInfoCollector.Models
     {
         private readonly Computer _instance;
         private readonly PropertyInfo[] _collectionOfDeviceLists;
-        private int _collectionIndex = 0;
+        private int _collectionIndex = -1;
 
         public DeviceCollectionPropertyEnumerator()
         {
@@ -47,7 +47,7 @@ namespace SystemInfoCollector.Models
 
         public void Reset()
         {
-            _collectionIndex = 0;
+            _collectionIndex = -1;
         }
     }
 }

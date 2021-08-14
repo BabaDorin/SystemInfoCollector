@@ -1,15 +1,14 @@
 ﻿<Window x:Class="SystemInfoCollector.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SystemInfoCollector"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
         Title="SIC" Height="600" Width="1000"
         FontFamily="{StaticResource BaseFontFamily}"
         MinHeight="450" MinWidth="600">
-    
+
     <Window.Resources>
         <Style x:Key="SidebarMenuItem" TargetType="Button" BasedOn="{StaticResource MenuButtonStyle}">
             <Setter Property="DockPanel.Dock" Value="Top"/>
@@ -17,7 +16,7 @@
             <EventSetter Event="Click" Handler="btMenuItem_Click"/>
         </Style>
     </Window.Resources>
-    
+
     <Grid>
         <DockPanel
         HorizontalAlignment="Stretch" 
@@ -36,17 +35,17 @@
                 <Button Style="{StaticResource SidebarMenuItem}" 
                         Content="Preferințe" 
                         Tag="Preferences"/>
-                
+
                 <StackPanel DockPanel.Dock="Bottom" 
                             VerticalAlignment="Bottom" >
                     <Image Margin="60 10"  
-                           Source="pack://application:,,,/images/befree.png"/>
+                           Source="pack://application:,,,/Resources/Images/befree.png"/>
                     <Label HorizontalAlignment="Center" 
                            Foreground="{StaticResource Muted}"
                            Content="System Info Collector"/>
                 </StackPanel>
             </DockPanel>
-            
+
             <ContentControl Name="childWindow">
             </ContentControl>
         </DockPanel>

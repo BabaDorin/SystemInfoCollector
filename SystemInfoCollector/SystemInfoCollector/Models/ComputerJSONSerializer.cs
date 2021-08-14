@@ -59,7 +59,7 @@ namespace SystemInfoCollector.Models
             if (backslashes > 0 && computerInstance.TEMSID[0] != '\\')
                 computerInstance.TEMSID = '\\' + computerInstance.TEMSID;
 
-            string finalPath = userSettings.OutputPath + Path.GetDirectoryName(computerInstance.TEMSID).ToLower();
+            string finalPath = userSettings.OutputPath + Path.GetDirectoryName(computerInstance.TEMSID)?.ToLower();
             Directory.CreateDirectory(finalPath);
             return finalPath;
         }
