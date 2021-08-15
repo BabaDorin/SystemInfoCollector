@@ -49,7 +49,7 @@ namespace SystemInfoCollector.Models
         public string Identifier { get; set; }
         public string TeamViewerID { get; set; }
         public bool IsUsed { get; set; }
-        public bool Working { get; set; }
+        public bool IsDefect { get; set; }
         public string TeamViewerPassword { get; set; }
         public string Description { get; set; }
 
