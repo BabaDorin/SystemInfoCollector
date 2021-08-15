@@ -1,0 +1,9 @@
+Latest executables can be found here:
+
+Framework-dependent (For systems that already have .NET installed):
+v2.0.1
+
+Seld-contained (For any windows machine, no need to install .NET to run the app):
+v.2.0.1
+
+https://drive.google.com/drive/folders/18VizHPlig5yY9oFHWdyoojgq_r6FON3C?usp=sharing
