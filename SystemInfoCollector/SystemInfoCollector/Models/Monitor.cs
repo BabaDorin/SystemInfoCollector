@@ -10,5 +10,16 @@
         public string ScreenHeight { get; set; }
         public string ScreenWidth { get; set; }
         public string RefreshRateInHz { get; set; }
+
+        public Monitor()
+        {
+            TEMSID = string.Empty;
+            SerialNumber = string.Empty;
+            MonitorManufacturer = string.Empty;
+            Name = string.Empty;
+            ScreenHeight = "0";
+            ScreenWidth = "0";
+            RefreshRateInHz = "0";
+        }
     }
 }

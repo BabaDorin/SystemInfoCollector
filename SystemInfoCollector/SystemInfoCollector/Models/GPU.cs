@@ -35,5 +35,14 @@
                 }
             }
         }
+
+        public GPU()
+        {
+            Name = string.Empty;
+            AdapterRAM = "0";
+            VideoModeDescription = string.Empty;
+            VideoProcessor = string.Empty;
+            VideoMemoryType = string.Empty;
+        }
     }
 }

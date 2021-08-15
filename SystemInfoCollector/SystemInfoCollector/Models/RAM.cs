@@ -46,5 +46,15 @@
         public string SerialNumber { get; set; }
         public string ConfiguredClockSpeed { get; set; }
         public string PartNumber { get; set; }
+
+        public RAM()
+        {
+            Manufacturer = string.Empty;
+            Capacity = "0";
+            MemoryType = string.Empty;
+            SerialNumber = string.Empty;
+            ConfiguredClockSpeed = "0";
+            PartNumber = string.Empty;
+        }
     }
 }

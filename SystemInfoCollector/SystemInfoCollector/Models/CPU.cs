@@ -37,5 +37,20 @@
         public string ThreadCount { get; set; }
         public string MaxClockSpeed { get; set; }
         public string SocketDesignation { get; set; }
+
+        public CPU()
+        {
+            Manufacturer = string.Empty;
+            Name = string.Empty;
+            Architecture = string.Empty;
+            NumberOfCores = "0";
+            ProcessorId = string.Empty;
+            Description = string.Empty;
+            L2CacheSize = "0";
+            L3CacheSize = "0";
+            ThreadCount = "0";
+            MaxClockSpeed = "0";
+            SocketDesignation = string.Empty;
+        }
     }
 }

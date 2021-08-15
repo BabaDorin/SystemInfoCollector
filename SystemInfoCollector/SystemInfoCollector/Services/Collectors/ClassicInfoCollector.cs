@@ -67,18 +67,22 @@ namespace SystemInfoCollector.Services.Collectors
             foreach (ManagementObject managementObject in ObjectSearcher.Get())
             {
                 var device = Activator.CreateInstance<T>();
-                foreach (var deviceProperty in device.GetType().GetProperties())
+                var deviceProperties = device.GetType().GetProperties();
+                foreach (var property in deviceProperties)
                 {
                     try
                     {
-                        var propValue = managementObject[deviceProperty.Name];
-                        string finalPropValue = propValue?.ToString() ?? "";
+                        string? propValue = managementObject[property.Name]?.ToString();
 
-                        deviceProperty.SetValue(device, finalPropValue);
+                        // if propValue is null, final value will be property's default value assigned by the constructor
+                        if (String.IsNullOrEmpty(propValue))
+                            continue;
+
+                        property.SetValue(device, propValue);
                     }
                     catch (Exception)
                     {
-                        deviceProperty.SetValue(device, "");
+                        property.SetValue(device, "");
                     }
                 }
 

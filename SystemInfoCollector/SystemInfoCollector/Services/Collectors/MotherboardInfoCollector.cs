@@ -34,17 +34,20 @@ namespace SystemInfoCollector.Services.Collectors
                     if (currentPropValue != null && currentPropValue?.ToString()?.Trim()!="")
                         continue;
 
-                    object propValue = null;
+                    string? propValue = null;
                     try
                     {
-                        propValue = managementObject[deviceProperty.Name];
+                        propValue = managementObject[deviceProperty.Name]?.ToString();
                     }
                     catch (Exception)
                     {
                         // Not found - The property has not been found in this searcher class. propValue will remain null, it's OK.
                     }
-                    string finalPropValue = (propValue == null) ? "" : propValue.ToString();
-                    deviceProperty.SetValue(motherboard, finalPropValue);
+
+                    if (string.IsNullOrEmpty(propValue))
+                        continue;
+
+                    deviceProperty.SetValue(motherboard, propValue);
                 }
             }
         }
