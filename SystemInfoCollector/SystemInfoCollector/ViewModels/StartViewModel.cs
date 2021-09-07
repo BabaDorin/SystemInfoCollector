@@ -57,6 +57,8 @@ namespace SystemInfoCollector.ViewModels
             _computer.TeamViewerID = FormModel.TeamViewerID;
             _computer.TeamViewerPassword = FormModel.TeamViewerPassword;
             _computer.Description = FormModel.Description;
+            _computer.IsUsed = FormModel.UsedVisibility == Visibility.Visible;
+            _computer.Working = FormModel.WorkingVisibility == Visibility.Visible;
 
             ComputerJSONSerializer.Serialize();
         }
